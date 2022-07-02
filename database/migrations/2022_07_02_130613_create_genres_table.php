@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->string('name', 191)->comment('名前');
-            $table->string('email', 191)->unique()->comment('メールアドレス');
-            $table->timestamp('email_verified_at')->nullable()->comment('メール確認日時');
-            $table->string('password', 191)->comment('パスワード');
-            $table->rememberToken()->comment('トークン');
+            $table->string('name', 20)->comment('ジャンル名');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->nullable()->comment('更新日時');
-            $table->softDeletes()->comment('削除日時');
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('genres');
     }
 };
