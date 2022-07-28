@@ -22,7 +22,7 @@
       <tbody>
         @foreach ($histories as $history)
         <tr>
-          <td class="product_image"><img src="{{$history->product->image}}" alt="Thumbnail"></td>
+          <td class="product_image"><img src="{{$history->product->image->url}}" alt="Thumbnail"></td>
           <td class="product_name">{{$history->product->name}}</td>
           <td class="history_qty">{{$history->quantity}}</td>
           {{-- 購入後に価格が変わる可能性があるので演算でpriceを求める --}}

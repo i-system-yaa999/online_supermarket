@@ -11,12 +11,13 @@
   <div class="data_list">
 
     <table class="tbl_item_list">
-      <thead class="tbl-products tbl-head">
+      <thead class="tbl_head">
         <tr>
           <th></th>
-          <th class="item-center item-id">ID</th>
+          <th class="list_center list_id">ID</th>
           <th>商品名</th>
           <th>価格</th>
+          <th>イメージ</th>
           <th>イメージ</th>
           <th>売り場</th>
           <th>産地</th>
@@ -29,17 +30,17 @@
       </thead>
       <tbody>
         @foreach($products as $product)
-        <tr class="tbl-product @if($loop->iteration % 2) tbl-odd @else tbl-even @endif" id="tbl-item{{$product->id}}">
+        <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif" id="tbl_item{{$product->id}}">
           {{-- チェックボックス --}}
-          <td class="item-center item-checkbox">
+          <td class="list_center list_checkbox">
             <input type="checkbox" name="" id="">
           </td>
           {{-- id --}}
-          <td class="item-center item-id" name="product_id{{$product->id}}" id="product_id{{$product->id}}">
+          <td class="list_center list_id" name="product_id{{$product->id}}" id="product_id{{$product->id}}">
             {{$product->id}}
           </td>
           {{-- 商品名 --}}
-          <td class="item-name">
+          <td class="list_name">
             <input type="text" name="product_name{{$product->id}}" id="product_name{{$product->id}}" class="inputbox"
               value="{{$product->name}}">
             @if(($product->id==old('product_id')) && ($errors->has('product_name')))
@@ -47,28 +48,28 @@
             @endif
           </td>
           {{-- 価格 --}}
-          <td class="item-price">
+          <td class="list_price">
             <input type="number" name="product_price{{$product->id}}" id="product_price{{$product->id}}" class="inputbox" value="{{$product->price}}">
             @if(($product->id==old('product_id')) && ($errors->has('product_price')))
             <div class="error_disp">{{$errors->first('product_price')}}</div>
             @endif
           </td>
           {{-- イメージurl --}}
-          <td></td>
-          {{-- <td class="item-url">
+          <td class="list_image"><img src="{{$product->image->url}}" alt=""></td>
+          <td class="list_image-url">
             <select name="product_image_url{{$product->id}}" id="product_image_url{{$product->id}}" class="selectbox">
-              @foreach($images as $image)
-              <option value="{{$image->image}}" @if($product->image->name == $image->image) selected @endif>
-                {{$image->id}} : {{$image->image}}
+              @foreach($allimages as $image)
+              <option value="{{$image->url}}" @if($product->image->url == $image->url) selected @endif>
+                {{$image->id}} : {{str_replace('image/products/', '', $image->url)}}
               </option>
               @endforeach
             </select>
             @if(($product->id==old('product_id')) && $errors->has('product_image_url'))
             <div class="error_disp">{{$errors->first('product_image')}}</div>
             @endif
-          </td> --}}
+          </td>
           {{-- 売り場 --}}
-          <td class="item-genre-name">
+          <td class="list_genre-name">
             <select name="product_genre_id{{$product->id}}" id="product_genre_id{{$product->id}}" class="selectbox">
               <option value="{{($product->genre->id ?? '9999')}}">
                 {{($product->genre->id ?? '9999').'：'.($product->genre->name ?? '未登録')}}
@@ -84,7 +85,7 @@
             @endif
           </td>
           {{-- 産地 --}}
-          <td class="item-area-name">
+          <td class="list_area-name">
             <select name="product_area_id{{$product->id}}" id="product_area_id{{$product->id}}" class="selectbox">
               <option value="{{($product->area->id ?? '9999')}}">
                 {{($product->area->id ?? '9999').'：'.($product->area->name ?? '未登録')}}
@@ -100,7 +101,7 @@
             @endif
           </td>
           {{-- 説明 --}}
-          <td class="item-description">
+          <td class="list_description">
             <input type="text" name="product_description{{$product->id}}" id="product_description{{$product->id}}"
               class="inputbox" value="{{$product->description}}">
             @if(($product->id==old('product_id')) && ($errors->has('product_description')))
@@ -108,9 +109,9 @@
             @endif
           </td>
           {{-- 作成日/更新日 --}}
-          <td class="item-created">{{$product->created_at}}<span class="hr"></span>{{$product->updated_at}}</td>
+          <td class="list_created">{{$product->created_at}}<span class="hr"></span>{{$product->updated_at}}</td>
           {{-- 登録ボタン --}}
-          <td class="item-center item-modify">
+          <td class="list_center list_modify">
             <form action="/">
               <input type="hidden" value="{{$product}}">
               <input type="hidden" value="{{$product->id}}">
@@ -124,14 +125,14 @@
             </form>
           </td>
           {{-- 削除ボタン --}}
-          <td class="item-center item-delete">
+          <td class="list_center list_delete">
             <form action="/">
               <input type="hidden" value="{{$product->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
           {{-- 終端 --}}
-          <td class="item-terminal"></td>
+          <td class="list_terminal"></td>
         </tr>
         @endforeach
       </tbody>

@@ -16,7 +16,7 @@ class Product extends Model
         'area_id',
         'price',
         'description',
-        'image',
+        'image_id',
     ];
 
     public function getLike()
@@ -37,6 +37,10 @@ class Product extends Model
     public function area()
     {
         return $this->belongsTo(Area::class);
+    }
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
     }
 
 
