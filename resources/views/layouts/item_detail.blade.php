@@ -4,8 +4,16 @@
 {{-- コンテンツ内容 --}}
 <div class="detail_data">
   {{-- イメージ --}}
-  <img id="image" class="detail_image" src="{{$product->image}}" alt="">
+  <img id="image" class="detail_image" src="{{$product->image->url}}" alt="">
   <div class="detail_inner_frame">
+
+    {{-- タグ --}}
+    <div class="detail_hashtag">
+      {{-- 産地 --}}
+      <input type="hidden" name="" id="area_id">
+      <label id="area_name" class="detail_area">#{{$product->area->name ?? '---'}}</label>
+    </div>
+
     <div class="detail_name_frame">
       {{-- 名称 --}}
       <h3 id="name" class="detail_name">{{$product->name}}</h3>
@@ -13,14 +21,14 @@
       @include('layouts.like')
     </div>
 
-    {{-- タグ --}}
-    <div class="detail_hashtag">
-      {{-- 産地 --}}
-      <input type="hidden" name="" id="area_id">
-      <label id="area_name" class="detail_area">#{{$product->area->name ?? '---'}}産</label>
-    </div>
     {{-- 詳細 --}}
     <p id="description" class="detail_discription">{{$product->discriptione}}</p>
+    {{-- タグ --}}
+    <p class="detail_hashtag">
+      {{-- 売り場 --}}
+      <input type="hidden" name="" id="genre_id">
+      <label id="genre_name" class="detail_genre">#{{$product->genre->name ?? '---'}}</label>
+    </p>
     {{-- 個数 & 価格 --}}
     <div>
       {{-- 個数 --}}
@@ -37,25 +45,19 @@
     </div>
     {{-- アクション --}}
     <div class="detail_action">
-      {{-- カートに入れる --}}
+      {{-- カートへ --}}
       <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="product_id" id="id" value="{{$product->id}}">
         <input type="hidden" name="product_name" value="{{$product->name}}">
         <input type="hidden" name="product_price" value="{{$product->price}}">
-        <input type="hidden" name="product_image" value="{{$product->image}}">
+        <input type="hidden" name="product_image" value="{{$product->image->url}}">
         <input type="hidden" name="quantity" value="1">
-        <button type="submit" class="btn item_submit">カートに入れる</button>
+        <button type="submit" class="btn item_submit">カートへ</button>
       </form>
 
       
     </div>
-    {{-- タグ --}}
-    <p class="detail_hashtag">
-      {{-- 売り場 --}}
-      <input type="hidden" name="" id="genre_id">
-      <label id="genre_name" class="detail_genre">#{{$product->genre->name ?? '---'}}</label>
-    </p>
   </div>
   {{-- 評価 --}}
   <section class="auxiliary">

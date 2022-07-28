@@ -14,7 +14,7 @@
       <thead class="tbl-products tbl-head">
         <tr>
           <th></th>
-          <th class="item-center item-id">ID</th>
+          <th class="list_center list_id">ID</th>
           <th>売り場名</th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
@@ -26,24 +26,24 @@
         @foreach($genres as $genre)
         <tr class="tbl-genre @if($loop->iteration % 2) tbl-odd @else tbl-even @endif" id="tbl-item{{$genre->id}}">
           {{-- チェックボックス --}}
-          <td class="item-center item-checkbox">
+          <td class="list_center list_checkbox">
             <input type="checkbox" name="" id="">
           </td>
           {{-- id --}}
-          <td class="item-center item-id" name="genre_id{{$genre->id}}" id="genre_id{{$genre->id}}">
+          <td class="list_center list_id" name="genre_id{{$genre->id}}" id="genre_id{{$genre->id}}">
             {{$genre->id}}
           </td>
           {{-- 売り場名 --}}
-          <td class="item-name">
+          <td class="list_name">
             <input type="text" name="genre_name{{$genre->id}}" id="genre_name{{$genre->id}}" class="inputbox" value="{{$genre->name}}">
             @if(($genre->id==old('genre_id')) && ($errors->has('genre_name')))
             <div class="error_disp">{{$errors->first('genre_name')}}</div>
             @endif
           </td>
           {{-- 作成日/更新日 --}}
-          <td class="item-created">{{$genre->created_at}}<span class="hr"></span>{{$genre->updated_at}}</td>
+          <td class="list_created">{{$genre->created_at}}<span class="hr"></span>{{$genre->updated_at}}</td>
           {{-- 登録ボタン --}}
-          <td class="item-center item-modify">
+          <td class="list_center list_modify">
             <form action="/">
               <input type="hidden" value="{{$genre}}">
               <input type="hidden" value="{{$genre->id}}">
@@ -52,14 +52,14 @@
             </form>
           </td>
           {{-- 削除ボタン --}}
-          <td class="item-center item-delete">
+          <td class="list_center list_delete">
             <form action="/">
               <input type="hidden" value="{{$genre->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
           {{-- 終端 --}}
-          <td class="item-terminal"></td>
+          <td class="list_terminal"></td>
         </tr>
         @endforeach
       </tbody>
