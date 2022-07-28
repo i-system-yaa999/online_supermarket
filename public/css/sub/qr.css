@@ -1,0 +1,12 @@
+.qr_frame {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  margin: 20px;
+}
+.qr_frame p{
+  line-height: 1.5rem;
+}
+.qr{
+  margin: 0 auto;
+}
