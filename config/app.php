@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Red SuperMarket'),
 
     /*
     |--------------------------------------------------------------------------
@@ -195,7 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
-        Darryldecode\Cart\CartServiceProvider::class
+        // Darryldecode\Cart\CartServiceProvider::class
 
     ],
 
@@ -211,7 +211,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        Darryldecode\Cart\CartServiceProvider::class,
+        // Darryldecode\Cart\CartServiceProvider::class,
     ])->toArray(),
 
 ];

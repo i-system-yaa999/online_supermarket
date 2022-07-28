@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('areas', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->unsignedInteger('product_id')->comment('商品ID');
-            $table->unsignedInteger('derivative_id')->comment('配達ID');
+            $table->string('name', 20)->comment('産地名');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->nullable()->comment('更新日時');
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('areas');
     }
 };

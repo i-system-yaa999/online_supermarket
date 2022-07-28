@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('name', 191)->comment('名前');
-            $table->unsignedInteger('genre_id')->comment('売り場ジャンル');
+            $table->unsignedInteger('genre_id')->comment('売り場ID');
+            $table->unsignedInteger('area_id')->comment('産地ID');
             $table->double('price')->comment('価格');
             $table->text('description')->comment('説明');
             $table->string('image', 191)->comment('画像URL');
