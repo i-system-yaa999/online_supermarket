@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Derivative extends Model
+class Delivery extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'derivatived_at',
+        'delivery_number',
     ];
 
     public function user()

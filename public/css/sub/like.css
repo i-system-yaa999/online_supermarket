@@ -1,0 +1,25 @@
+/* -------------------------------------------------- */
+/* お気に入り関係 */
+/* -------------------------------------------------- */
+.disp_like {
+  display: flex;
+  /* display: inline-block; */
+  align-items: center;
+  font-size: 0.7rem;
+  margin-right: 5px;
+}
+.like_count {
+  text-align: center;
+}
+.like_on {
+  background-image: url(/image/bookmark_on.svg);
+  border: 0px;
+  width: 24px;
+  height: 24px;
+}
+.like_off {
+  background-image: url(/image/bookmark_off.svg);
+  border: 0px;
+  width: 24px;
+  height: 24px;
+}

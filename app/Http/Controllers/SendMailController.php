@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail; //追記
-use App\Mail\SendMail; //追記
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class SendMailController extends Controller
 {
-    // 送信ボタン押下時に呼ばれる
     public function sendMail(Request $request)
     {
         // $name = $request->name;
