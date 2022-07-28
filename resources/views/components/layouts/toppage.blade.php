@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{asset('css/sub/window.css')}}">
   <link rel="stylesheet" href="{{asset('css/sub/item.css')}}">
   <link rel="stylesheet" href="{{asset('css/sub/like.css')}}">
+  <link rel="stylesheet" href="{{asset('css/sub/qr.css')}}">
 
   @stack('stylesheet')
 

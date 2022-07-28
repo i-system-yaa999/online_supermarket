@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Milon\Barcode\BarcodeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -195,7 +196,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
-        // Darryldecode\Cart\CartServiceProvider::class
+        // Darryldecode\Cart\CartServiceProvider::class,
 
     ],
 

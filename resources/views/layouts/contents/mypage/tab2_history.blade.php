@@ -6,10 +6,6 @@
     <h3>購入履歴</h3>
     <p>前回購入した商品の内容になります。</p>
   </div>
-  <div class="qr">
-    {{-- <div class="qr">{!!$qrcode!!}</div> --}}
-    <p>商品配達の際に配達員にＱＲを提示してください。</p>
-  </div>
   {{-- コンテンツ --}}
   <div class="my_content_data">
 
@@ -39,7 +35,14 @@
     
     <div class="total">
       <div class="total_price">お支払い合計： {{\app\Models\History::total()}}円</div>
+      <p>クレジットカードにて支払い済み</p>
     </div>
-    
+
+    <div class="qr_frame">
+      <p>店舗での購入品引き取りの際は、</p>
+      <p>こちらのＱＲコードを提示してください。</p>
+      <div class="qr">{!!$qrcode!!}</div>
+    </div>
+
   </div>
 </div>
