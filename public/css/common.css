@@ -1,0 +1,142 @@
+:root {
+  font-size: 100%;
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  :root {
+    font-size: 90%;
+  }
+}
+/* 426pxまで（425px以下）の場合 */
+@media(max-width:426px) {
+  :root {
+    font-size: 85%;
+  }
+}
+
+
+body {
+  width: 100vw;min-height: 100vh;
+  /* height: 100vh; */
+}
+a {
+  text-decoration: none;
+}
+
+.select_menu {
+  display: none;
+}
+.tabs {
+  display: flex;
+}
+@media(max-width:769px) {
+  .select_menu {
+    display: block;
+    width: 95vw;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 5px;
+    margin: 0 auto;
+  }
+  .tabs {
+    display: none;
+  }
+}
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked+.tab_item {
+  border-bottom: 3px solid red;
+  opacity: 0.75;
+  color: black;
+  font-weight: bold;
+}
+/*タブのスタイル*/
+.tab_item {
+  width: 100%;
+  height: 50px;
+  line-height: 60px;
+  background-color: #ececec;
+  border-bottom: 3px solid #d9d9d9;
+  font-size: 1rem;
+  text-align: center;
+  color: #565656;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.tab_item:hover {
+  border-bottom: 3px solid red;
+  opacity: 0.75;
+  font-weight: bold;
+}
+
+
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+
+.btn {
+  text-align: center;
+  background-color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  outline: none;
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  .btn {
+    padding: 0px 0px;
+  }
+}
+
+
+
+
+
+
+
+/* bodyにjsでclassをあてる */
+/* .bk_popup{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.bk_popup::-webkit-scrollbar {
+  display: none;
+} */
+
+
+
+
+
+/* -------------------------------------------------- */
+.content_nav {
+  margin: 2vh 10px;
+}
+.content_nav p {
+  margin-bottom: 5px;
+}
+/* -------------------------------------------------- */
+.content_data {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  .content_data {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 769px;
+  }
+}
+/* 426pxまで（425px以下）の場合 */
+@media(max-width:426px) {
+  .content_data {
+    grid-template-columns: 1fr;
+    max-width: 425px;
+  }
+}

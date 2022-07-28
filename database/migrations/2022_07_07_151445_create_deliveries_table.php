@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('derivatives', function (Blueprint $table) {
+        Schema::create('deliveries', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->unsignedInteger('user_id')->comment('ユーザーID');
-            $table->timestamp('derivatived_at')->comment('配達日時');
+            $table->unsignedInteger('delivery_number')->comment('配達便');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->nullable()->comment('更新日時');
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('derivatives');
+        Schema::dropIfExists('deliveries');
     }
 };
