@@ -24,7 +24,7 @@
       <tbody>
         @foreach ($carts as $cart)
         <tr>
-          <td class="product_image"><img src="{{$cart->product->image}}" alt="Thumbnail"></td>
+          <td class="product_image"><img src="{{$cart->product->image->url}}" alt="Thumbnail"></td>
           <td class="product_name"><p>{{$cart->product->name}}</p></td>
           <td class="product_quantity">
             <form class="product_form" action="{{ route('cart.update') }}" method="POST">

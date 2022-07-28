@@ -14,7 +14,7 @@
       <thead class="tbl-products tbl-head">
         <tr>
           <th></th>
-          <th class="item-center item-id">ID</th>
+          <th class="list_center list_id">ID</th>
           <th>産地名</th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
@@ -26,24 +26,24 @@
         @foreach($areas as $area)
         <tr class="tbl-area @if($loop->iteration % 2) tbl-odd @else tbl-even @endif" id="tbl-item{{$area->id}}">
           {{-- チェックボックス --}}
-          <td class="item-center item-checkbox">
+          <td class="list_center list_checkbox">
             <input type="checkbox" name="" id="">
           </td>
           {{-- id --}}
-          <td class="item-center item-id" name="area_id{{$area->id}}" id="area_id{{$area->id}}">
+          <td class="list_center list_id" name="area_id{{$area->id}}" id="area_id{{$area->id}}">
             {{$area->id}}
           </td>
           {{-- 産地名 --}}
-          <td class="item-name">
+          <td class="list_name">
             <input type="text" name="area_name{{$area->id}}" id="area_name{{$area->id}}" class="inputbox" value="{{$area->name}}">
             @if(($area->id==old('area_id')) && ($errors->has('area_name')))
             <div class="error_disp">{{$errors->first('area_name')}}</div>
             @endif
           </td>
           {{-- 作成日/更新日 --}}
-          <td class="item-created">{{$area->created_at}}<span class="hr"></span>{{$area->updated_at}}</td>
+          <td class="list_created">{{$area->created_at}}<span class="hr"></span>{{$area->updated_at}}</td>
           {{-- 登録ボタン --}}
-          <td class="item-center item-modify">
+          <td class="list_center list_modify">
             <form action="/">
               <input type="hidden" value="{{$area}}">
               <input type="hidden" value="{{$area->id}}">
@@ -52,14 +52,14 @@
             </form>
           </td>
           {{-- 削除ボタン --}}
-          <td class="item-center item-delete">
+          <td class="list_center list_delete">
             <form action="/">
               <input type="hidden" value="{{$area->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
           {{-- 終端 --}}
-          <td class="item-terminal"></td>
+          <td class="list_terminal"></td>
         </tr>
         @endforeach
       </tbody>

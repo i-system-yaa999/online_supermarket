@@ -14,28 +14,63 @@ body {
 table th,td {
   vertical-align: middle;
 }
-.tbl-head {
+.tbl_head {
   align-items: center;
   height: 4rem;
   background-color: #fb6d6d;
   color: white;
-  /* column-gap: 5px; */
 }
-.tbl-odd {
+.tbl_odd {
   align-items: center;
   height: 3.5rem;
   background-color: #fcd0d0;
   font-size: 1em;
-  /* column-gap: 5px; */
   margin-right: 5px;
   border: 1px solid #fcd0d0;
 }
-.tbl-even {
+.tbl_even {
   align-items: center;
   height: 3.5rem;
   background-color: #f7b0b0;
   font-size: 1em;
-  /* column-gap: 5px; */
   margin-right: 5px;
   border: 1px solid #f7b0b0;
+}
+
+.list_center{
+}
+.list_checkbox{
+}
+.list_id{
+}
+.list_name{
+}
+.list_price{
+}
+.list_image{
+  width: 50px;
+}
+.list_image img{
+  width: 100%;
+}
+.list_image-url{
+}
+.list_genre-name{
+}
+.list_area-name{
+}
+.list_description{
+}
+.list_created{
+  width: 170px;
+}
+.hr{
+  display: block;
+  width: 11rem;
+  height: 3px;
+  border-top: 1px solid black;
+}
+.list_delete{
+}
+.list_terminal{
 }
