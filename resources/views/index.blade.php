@@ -11,7 +11,8 @@
         <option value="3" @if($tab_item==='3') selected @endif>お肉</option>
         <option value="4" @if($tab_item==='4') selected @endif>野菜・くだもの</option>
         <option value="5" @if($tab_item==='5') selected @endif>お魚</option>
-        <option value="6" @if($tab_item==='6') selected @endif>その他</option>
+        <option value="6" @if($tab_item==='6' ) selected @endif>調味料</option>
+        <option value="7" @if($tab_item==='7') selected @endif>その他</option>
         {{-- @foreach ($genres as $genre)
         <option value="{{$loop->iteration + 2}}" @if($tab_item==($loop->iteration + 2)) selected @endif>{{$genre->name}}</option>
         @endforeach --}}
@@ -38,10 +39,14 @@
         <!-- tab menu お魚 -->
         <input type="radio" name="tab_item" id="genre5" value="5" @if($tab_item == 5) checked @endif onChange="this.form.submit()">
         <label class="tab_item" for="genre5">お魚</label>
+        
+        <!-- tab menu 調味料 -->
+        <input type="radio" name="tab_item" id="genre6" value="6" @if($tab_item==6) checked @endif onChange="this.form.submit()">
+        <label class="tab_item" for="genre6">調味料</label>
 
         <!-- tab menu その他 -->
-        <input type="radio" name="tab_item" id="genre6" value="6" @if($tab_item == 6) checked @endif onChange="this.form.submit()">
-        <label class="tab_item" for="genre6">その他</label>
+        <input type="radio" name="tab_item" id="genre7" value="7" @if($tab_item == 7) checked @endif onChange="this.form.submit()">
+        <label class="tab_item" for="genre7">その他</label>
 
         {{-- tab menu --}}
         {{-- @foreach ($genres as $genre)
