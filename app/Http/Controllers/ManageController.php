@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Genre;
 use App\Models\Area;
-// use App\Models\Image;
+use App\Models\Image;
 
 class ManageController extends Controller
 {
@@ -22,8 +22,7 @@ class ManageController extends Controller
         $images = null;
         switch ($request->tab_item) {
             case 0:
-                $products = Product::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
-                break;
+                $products = Product::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);                break;
             case 1:
                 $genres = Genre::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
@@ -31,7 +30,7 @@ class ManageController extends Controller
                 $areas = Area::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
             case 3:
-                // $images = Image::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
+                $images = Image::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
             case 4:
                 break;
@@ -49,7 +48,7 @@ class ManageController extends Controller
             'images' => $images,
             'allgenres' =>  Genre::all(),
             'allareas' =>  Area::all(),
-            // 'allimages' =>  Image::all(),
+            'allimages' =>  Image::all(),
         ]);
     }
 }

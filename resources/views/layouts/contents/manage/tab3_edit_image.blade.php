@@ -14,7 +14,7 @@
       <thead class="tbl-products tbl-head">
         <tr>
           <th></th>
-          <th class="item-center item-id">ID</th>
+          <th class="list_center list_id">ID</th>
           <th>URL</th>
           <th></th>
           <th>作成日<br>------<br>更新日</th>
@@ -27,28 +27,28 @@
         @foreach($images as $image)
         <tr class="tbl-image @if($loop->iteration % 2) tbl-odd @else tbl-even @endif" id="tbl-item{{$image->id}}">
           {{-- チェックボックス --}}
-          <td class="item-center item-checkbox">
+          <td class="list_center list_checkbox">
             <input type="checkbox" name="" id="">
           </td>
           {{-- id --}}
-          <td class="item-center item-id" name="image_id{{$image->id}}" id="image_id{{$image->id}}">
+          <td class="list_center list_id" name="image_id{{$image->id}}" id="image_id{{$image->id}}">
             {{$image->id}}
           </td>
           {{-- URL --}}
-          <td class="item-imageURL">
+          <td class="list_imageURL">
             <input type="text" name="image_url{{$image->url}}" id="image_url{{$image->id}}" class="inputbox" value="{{$image->url}}">
             @if(($image->id==old('image_id')) && ($errors->has('image_url')))
             <div class="error_disp">{{$errors->first('image_url')}}</div>
             @endif
           </td>
           {{-- 変更ボタン --}}
-          <td class="item-center item-upload">
+          <td class="list_center list_upload">
             <button class="btn btn-upload">画像変更</button>
           </td>
           {{-- 作成日/更新日 --}}
-          <td class="item-created">{{$image->created_at}}<span class="hr"></span>{{$image->updated_at}}</td>
+          <td class="list_created">{{$image->created_at}}<span class="hr"></span>{{$image->updated_at}}</td>
           {{-- 登録ボタン --}}
-          <td class="item-center item-modify">
+          <td class="list_center list_modify">
             <form action="/">
               <input type="hidden" value="{{$image}}">
               <input type="hidden" value="{{$image->id}}">
@@ -57,14 +57,14 @@
             </form>
           </td>
           {{-- 削除ボタン --}}
-          <td class="item-center item-delete">
+          <td class="list_center list_delete">
             <form action="/">
               <input type="hidden" value="{{$image->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
           {{-- 終端 --}}
-          <td class="item-terminal"></td>
+          <td class="list_terminal"></td>
         </tr>
         @endforeach
       </tbody>

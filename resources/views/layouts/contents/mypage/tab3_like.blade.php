@@ -58,7 +58,7 @@
     // document.getElementById('genre_id').value = product.product_genre_id.value;
     // document.getElementById('genre_name').innerHTML = "#" + product.product_genre_name.value;
     // document.getElementById('area_id').value = product.product_area_id.value;
-    // document.getElementById('area_name').innerHTML = "#" + product.product_area_name.value + "産";
+    // document.getElementById('area_name').innerHTML = "#" + product.product_area_name.value;
     // document.getElementById('price').innerHTML = product.product_price.value;
     // document.getElementById('description').innerHTML = product.product_description.value;
     // document.getElementById('image').src = product.product_image.value;
