@@ -1,0 +1,39 @@
+/* -------------------------------------------------- */
+/* フッター */
+/* -------------------------------------------------- */
+.footer {
+  /* margin-top: 20vh; */
+  position: sticky;
+  top: 100vh;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.footer .endnav ul {
+  display: flex;
+  justify-content: center;
+}
+@media(max-width:769px) {
+  .footer .endnav ul {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+  }
+  .footer .endnav ul span {
+    display: none;
+  }
+}
+.footer .endnav ul li a {
+  text-decoration: none;
+  color: black;
+}
+.footer .endnav ul li a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+.copyright {
+  display: block;
+  text-align: center;
+  margin: 10px;
+  font-size: 0.7rem;
+}

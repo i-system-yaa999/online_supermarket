@@ -3,66 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Darryldecode\Cart\Facades\CartFacade;
+use App\Models\Cart;
+use App\Models\Delivery;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    // カートリスト
     public function cartList()
     {
-        $cartItems = CartFacade::getContent();
-        // dd($cartItems);
-        return view('layouts.cart', compact('cartItems'));
+        $carts = Cart::all();
+        $tab_item= 0;
+        return view('mypage')->with([
+            'carts' => $carts,
+            'tab_item' => $tab_item,
+        ]);
     }
 
-
+    // カートに追加
     public function addToCart(Request $request)
     {
-        // dd($request);
-        CartFacade::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'attributes' => array(
-                'image' => $request->image,
-            )
-        ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
-
+        if(Cart::where('product_id',$request->product_id)->first()){
+            Cart::where('product_id', $request->product_id)->increment('quantity');
+        }else{
+            Cart::create([
+                'user_id' => Auth::id(),
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity,
+            ]);
+        }
         return redirect()->route('cart.list');
     }
 
+    // カート内商品 個数変更
     public function updateCart(Request $request)
     {
-        CartFacade::update(
-            $request->id,
-            [
-                'quantity' => [
-                    'relative' => false,
-                    'value' => $request->quantity
-                ],
-            ]
-        );
-
-        session()->flash('success', 'Item Cart is Updated Successfully !');
-
+        Cart::find($request->id)->update([
+            'quantity' => $request->quantity,
+        ]);
+        
         return redirect()->route('cart.list');
     }
 
+    // カート内商品 個別削除
     public function removeCart(Request $request)
     {
-        CartFacade::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
+        Cart::find($request->id)->delete();
         return redirect()->route('cart.list');
     }
 
+    // カート内商品 全削除
     public function clearAllCart()
     {
-        CartFacade::clear();
-
-        session()->flash('success', 'All Item Cart Clear Successfully !');
-
+        Cart::where('user_id', Auth::id())->delete();
+        Delivery::where('user_id',Auth::id())->delete();
         return redirect()->route('cart.list');
     }
 }

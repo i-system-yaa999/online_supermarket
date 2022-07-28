@@ -1,0 +1,58 @@
+/* -------------------------------------------------- */
+/* ヘッダー */
+/* -------------------------------------------------- */
+.header {
+  margin: 0 30px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid red;
+}
+
+/* タイトル */
+.title_frame {
+  display: flex;
+}
+
+.title_frame .image {
+  width: 55px;
+  height: 50px;
+}
+
+.title_frame .title {
+  color: red;
+  line-height: 50px;
+  font-size: 1.5rem;
+
+  font-family: 'RocknRoll One', sans-serif;
+}
+
+/* ナビ */
+.nav_frame {
+  display: flex;
+}
+
+.auth_name {
+  margin: auto;
+  margin-right: 30px;
+}
+/* 426pxまで（425px以下）の場合 */
+@media(max-width:426px) {
+  .auth_name {
+    display: none;
+  }
+}
+
+/* ナビメニューflex化 */
+.nav ul {
+  display: flex;
+  align-items: center;
+}
+
+/* ナビ文字間指定 */
+.nav li:not(:last-child) {
+  margin-right: 1vw;
+}
