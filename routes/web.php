@@ -50,22 +50,23 @@ Route::controller(MypageController::class)->group(function () {
   });
 });
 
-// マネージャー処理
+// 店舗代表者処理
 Route::controller(ManageController::class)->group(function () {
-  Route::middleware('auth', 'verified')->group(function () {
+  Route::middleware('auth', 'can:owner-higher')->group(function () {
     Route::get('manage', 'index');
-    Route::post('manage', '');
-    Route::post('manage', '');
+    Route::post('manage', 'create');
+    Route::put('manage', 'update');
+    Route::delete('manage', 'delete');
   });
 });
 
 // 管理者処理
 Route::controller(AdminController::class)->group(function () {
-  Route::middleware('auth', 'verified')->group(function () {
+  Route::middleware('auth', 'can:admin-onry')->group(function () {
     Route::get('admin', 'index');
-    Route::post('admin', '');
-    Route::post('admin', '');
-    Route::post('admin', '');
+    Route::post('admin', 'create');
+    Route::put('admin', 'update');
+    Route::delete('admin', 'delete');
   });
 });
 

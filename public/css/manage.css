@@ -3,16 +3,25 @@ body {
 }
 
 /* -------------------------------------------------- */
+.data_nav{
+  /* min-width: 1500px;
+  max-width: 1500px;
+  margin: 0 auto; */
+}
 .data_list{
   overflow-x: auto;
 }
 .tbl_item_list{
-  width: 1200px;
+  /* min-width: 1500px;
+  max-width: 1500px; */
   margin: 0 auto;
   /* -webkit-overflow-scrolling: touch; */
+  border-collapse: separate;
+  border-spacing: 1px;
 }
 table th,td {
   vertical-align: middle;
+  padding: 0 10px;
 }
 .tbl_head {
   align-items: center;
@@ -36,41 +45,103 @@ table th,td {
   margin-right: 5px;
   border: 1px solid #f7b0b0;
 }
+.fixed_head,
+.fixed_odd,
+.fixed_even {
+  position: sticky;
+  left: 0;
+  border-right: 1px solid gray;
+}
+.fixed_head {
+  background: #fb6d6d;
+}
+.fixed_odd {
+  background: #fcd0d0;
+}
+.fixed_even {
+  background: #f7b0b0;
+}
+
+
+
+.inputbox{
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  /* width: 100%; */
+  padding-right: 10px;
+}
+.selectbox{
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  /* width: 100%; */
+}
 
 .list_center{
+  text-align: center;
 }
-.list_checkbox{
-}
+/* .list_checkbox{
+} */
 .list_id{
+  width: 30px;
 }
 .list_name{
+  min-width: 160px;
+}
+.list_name>input{
+  width: 90%;
 }
 .list_price{
+  min-width: 64px;
+}
+.list_price>input{
+  width: 80%;
+  text-align: right;
 }
 .list_image{
-  width: 50px;
+  min-width: 48px;
+  max-width: 48px;
+  margin: 0 auto;
 }
 .list_image img{
-  width: 100%;
+  width: 90%;
+  /* margin-left: 10px; */
 }
 .list_image-url{
+  width: 172px;
 }
 .list_genre-name{
+  width: 172px;
 }
 .list_area-name{
+  width: 172px;
 }
 .list_description{
+  min-width: 200px;
+}
+.list_description>input{
+  width: 90%;
 }
 .list_created{
-  width: 170px;
+  font-size: 0.7rem;
+  text-align: center;
+  width: 150px;
 }
 .hr{
   display: block;
-  width: 11rem;
+  width: 9rem;
   height: 3px;
   border-top: 1px solid black;
 }
+.list_modify{
+  width: 80px;
+}
 .list_delete{
+  width: 80px;
 }
-.list_terminal{
-}
+/* .list_terminal{
+  width: 80px;
+} */

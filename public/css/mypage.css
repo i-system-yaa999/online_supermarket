@@ -97,37 +97,6 @@ body {
   text-align: center;
   vertical-align: middle;
 }
-.btn_qty_change{
-  width: 50px;
-  height: 30px;
-  padding: 0;
-}
-.btn_qty_change:hover{
-  background-color:#03f003;
-  /* color: white; */
-}
-.btn_item_delete{
-  width: 50px;
-  height: 30px;
-  background-color: #fcaaaa;
-  color: white;
-  margin-right: 10px;
-  padding: 0;
-}
-.btn_item_delete:hover{
-  background-color: red;
-}
-.btn_all_clear{
-  width: 150px;
-  height: 30px;
-  padding: 0;
-  background-color: #fcaaaa;
-  color: white;
-  margin-right: 10px;
-}
-.btn_all_clear:hover{
-  background-color: red;
-}
 
 
 .total{
@@ -163,15 +132,6 @@ body {
 .delivery_item input{
   margin: 0;
   height: 30px;
-}
-.btn_delivery{
-  width: 150px;
-  height: 30px;
-  padding: 0;
-}
-.btn_delivery:hover{
-  background-color:dodgerblue;
-  color: white;
 }
 
 .charge{

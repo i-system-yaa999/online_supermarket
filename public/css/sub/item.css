@@ -78,14 +78,14 @@
   background-color: orange;
 }
 /* -------------------------------------------------- */
-.item_btn_detail {
+/* .item_btn_detail {
   border: 1px solid black;
   color: black;
 }
 .item_btn_detail:hover {
   background-color: black;
   color: white;
-}
+} */
 /* -------------------------------------------------- */
 .detail_data {
   background-color: white;
