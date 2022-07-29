@@ -12,6 +12,6 @@
 
   </div>
   {{-- コンテンツ --}}
-  <div class="content_data">
+  <div class="data_list">
   </div>
 </div>

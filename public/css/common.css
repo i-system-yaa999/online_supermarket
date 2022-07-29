@@ -76,6 +76,7 @@ input[name="tab_item"] {
 }
 
 
+/* ボタン全般 */
 .btn {
   text-align: center;
   background-color: #fff;
@@ -92,11 +93,100 @@ input[name="tab_item"] {
   }
 }
 
+/* カート数量更新ボタン */
+.btn_qty_change {
+  width: 50px;
+  height: 30px;
+  padding: 0;
+}
+.btn_qty_change:hover {
+  background-color: #03f003;
+}
 
+/* カート商品削除ボタン */
+.btn_item_delete {
+  width: 50px;
+  height: 30px;
+  background-color: #fcaaaa;
+  color: white;
+  margin-right: 10px;
+  padding: 0;
+}
+.btn_item_delete:hover {
+  background-color: red;
+}
 
+/* カートを空にするボタン */
+.btn_all_clear {
+  width: 150px;
+  height: 30px;
+  padding: 0;
+  background-color: #fcaaaa;
+  color: white;
+  margin-right: 10px;
+}
+.btn_all_clear:hover {
+  background-color: red;
+}
 
+/* 配達便を変更するボタン */
+.btn_delivery {
+  width: 150px;
+  height: 30px;
+  padding: 0;
+}
+.btn_delivery:hover {
+  background-color: dodgerblue;
+  color: white;
+}
 
+/* 管理ページ登録ボタン */
+.btn-modify{
+  width: 50px;
+  height: 30px;
+  background-color: #ffcf77;
+  color: black;
+  margin-right: 10px;
+  padding: 0;
+}
+.btn-modify:hover{
+  background-color: orange;
+}
 
+/* 管理ページ削除ボタン */
+.btn-delete {
+  width: 50px;
+  height: 30px;
+  background-color: #fcaaaa;
+  color: white;
+  margin-right: 10px;
+  padding: 0;
+}
+.btn-delete:hover {
+  background-color: red;
+}
+/* 管理ページ新規作成ボタン */
+.btn_list_newitem{
+  width: 85px;
+  height: 34px;
+  background-color: white;
+  color: black;
+}
+.btn_list_newitem:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+/* 管理ページ画像変更ボタン */
+.btn-upload{
+  width: 85px;
+  height: 34px;
+  background-color: white;
+  color: black;
+}
+.btn-upload:hover{
+  background-color: dodgerblue;
+  color: white;
+}
 
 /* bodyにjsでclassをあてる */
 /* .bk_popup{

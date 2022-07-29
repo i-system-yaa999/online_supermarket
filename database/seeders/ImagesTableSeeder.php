@@ -73,7 +73,7 @@ class ImagesTableSeeder extends Seeder
             'url' => 'image/products/砂糖.jpg'
         ]);
         Image::create([
-            'url' => 'image/products/若鳥もも肉.jpg'
+            'url' => 'image/products/若鶏もも肉.jpg'
         ]);
         Image::create([
             'url' => 'image/products/焼肉のたれ.jpg'

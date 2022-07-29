@@ -6,6 +6,8 @@
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $products])
     @endif
+    {{-- 新規作成ボタン --}}
+    <button class="btn btn_list_newitem">新規作成</button>
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -13,34 +15,34 @@
     <table class="tbl_item_list">
       <thead class="tbl_head">
         <tr>
-          <th></th>
+          {{-- <th></th> --}}
           <th class="list_center list_id">ID</th>
-          <th>商品名</th>
-          <th>価格</th>
-          <th>イメージ</th>
-          <th>イメージ</th>
+          <th class="fixed_head">商品名</th>
+          <th>価格<br>(税込)</th>
+          <th>画像</th>
+          <th>画像URL<br>image/products/</th>
           <th>売り場</th>
           <th>産地</th>
           <th>説明</th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
           <th></th>
-          <th></th>
+          {{-- <th></th> --}}
         </tr>
       </thead>
       <tbody>
         @foreach($products as $product)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif" id="tbl_item{{$product->id}}">
           {{-- チェックボックス --}}
-          <td class="list_center list_checkbox">
+          {{-- <td class="list_center list_checkbox">
             <input type="checkbox" name="" id="">
-          </td>
+          </td> --}}
           {{-- id --}}
           <td class="list_center list_id" name="product_id{{$product->id}}" id="product_id{{$product->id}}">
             {{$product->id}}
           </td>
           {{-- 商品名 --}}
-          <td class="list_name">
+          <td class="list_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
             <input type="text" name="product_name{{$product->id}}" id="product_name{{$product->id}}" class="inputbox"
               value="{{$product->name}}">
             @if(($product->id==old('product_id')) && ($errors->has('product_name')))
@@ -112,7 +114,9 @@
           <td class="list_created">{{$product->created_at}}<span class="hr"></span>{{$product->updated_at}}</td>
           {{-- 登録ボタン --}}
           <td class="list_center list_modify">
-            <form action="/">
+            <form action="/manage" method="POST">
+              @method('PUT')
+              @csrf
               <input type="hidden" value="{{$product}}">
               <input type="hidden" value="{{$product->id}}">
               <input type="hidden" value="{{$product->name}}">
@@ -126,13 +130,15 @@
           </td>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/">
+            <form action="/manage" method="POST">
+              @method('DELETE')
+              @csrf
               <input type="hidden" value="{{$product->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
           {{-- 終端 --}}
-          <td class="list_terminal"></td>
+          {{-- <td class="list_terminal"></td> --}}
         </tr>
         @endforeach
       </tbody>
