@@ -6,35 +6,37 @@
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $areas])
     @endif
+    {{-- 新規作成ボタン --}}
+    <button class="btn btn_list_newitem">新規作成</button>
   </div>
   {{-- コンテンツ --}}
-  <div class="content_data">
+  <div class="data_list">
 
-    <table>
-      <thead class="tbl-products tbl-head">
+    <table class="tbl_item_list">
+      <thead class="tbl_head">
         <tr>
-          <th></th>
+          {{-- <th></th> --}}
           <th class="list_center list_id">ID</th>
-          <th>産地名</th>
+          <th class="fixed_head">産地名</th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
           <th></th>
-          <th></th>
+          {{-- <th></th> --}}
         </tr>
       </thead>
       <tbody>
         @foreach($areas as $area)
-        <tr class="tbl-area @if($loop->iteration % 2) tbl-odd @else tbl-even @endif" id="tbl-item{{$area->id}}">
+        <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif" id="tbl-item{{$area->id}}">
           {{-- チェックボックス --}}
-          <td class="list_center list_checkbox">
+          {{-- <td class="list_center list_checkbox">
             <input type="checkbox" name="" id="">
-          </td>
+          </td> --}}
           {{-- id --}}
           <td class="list_center list_id" name="area_id{{$area->id}}" id="area_id{{$area->id}}">
             {{$area->id}}
           </td>
           {{-- 産地名 --}}
-          <td class="list_name">
+          <td class="list_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
             <input type="text" name="area_name{{$area->id}}" id="area_name{{$area->id}}" class="inputbox" value="{{$area->name}}">
             @if(($area->id==old('area_id')) && ($errors->has('area_name')))
             <div class="error_disp">{{$errors->first('area_name')}}</div>
@@ -44,7 +46,9 @@
           <td class="list_created">{{$area->created_at}}<span class="hr"></span>{{$area->updated_at}}</td>
           {{-- 登録ボタン --}}
           <td class="list_center list_modify">
-            <form action="/">
+            <form action="/manage" method="POST">
+              @method('PUT')
+              @csrf
               <input type="hidden" value="{{$area}}">
               <input type="hidden" value="{{$area->id}}">
               <input type="hidden" value="{{$area->name}}">
@@ -53,13 +57,15 @@
           </td>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/">
+            <form action="/manage" method="POST">
+              @method('DELETE')
+              @csrf
               <input type="hidden" value="{{$area->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
           {{-- 終端 --}}
-          <td class="list_terminal"></td>
+          {{-- <td class="list_terminal"></td> --}}
         </tr>
         @endforeach
       </tbody>
