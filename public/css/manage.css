@@ -79,6 +79,10 @@ table th,td {
   font-size: 1rem;
   /* width: 100%; */
 }
+.error_disp{
+  font-size: 0.8rem;
+  color: red;
+}
 
 .list_center{
   text-align: center;
@@ -87,6 +91,9 @@ table th,td {
 } */
 .list_id{
   width: 30px;
+  background: none;
+  border: none;
+  font-size: 1rem;
 }
 .list_name{
   min-width: 160px;
