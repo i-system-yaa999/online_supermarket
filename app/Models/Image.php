@@ -13,4 +13,9 @@ class Image extends Model
         'url',
     ];
 
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

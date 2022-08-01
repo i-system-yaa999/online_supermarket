@@ -13,7 +13,7 @@ class GenreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class GenreRequest extends FormRequest
     public function rules()
     {
         return [
-            'genre_name' => 'required|max:20',
+            'genre_name' => 'required|max:20|unique:genres,name,' . $this->input('genre_id') . ',id',
         ];
     }
 

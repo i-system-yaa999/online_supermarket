@@ -140,7 +140,7 @@ input[name="tab_item"] {
   color: white;
 }
 
-/* 管理ページ登録ボタン */
+/* 商品管理ページ登録ボタン */
 .btn-modify{
   width: 50px;
   height: 30px;
@@ -153,7 +153,7 @@ input[name="tab_item"] {
   background-color: orange;
 }
 
-/* 管理ページ削除ボタン */
+/* 商品管理ページ削除ボタン */
 .btn-delete {
   width: 50px;
   height: 30px;
@@ -165,8 +165,8 @@ input[name="tab_item"] {
 .btn-delete:hover {
   background-color: red;
 }
-/* 管理ページ新規作成ボタン */
-.btn_list_newitem{
+/* 商品管理ページ新規作成ボタン */
+/* .btn_list_newitem{
   width: 85px;
   height: 34px;
   background-color: white;
@@ -175,8 +175,8 @@ input[name="tab_item"] {
 .btn_list_newitem:hover {
   background-color: dodgerblue;
   color: white;
-}
-/* 管理ページ画像変更ボタン */
+} */
+/* 商品管理ページ画像変更ボタン */
 .btn-upload{
   width: 85px;
   height: 34px;
@@ -187,6 +187,49 @@ input[name="tab_item"] {
   background-color: dodgerblue;
   color: white;
 }
+/* 商品管理ページ新規登録ボタン */
+.btn_create{
+  width: 160px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
+}
+.btn_create:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+/* 商品管理ページ売り場新規作成ボタン */
+.btn_add_genre,
+.btn_add_area,
+.btn_add_image{
+  width: 120px;
+  height: 32px;
+  background-color: #fb6d6d;
+  color: white;
+  font-size: 0.8rem;
+}
+.btn_add_genre:hover,
+.btn_add_area:hover,
+.btn_add_image:hove {
+  background-color: white;
+  color: black;
+}
+/* 商品管理ページ新規登録ボタン */
+.btn_resist{
+  width: 100px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
+}
+.btn_resist:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+
+
 
 /* bodyにjsでclassをあてる */
 /* .bk_popup{
@@ -229,4 +272,30 @@ input[name="tab_item"] {
     grid-template-columns: 1fr;
     max-width: 425px;
   }
+}
+
+
+
+/* 商品管理ページ画像追加ボタン */
+.file_input{
+  display: none;
+}
+.file_label{
+  background-color: #fb6d6d;
+  border: 2px solid black;
+  border-radius: 5px;
+  line-height: 2rem;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+
+  font-size: 0.8rem;
+  display: inline-block;
+  width: 116px;
+  height: 28px;
+  text-align: center;
+}
+.file_label:hover{
+  background-color: white;
+  color: black;
 }

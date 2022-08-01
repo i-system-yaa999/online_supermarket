@@ -98,7 +98,7 @@
           data-name="Red SuperMarket"
           data-label="支払う"
           data-description="クレジットカード情報の入力"
-          data-image="{{asset('image/redsuper.jpg')}}"
+          data-image="{{asset('images/redsuper.jpg')}}"
           data-locale="auto"
           data-currency="JPY">
         </script>

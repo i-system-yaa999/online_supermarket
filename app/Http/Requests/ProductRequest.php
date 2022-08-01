@@ -13,7 +13,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,6 +24,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'product_name' => 'required|max:191|unique:products,name,' . $this->input('product_id') . ',id',
             'product_name' => 'required|max:191',
             'product_area_id' => 'required',
             'product_genre_id' => 'required',
@@ -36,13 +37,14 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'product_name.required' => '必須項目です。',
+            'product_name.required' => '名前は必須項目です。',
             'product_name.max' => '最大191文字です。',
-            'product_area_id.required' => '選択してください。',
-            'product_genre_id.required' => '選択してください。',
-            'product_price.required' => '必須項目です。',
-            'product_description.required' => '必須項目です。',
-            'product_image_id.required' => '必須項目です。',
+            'product_name.unique' => 'この名前はすでに登録されています。',
+            'product_area_id.required' => '産地を選択してください。',
+            'product_genre_id.required' => '売り場を選択してください。',
+            'product_price.required' => '価格は必須項目です。',
+            'product_description.required' => '説明文は必須項目です。',
+            'product_image_id.required' => '画像は必須項目です。',
         ];
     }
 }

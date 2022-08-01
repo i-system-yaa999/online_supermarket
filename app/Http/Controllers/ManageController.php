@@ -57,67 +57,63 @@ class ManageController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(ProductRequest $request)
     {
-        $perPage = 8;
-        $columns = ['*'];
-        $pageName = 'managespage';
+        // $genre = new GenreRequest;
+        // $validator = Validator::make($request->all(), $genre->rules(), $genre->messages());
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
+        // $area = new AreaRequest;
+        // $validator = Validator::make($request->all(), $area->rules(), $area->messages());
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
+        // $image = new ImageRequest;
+        // $validator = Validator::make($request->all(), $image->rules(), $image->messages());
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
+        // $product = new ProductRequest;
+        // $validator = Validator::make($request->all(), $product->rules(), $product->messages());
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
 
-        switch ($request->tab_item) {
-            case 0:
-                $product = new ProductRequest;
-                $validator = Validator::make($request->all(), $product->rules(), $product->messages());
-                if ($validator->fails()) {
-                    return back()->withErrors($validator)->withInput();
-                }
-                Product::create([
-                    'name' => $request->input('product_name'),
-                    'area_id' => $request->input('product_area_id'),
-                    'genre_id' => $request->input('product_genre_id'),
-                    'price' => $request->input('product_price'),
-                    'description' => $request->input('product_description'),
-                    'image_id' => $request->input('product_image_id'),
-                ]);
-                break;
-            case 1:
-                $genre = new GenreRequest;
-                $validator = Validator::make($request->all(), $genre->rules(), $genre->messages());
-                if ($validator->fails()) {
-                    return back()->withErrors($validator)->withInput();
-                }
-                Genre::create([
-                    'name' => $request->input('genre_name'),
-                ]);
-                break;
-            case 2:
-                $area = new AreaRequest;
-                $validator = Validator::make($request->all(), $area->rules(), $area->messages());
-                if ($validator->fails()) {
-                    return back()->withErrors($validator)->withInput();
-                }
-                Area::create([
-                    'name' => $request->input('area_name'),
-                ]);
-                break;
-            case 3:
-                $image = new ImageRequest;
-                $validator = Validator::make($request->all(), $image->rules(), $image->messages());
-                if ($validator->fails()) {
-                    return back()->withErrors($validator)->withInput();
-                }
-                Image::create([
-                    'url' => $request->input('image_url'),
-                ]);
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-        }
+        // if (Genre::where('name', $request->genre_name)->first()) {
+        // } else {
+        //     Genre::create([
+        //         'name' => $request->genre_name,
+        //     ]);
+        // }
+        // if (Area::where('name', $request->area_name)->first()) {
+        // } else {
+        //     Area::create([
+        //         'name' => $request->area_name,
+        //     ]);
+        // }
+        // if (Image::where('url', $request->image_url)->first()) {
+        // } else {
+        //     Image::create([
+        //         'url' => $request->image_url,
+        //     ]);
+        // }
 
-        return back();
+        // $genre_id = Genre::where('genre_name', $request->genre_name)->first()->id;
+        // $area_id = Area::where('area_name', $request->area_name)->first()->id;
+        // $image_id = Image::where('image_url', $request->image_url)->first()->id;
+        Product::create([
+            'name' => $request->product_name,
+            'area_id' => $request->product_area_id,
+            'genre_id' => $request->product_genre_id,
+            'price' => $request->product_price,
+            'description' => $request->product_description,
+            'image_id' => $request->product_image_id,
+        ]);
+
+        return redirect(route('manage.index'));
+        // return redirect('/manage');
+        // return back();
     }
 
     public function update(Request $request)
@@ -134,12 +130,12 @@ class ManageController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
                 Product::find($request->product_id)->update([
-                    'name' => $request->input('product_name'),
-                    'area_id' => $request->input('product_area_id'),
-                    'genre_id' => $request->input('product_genre_id'),
-                    'price' => $request->input('product_price'),
-                    'description' => $request->input('product_description'),
-                    'image_id' => $request->input('product_image_id'),
+                    'name' => $request->product_name,
+                    'area_id' => $request->product_area_id,
+                    'genre_id' => $request->product_genre_id,
+                    'price' => $request->product_price,
+                    'description' => $request->product_description,
+                    'image_id' => $request->product_image_id,
                 ]);
                 break;
             case 1:
@@ -149,7 +145,7 @@ class ManageController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
                 Genre::find($request->genre_id)->update([
-                    'name' => $request->input('genre_name'),
+                    'name' => $request->genre_name,
                 ]);
                 break;
             case 2:
@@ -159,7 +155,7 @@ class ManageController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
                 Area::find($request->area_id)->update([
-                    'name' => $request->input('area_name'),
+                    'name' => $request->area_name,
                 ]);
                 break;
             case 3:
@@ -169,7 +165,7 @@ class ManageController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
                 Image::find($request->image_id)->update([
-                    'url' => $request->input('image_url'),
+                    'url' => $request->image_url,
                 ]);
                 break;
             case 4:

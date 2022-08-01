@@ -12,13 +12,13 @@
   text-align: center;
 }
 .like_on {
-  background-image: url(/image/bookmark_on.svg);
+  background-image: url(/images/bookmark_on.svg);
   border: 0px;
   width: 24px;
   height: 24px;
 }
 .like_off {
-  background-image: url(/image/bookmark_off.svg);
+  background-image: url(/images/bookmark_off.svg);
   border: 0px;
   width: 24px;
   height: 24px;

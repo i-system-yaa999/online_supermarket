@@ -13,7 +13,7 @@ class AreaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class AreaRequest extends FormRequest
     public function rules()
     {
         return [
-            'area_name' => 'required|max:10',
+            'area_name' => 'required|max:10|unique:areas,name,' . $this->input('area_id') . ',id',
         ];
     }
 

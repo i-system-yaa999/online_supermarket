@@ -152,3 +152,145 @@ table th,td {
 /* .list_terminal{
   width: 80px;
 } */
+
+
+
+
+.new_head{
+  background: #fb6d6d;
+  color: white;
+  height: 4rem;
+  width: 150px;
+}
+.new_odd{
+  background: #fcd0d0;
+  height: 4rem;
+}
+.new_even{
+  background: #f7b0b0;
+  height: 4rem;
+}
+.new_data{
+  max-width: 60vw;
+  margin: 0 auto;
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  .new_data {
+    max-width: 85vw;
+    margin: 0 auto;
+  }
+  .new_head {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: 10px;
+  }
+  .new_odd{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .new_even{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.new_data_table{
+  width: 95%;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+.new_data_table th,
+.new_data_table td{
+  /* border: 1px solid black; */
+  /* display: block;
+  width: 100%; */
+}
+.new_name_head{
+}
+.new_name_data{
+}
+.new_name{
+  height: 2rem;
+  width: 98%;
+  font-size: 1.1rem;
+}
+.new_price_head {
+}
+.new_price_data {
+  white-space: nowrap;
+}
+.new_price {
+  height: 2rem;
+  width: 200px;
+  font-size: 1.1rem;
+  text-align: right;
+}
+.new_image_head {
+}
+.new_image_data {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+.new_image {
+  height: 2rem;
+  width: 80%;
+}
+.new_genre_head {
+}
+.new_genre_data {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+.new_genre {
+  height: 2rem;
+  width: 80%;
+}
+.new_area_head {
+}
+.new_area_data {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+.new_area {
+  height: 2rem;
+  width: 80%;
+}
+.new_description_head {
+}
+.new_description_data {
+  height: 7rem;
+}
+.new_description {
+  height: 5rem;
+  width: 98%;
+  font-size: 1.1rem;
+  resize: none;
+}
+.new_create{
+  display: block;
+  text-align: center;
+}
+
+
+
+
+.genre_hide,
+.area_hide,
+.image_hide{
+  display: none;
+}
+
+.new_image_window,
+.new_genre_window,
+.new_area_window{
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+}
