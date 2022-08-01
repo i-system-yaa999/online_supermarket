@@ -5,7 +5,7 @@
 
 <header class="header">
   <a href="/" class="title_frame">
-    <img class="image" src="{{asset('image/redsuper.jpg')}}" alt="RedSuperMarket">
+    <img class="image" src="{{asset('images/redsuper.jpg')}}" alt="RedSuperMarket">
     <h1 class="title">レッドスーパー</h1>
   </a>
   <div class="nav_frame">
@@ -24,7 +24,7 @@
         <li><a href="/manage">商品管理</a></li>
         <li><a href="/mypage">マイページ</a></li>
         {{-- 店舗代表者以上に表示される --}}
-        @elsecan('owner-higher')
+        @elsecan('manager-higher')
         <li><a href="/manage">商品管理</a></li>
         <li><a href="/mypage">マイページ</a></li>
         {{-- 一般権限以上に表示される --}}

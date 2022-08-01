@@ -90,7 +90,7 @@
         @foreach($comments as $comment)
         <div class="evaluation_name">{{$comment->user->name}}</div>
         <div class="evaluation_inner">
-          <img src="{{asset('image/star'.$comment->evaluation.'.jpg')}}" alt="" class="star">
+          <img src="{{asset('images/star'.$comment->evaluation.'.jpg')}}" alt="" class="star">
           <div class="evaluation_date">投稿日：{{$comment->created_at}}</div>
         </div>
         <div class="evaluation_comment">{{$comment->comment}}</div>

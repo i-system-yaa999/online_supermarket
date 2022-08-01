@@ -7,7 +7,7 @@
     @include('layouts.pagenation',['items' => $images])
     @endif
     {{-- 新規作成ボタン --}}
-    <button class="btn btn_list_newitem">新規作成</button>
+    <button type="button" class="btn btn_add_image" onclick="showImageWindow()">新規作成</button>
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -17,7 +17,7 @@
         <tr class="tbl_head">
           <th class="list_center list_id">ID</th>
           <th class="fixed_head">画像</th>
-          <th>画像URL<br>image/products/</th>
+          <th>画像URL<br>images/products/</th>
           <th></th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
@@ -37,10 +37,10 @@
             </td>
             {{-- イメージurl --}}
             <td class="list_image @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
-              <img src="{{$image->url}}" alt="">
+              <img src="{{asset($image->url)}}" alt="">
             </td>
             <td class="list_imageURL">
-              <input type="text" name="image_url" class="inputbox" value="{{str_replace('image/products/', '', $image->url)}}">
+              <input type="text" name="image_url" class="inputbox" value="{{str_replace('images/products/', '', $image->url)}}">
               @if(($image->id==old('image_id')) && ($errors->has('image_url')))
               <div class="error_disp">{{$errors->first('image_url')}}</div>
               @endif
@@ -71,7 +71,26 @@
       </tbody>
     </table>
 
+  </div>
 
-
+  {{-- 新規作成用ウィンドウ --}}
+  <div id="window_backframe"
+    class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
+    <div class="window_background" onclick="hideWindow()"></div>
+    <div class="window">
+  
+      @include('layouts.contents.new_image')
+  
+    </div>
   </div>
 </div>
+<script>
+  // function showImageWindow(){
+  // document.getElementById('window_backframe').classList.remove('is-hidden');
+  // document.getElementById('new_image').classList.remove('image_hide');
+  // }
+  // function hideWindow(){
+  //   document.getElementById('window_backframe').classList.add('is-hidden');
+  //   document.getElementById('new_image').classList.add('image_hide');
+  // }
+</script>

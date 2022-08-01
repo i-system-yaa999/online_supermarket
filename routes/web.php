@@ -10,6 +10,9 @@ use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ManageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
@@ -52,8 +55,8 @@ Route::controller(MypageController::class)->group(function () {
 
 // 店舗代表者処理
 Route::controller(ManageController::class)->group(function () {
-  Route::middleware('auth', 'can:owner-higher')->group(function () {
-    Route::get('manage', 'index');
+  Route::middleware('auth', 'can:manager-higher')->group(function () {
+    Route::get('manage', 'index')->name('manage.index');
     Route::post('manage', 'create');
     Route::put('manage', 'update');
     Route::delete('manage', 'delete');
@@ -73,6 +76,36 @@ Route::controller(AdminController::class)->group(function () {
 // メール処理
 route::post('/mail', [SendMailController::class, 'sendMail']);
 
+
+// 売り場処理
+Route::controller(GenreController::class)->group(function () {
+  Route::middleware('auth', 'can:manager-higher')->group(function () {
+    Route::get('genre', 'index');
+    Route::post('genre', 'create');
+    Route::put('genre', 'update');
+    Route::delete('genre', 'delete');
+  });
+});
+
+// 産地処理
+Route::controller(AreaController::class)->group(function () {
+  Route::middleware('auth', 'can:manager-higher')->group(function () {
+    Route::get('area', 'index');
+    Route::post('area', 'create');
+    Route::put('area', 'update');
+    Route::delete('area', 'delete');
+  });
+});
+
+// 画像処理
+Route::controller(ImageController::class)->group(function () {
+  Route::middleware('auth', 'can:manager-higher')->group(function () {
+    Route::get('img', 'index');
+    Route::post('img', 'create');
+    Route::put('img', 'update');
+    Route::delete('img', 'delete');
+  });
+});
 
 // お気に入り処理
 Route::controller(LikeController::class)->group(function () {
