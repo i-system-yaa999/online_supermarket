@@ -13,8 +13,8 @@
         <option value="2" @if($tab_item==='2' ) selected @endif>産地の編集</option>
         <option value="3" @if($tab_item==='3' ) selected @endif>商品画像の編集</option>
         <option value="4" @if($tab_item==='4' ) selected @endif>xxxx</option>
-        <option value="5" @if($tab_item==='5' ) selected @endif>xxxx</option>
-        <option value="6" @if($tab_item==='6' ) selected @endif>その他</option>
+        <option value="5" @if($tab_item==='5' ) selected @endif>商品の追加</option>
+        {{-- <option value="6" @if($tab_item==='6' ) selected @endif>その他</option> --}}
       </select>
     </form>
     
@@ -41,9 +41,9 @@
         <input type="radio" name="tab_item" id="yyyy" value="4" @if($tab_item==4) checked @endif onChange="this.form.submit()">
         <label class="tab_item" for="yyyy">xxxx</label>
 
-        <!-- tab menu xxxx -->
-        <input type="radio" name="tab_item" id="yyyy" value="5" @if($tab_item==5) checked @endif onChange="this.form.submit()">
-        <label class="tab_item" for="yyyy">xxxx</label>
+        <!-- tab menu 商品の追加 -->
+        <input type="radio" name="tab_item" id="new_product" value="5" @if($tab_item==5) checked @endif onChange="this.form.submit()">
+        <label class="tab_item" for="new_product">商品の追加</label>
 
       </form>
     </div>
@@ -73,9 +73,9 @@
     @include('layouts.contents.manage.tab4_content')
     @endif
 
-    {{-- tab contents xxxx --}}
+    {{-- tab contents 商品の追加 --}}
     @if($tab_item === '5')
-    @include('layouts.contents.manage.tab5_content')
+    @include('layouts.contents.manage.tab5_new_product')
     @endif
 
   </section>

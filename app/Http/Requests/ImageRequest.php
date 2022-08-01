@@ -13,7 +13,7 @@ class ImageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,16 +24,16 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'imae_url' => 'required|max:191',
+            'image_url' => 'required|max:191|unique:images,url,' . $this->input('image_id') . ',id',
         ];
     }
 
     public function messages()
     {
         return [
-            'imae_url.required' => '必須項目です。',
-            'imae_url.max' => '最大191文字まで',
-            'imae_url.unique' => 'すでに登録されています。',
+            'image_url.required' => '画像は必須項目です。',
+            'image_url.max' => '最大191文字まで',
+            'image_url.unique' => 'すでに登録されています。',
         ];
     }
 }
