@@ -7,7 +7,7 @@
     @include('layouts.pagenation',['items' => $genres])
     @endif
     {{-- 新規作成ボタン --}}
-    <button class="btn btn_list_newitem">新規作成</button>
+    <button type="button" class="btn btn_add_genre" onclick="showGenreWindow()">新規作成</button>
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -61,8 +61,28 @@
         @endforeach
       </tbody>
     </table>
-  
-    
-  
+
   </div>
+
+  {{-- 新規作成用ウィンドウ --}}
+  <div id="window_backframe"
+    class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
+    <div class="window_background" onclick="hideWindow()"></div>
+    <div class="window">
+      
+      @include('layouts.contents.new_genre')
+  
+    </div>
+  </div>
+
 </div>
+<script>
+  // function showGenreWindow(){
+  //   document.getElementById('window_backframe').classList.remove('is-hidden');
+  //   document.getElementById('new_genre').classList.remove('genre_hide');
+  // }
+  // function hideWindow(){
+  //   document.getElementById('window_backframe').classList.add('is-hidden');
+  //   document.getElementById('new_genre').classList.add('genre_hide');
+  // }
+</script>

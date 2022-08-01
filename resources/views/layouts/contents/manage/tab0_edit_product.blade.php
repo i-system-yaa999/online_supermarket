@@ -7,7 +7,7 @@
     @include('layouts.pagenation',['items' => $products])
     @endif
     {{-- 新規作成ボタン --}}
-    <button class="btn btn_list_newitem">新規作成</button>
+    {{-- <button class="btn btn_list_newitem">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -19,7 +19,7 @@
           <th class="fixed_head">商品名</th>
           <th>価格<br>(税込)</th>
           <th>画像</th>
-          <th>画像URL<br>image/products/</th>
+          <th>画像URL<br>images/products/</th>
           <th>売り場</th>
           <th>産地</th>
           <th>説明</th>
@@ -61,7 +61,7 @@
               <select name="product_image_id" class="selectbox">
                 @foreach($allimages as $image)
                 <option value="{{$image->id}}" @if($product->image->url == $image->url) selected @endif>
-                  {{$image->id}} : {{str_replace('image/products/', '', $image->url)}}
+                  {{$image->id}} : {{str_replace('images/products/', '', $image->url)}}
                 </option>
                 @endforeach
               </select>
