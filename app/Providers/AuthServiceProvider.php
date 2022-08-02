@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         gate::define('admin-onry', function ($user) {
             return ($user->role == 1);
         });
-        // 店舗代表者以上に許可
+        // 売り場担当者以上に許可
         gate::define('manager-higher', function ($user) {
             return ($user->role > 0 && $user->role <= 5);
         });

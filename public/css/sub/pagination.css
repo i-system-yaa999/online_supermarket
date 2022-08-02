@@ -24,7 +24,7 @@
 }
 
 .pagination .active {
-  background-color: var(--middleblue);
+  background-color: red;
   color: white;
 }
 

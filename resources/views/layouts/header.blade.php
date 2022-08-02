@@ -23,7 +23,7 @@
         <li><a href="/admin">システム管理</a></li>
         <li><a href="/manage">商品管理</a></li>
         <li><a href="/mypage">マイページ</a></li>
-        {{-- 店舗代表者以上に表示される --}}
+        {{-- 売り場担当者以上に表示される --}}
         @elsecan('manager-higher')
         <li><a href="/manage">商品管理</a></li>
         <li><a href="/mypage">マイページ</a></li>

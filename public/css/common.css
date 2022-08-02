@@ -200,18 +200,14 @@ input[name="tab_item"] {
   color: white;
 }
 /* 商品管理ページ売り場新規作成ボタン */
-.btn_add_genre,
-.btn_add_area,
-.btn_add_image{
+.btn_add_item{
   width: 120px;
   height: 32px;
   background-color: #fb6d6d;
   color: white;
   font-size: 0.8rem;
 }
-.btn_add_genre:hover,
-.btn_add_area:hover,
-.btn_add_image:hove {
+.btn_add_item:hover {
   background-color: white;
   color: black;
 }
