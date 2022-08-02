@@ -46,7 +46,7 @@
               @endforeach
             </select>
 
-            <button type="button" class="btn btn_add_image" onclick="showImageWindow()">新規作成</button>
+            <button type="button" class="btn btn_add_item" onclick="showImageWindow()">新規作成</button>
 
             {{-- <label for="file" class="file_label">ファイルを追加</label>
             <input type="file" accept="image/*" name="image_url" id="file" class="file_input" onchange="addImage()"> --}}
@@ -82,7 +82,7 @@
               @endforeach
             </select>
 
-            <button type="button" class="btn btn_add_genre" onclick="showGenreWindow()">新規作成</button>
+            <button type="button" class="btn btn_add_item" onclick="showGenreWindow()">新規作成</button>
             @if($errors->has('product_genre_id'))
             <div class="error_disp">{{$errors->first('product_genre_id')}}</div>
             @endif
@@ -103,7 +103,7 @@
               @endforeach
             </select>
 
-            <button type="button" class="btn btn_add_area" onclick="showAreaWindow()">新規作成</button>
+            <button type="button" class="btn btn_add_item" onclick="showAreaWindow()">新規作成</button>
             @if($errors->has('product_area_id'))
             <div class="error_disp">{{$errors->first('product_area_id')}}</div>
             @endif

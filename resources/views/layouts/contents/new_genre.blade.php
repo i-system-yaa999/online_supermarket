@@ -1,7 +1,9 @@
 {{-- 売り場 --}}
 <div id="new_genre" class="new_genre_window @if(empty(old('new_genre_open'))) genre_hide @endif">
   <div class="new_genre_title">
-    <p>売り場の名称を入力してください</p>
+    <h4>売り場名の新規作成</h4>
+    <hr>
+    <h5>売り場の名称を入力してください</h5>
   </div>
   <form class="new_genre_form" method="POST" action="/genre">
     @csrf

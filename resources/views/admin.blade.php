@@ -8,24 +8,24 @@
     {{-- select メニュー --}}
     <form id="" action="/admin">
       <select name="tab_item" id="" class="select_menu" value="{{old('tab_item')}}" onChange="this.form.submit()">
-        <option value="0" @if($tab_item==='0' |empty($tab_item)) selected @endif>店舗担当者</option>
-        <option value="1" @if($tab_item==='1' ) selected @endif>ユーザー</option>
-        <option value="2" @if($tab_item==='2' ) selected @endif>商品</option>
-        <option value="4" @if($tab_item==='3' ) selected @endif>画像</option>
-        <option value="3" @if($tab_item==='4' ) selected @endif>売り場</option>
-        <option value="4" @if($tab_item==='5' ) selected @endif>産地</option>
-        <option value="5" @if($tab_item==='6' ) selected @endif>配達予約</option>
-        <option value="6" @if($tab_item==='7' ) selected @endif>お気に入り</option>
-        <option value="7" @if($tab_item==='8' ) selected @endif>評価</option>
+        <option value="0" @if($tab_item==='0' |empty($tab_item)) selected @endif>売り場担当者の編集</option>
+        <option value="1" @if($tab_item==='1' ) selected @endif>ユーザーの編集</option>
+        <option value="2" @if($tab_item==='2' ) selected @endif>商品の編集</option>
+        <option value="3" @if($tab_item==='3' ) selected @endif>画像の編集</option>
+        <option value="4" @if($tab_item==='4' ) selected @endif>売り場の編集</option>
+        <option value="5" @if($tab_item==='5' ) selected @endif>産地の編集</option>
+        <option value="6" @if($tab_item==='6' ) selected @endif>配達予約の編集</option>
+        <option value="7" @if($tab_item==='7' ) selected @endif>お気に入りの編集</option>
+        <option value="8" @if($tab_item==='8' ) selected @endif>評価の編集</option>
       </select>
     </form>
     
     {{-- tab メニュー --}}
     <div>
       <form id="form_tabs" class="tabs" action="/admin">
-        <!-- tab menu 店舗担当者 -->
+        <!-- tab menu 売り場担当者 -->
         <input type="radio" name="tab_item" id="manage" value="0" @if($tab_item==='0' |empty($tab_item)) checked @endif onChange="this.form.submit()">
-        <label class=" tab_item" for="manage">店舗担当者</label>
+        <label class=" tab_item" for="manage">売り場担当者</label>
 
         <!-- tab menu ユーザー -->
         <input type="radio" name="tab_item" id="user" value="1" @if($tab_item==1) checked @endif onChange="this.form.submit()">
@@ -62,49 +62,49 @@
       </form>
     </div>
 
-    {{-- tab contents 店舗担当者 --}}
+    {{-- tab contents 売り場担当者 --}}
     @if($tab_item === '0' | empty($tab_item))
-    @include('layouts.contents.admin.tab0_content')
+    @include('layouts.contents.admin.tab0_edit_manager')
     @endif
 
     {{-- tab contents ユーザー --}}
     @if($tab_item === '1')
-    @include('layouts.contents.admin.tab1_content')
+    @include('layouts.contents.admin.tab1_edit_user')
     @endif
 
     {{-- tab contents 商品 --}}
     @if($tab_item === '2')
-    @include('layouts.contents.admin.tab2_content')
+    @include('layouts.contents.admin.tab2_edit_product')
     @endif
 
     {{-- tab contents 画像 --}}
     @if($tab_item === '3')
-    @include('layouts.contents.admin.tab3_content')
+    @include('layouts.contents.admin.tab3_edit_image')
     @endif
 
     {{-- tab contents 売り場 --}}
     @if($tab_item === '4')
-    @include('layouts.contents.admin.tab4_content')
+    @include('layouts.contents.admin.tab4_edit_genre')
     @endif
 
     {{-- tab contents 産地 --}}
     @if($tab_item === '5')
-    @include('layouts.contents.admin.tab5_content')
+    @include('layouts.contents.admin.tab5_edit_area')
     @endif
     
     {{-- tab contents 配達予約 --}}
     @if($tab_item === '6')
-    @include('layouts.contents.admin.tab6_content')
+    @include('layouts.contents.admin.tab6_edit_delivery')
     @endif
 
     {{-- tab contents お気に入り --}}
     @if($tab_item === '7')
-    @include('layouts.contents.admin.tab7_content')
+    @include('layouts.contents.admin.tab7_edit_like')
     @endif
 
     {{-- tab contents 評価 --}}
     @if($tab_item === '8')
-    @include('layouts.contents.admin.tab8_content')
+    @include('layouts.contents.admin.tab8_edit_comment')
     @endif
 
   </section>
