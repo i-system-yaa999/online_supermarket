@@ -23,3 +23,22 @@
   width: 24px;
   height: 24px;
 }
+
+
+.my_star {
+  border: 0px;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0 -4px;
+  background-image: url(/images/star_off.jpg);
+  background-size: contain;
+  background-color: white;
+}
+.star {
+  height: 2rem;
+  width: auto;
+}
+.star_on {
+  background-image: url(/images/star_on.jpg);
+}

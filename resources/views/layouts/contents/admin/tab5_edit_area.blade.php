@@ -1,29 +1,30 @@
-{{-- xxx --}}
-<div class="tab_content" id="tab1_content">
+{{-- 産地の編集 --}}
+<div class="tab_content" id="tab5_content">
   <div class="content_nav">
-    @if(isset($genres))
-    <p>{{$genres->total()}}件のデータが登録されています。</p>
+    @if(isset($areas))
+    <p>{{$areas->total()}}件のデータが登録されています。</p>
+
     {{-- ページネーション --}}
-    @include('layouts.pagenation',['items' => $genres])
+    @include('layouts.pagenation',['items' => $areas])
     @endif
     {{-- 新規作成ボタン --}}
-    <button type="button" class="btn btn_add_item" onclick="showGenreWindow()">新規作成</button>
+    <button type="button" class="btn btn_add_item" onclick="showAreaWindow()">新規作成</button>
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
-
+  
     <table class="tbl_item_list">
       <thead class="tbl_head">
         <tr>
           <th class="list_center list_id">ID</th>
-          <th class="fixed_head">売り場名</th>
+          <th class="fixed_head">産地名</th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        @foreach($genres as $genre)
+        @foreach($areas as $area)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
           <form action="/manage" method="POST">
             @method('PUT')
@@ -31,17 +32,17 @@
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="genre_id" class="list_center list_id" value="{{$genre->id}}" disabled>
+              <input type="text" name="area_id" class="list_center list_id" value="{{$area->id}}" disabled>
             </td>
-            {{-- 売り場名 --}}
+            {{-- 産地名 --}}
             <td class="list_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
-              <input type="text" name="genre_name" class="inputbox" value="{{$genre->name}}">
-              @if(($genre->id==old('genre_id')) && ($errors->has('genre_name')))
-              <div class="error_disp">{{$errors->first('genre_name')}}</div>
+              <input type="text" name="area_name" class="inputbox" value="{{$area->name}}">
+              @if(($area->id==old('area_id')) && ($errors->has('area_name')))
+              <div class="error_disp">{{$errors->first('area_name')}}</div>
               @endif
             </td>
             {{-- 作成日/更新日 --}}
-            <td class="list_created">{{$genre->created_at}}<span class="hr"></span>{{$genre->updated_at}}</td>
+            <td class="list_created">{{$area->created_at}}<span class="hr"></span>{{$area->updated_at}}</td>
             {{-- 登録ボタン --}}
             <td class="list_center list_modify">
               <button class="btn btn-modify" type="submit">登録</button>
@@ -53,7 +54,7 @@
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">
-              <input type="hidden" name="genre_id" value="{{$genre->id}}">
+              <input type="hidden" name="area_id" value="{{$area->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>
           </td>
@@ -61,28 +62,19 @@
         @endforeach
       </tbody>
     </table>
-
+  
   </div>
-
+  
   {{-- 新規作成用ウィンドウ --}}
   <div id="window_backframe"
     class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
     <div class="window_background" onclick="hideWindow()"></div>
     <div class="window">
-      
-      @include('layouts.contents.new_genre')
+  
+      @include('layouts.contents.new_area')
   
     </div>
   </div>
-
+  
+  
 </div>
-<script>
-  // function showGenreWindow(){
-  //   document.getElementById('window_backframe').classList.remove('is-hidden');
-  //   document.getElementById('new_genre').classList.remove('genre_hide');
-  // }
-  // function hideWindow(){
-  //   document.getElementById('window_backframe').classList.add('is-hidden');
-  //   document.getElementById('new_genre').classList.add('genre_hide');
-  // }
-</script>

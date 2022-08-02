@@ -1,7 +1,9 @@
 {{-- 産地 --}}
 <div id="new_area" class="new_area_window @if(empty(old('new_area_open'))) area_hide @endif">
   <div class="new_area_title">
-    <p>産地の名称を入力してください</p>
+    <h4>産地名の新規作成</h4>
+    <hr>
+    <h5>産地の名称を入力してください</h5>
   </div>
   <form class="new_area_form" method="POST" action="/area">
     @csrf
