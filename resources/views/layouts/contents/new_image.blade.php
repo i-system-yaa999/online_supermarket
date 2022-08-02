@@ -1,7 +1,9 @@
 {{-- 画像 --}}
 <div id="new_image" class="new_image_window @if(empty(old('new_image_open'))) image_hide @endif">
   <div class="new_image_title">
-    <p>画像を選択してください</p>
+    <h4>画像の新規登録</h4>
+    <hr>
+    <h5>画像を選択してください</h5>
   </div>
   <form class="new_image_form" method="POST" action="/img" enctype='multipart/form-data'>
     @csrf

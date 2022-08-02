@@ -7,7 +7,7 @@
     @include('layouts.pagenation',['items' => $areas])
     @endif
     {{-- 新規作成ボタン --}}
-    <button type="button" class="btn btn_add_area" onclick="showAreaWindow()">新規作成</button>
+    <button type="button" class="btn btn_add_item" onclick="showAreaWindow()">新規作成</button>
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -31,7 +31,7 @@
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="area_id" class="list_center list_id" value="{{$area->id}}">
+              <input type="text" name="area_id" class="list_center list_id" value="{{$area->id}}" disabled>
             </td>
             {{-- 産地名 --}}
             <td class="list_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">

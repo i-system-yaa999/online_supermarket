@@ -1,17 +1,19 @@
-{{-- xxx --}}
-<div class="tab_content" id="tab1_content">
+{{-- 売り場の編集 --}}
+<div class="tab_content" id="tab4_content">
   <div class="content_nav">
     @if(isset($genres))
     <p>{{$genres->total()}}件のデータが登録されています。</p>
+
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $genres])
     @endif
     {{-- 新規作成ボタン --}}
     <button type="button" class="btn btn_add_item" onclick="showGenreWindow()">新規作成</button>
+
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
-
+  
     <table class="tbl_item_list">
       <thead class="tbl_head">
         <tr>
@@ -61,28 +63,19 @@
         @endforeach
       </tbody>
     </table>
-
+  
   </div>
-
+  
   {{-- 新規作成用ウィンドウ --}}
   <div id="window_backframe"
     class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
     <div class="window_background" onclick="hideWindow()"></div>
     <div class="window">
-      
+  
       @include('layouts.contents.new_genre')
   
     </div>
   </div>
-
+  
+  
 </div>
-<script>
-  // function showGenreWindow(){
-  //   document.getElementById('window_backframe').classList.remove('is-hidden');
-  //   document.getElementById('new_genre').classList.remove('genre_hide');
-  // }
-  // function hideWindow(){
-  //   document.getElementById('window_backframe').classList.add('is-hidden');
-  //   document.getElementById('new_genre').classList.add('genre_hide');
-  // }
-</script>

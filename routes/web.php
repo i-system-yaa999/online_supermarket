@@ -43,7 +43,7 @@ Route::controller(CartController::class)->group(function () {
   });
 });
 // 決済処理
-Route::post('/charge', [ChargeController::class, 'charge'])->middleware('auth' , 'verified');
+Route::post('/charge', [ChargeController::class, 'charge'])->middleware('auth', 'verified');
 
 // マイページ処理
 Route::controller(MypageController::class)->group(function () {
@@ -53,7 +53,7 @@ Route::controller(MypageController::class)->group(function () {
   });
 });
 
-// 店舗代表者処理
+// 売り場担当者処理
 Route::controller(ManageController::class)->group(function () {
   Route::middleware('auth', 'can:manager-higher')->group(function () {
     Route::get('manage', 'index')->name('manage.index');
@@ -115,8 +115,8 @@ Route::controller(LikeController::class)->group(function () {
   });
 });
 
-route::get('/thanks',function(){
+route::get('/thanks', function () {
   return view('thanks')->with([
-    'delivery'=> null,
+    'delivery' => null,
   ]);
 });

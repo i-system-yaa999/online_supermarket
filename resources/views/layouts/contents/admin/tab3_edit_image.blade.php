@@ -1,8 +1,9 @@
-{{-- xxx --}}
+{{-- 画像の編集 --}}
 <div class="tab_content" id="tab3_content">
   <div class="content_nav">
     @if(isset($images))
     <p>{{$images->total()}}件のデータが登録されています。</p>
+
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $images])
     @endif
@@ -11,7 +12,7 @@
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
-
+  
     <table class="tbl_item_list">
       <thead>
         <tr class="tbl_head">
@@ -40,7 +41,8 @@
               <img src="{{asset($image->url)}}" alt="">
             </td>
             <td class="list_imageURL">
-              <input type="text" name="image_url" class="inputbox" value="{{str_replace('images/products/', '', $image->url)}}">
+              <input type="text" name="image_url" class="inputbox"
+                value="{{str_replace('images/products/', '', $image->url)}}">
               @if(($image->id==old('image_id')) && ($errors->has('image_url')))
               <div class="error_disp">{{$errors->first('image_url')}}</div>
               @endif
@@ -70,9 +72,9 @@
         @endforeach
       </tbody>
     </table>
-
+  
   </div>
-
+  
   {{-- 新規作成用ウィンドウ --}}
   <div id="window_backframe"
     class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
@@ -83,14 +85,6 @@
   
     </div>
   </div>
+  
+  
 </div>
-<script>
-  // function showImageWindow(){
-  // document.getElementById('window_backframe').classList.remove('is-hidden');
-  // document.getElementById('new_image').classList.remove('image_hide');
-  // }
-  // function hideWindow(){
-  //   document.getElementById('window_backframe').classList.add('is-hidden');
-  //   document.getElementById('new_image').classList.add('image_hide');
-  // }
-</script>
