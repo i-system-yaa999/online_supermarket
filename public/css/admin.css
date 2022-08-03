@@ -75,36 +75,7 @@ td {
 
 
 
-.inputbox {
-  padding: 3px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  /* width: 100%; */
-  padding-right: 10px;
-}
-.input_mini{
-  padding: 3px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  width: 30px;
-  padding-right: 10px;
-  text-align: center;
-}
 
-.selectbox {
-  padding: 3px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  /* width: 100%; */
-}
-
-.error_disp {
-  font-size: 0.8rem;
-  color: red;
-}
 
 .list_center {
   text-align: center;

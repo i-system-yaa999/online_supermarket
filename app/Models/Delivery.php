@@ -11,7 +11,8 @@ class Delivery extends Model
 
     protected $fillable = [
         'user_id',
-        'delivery_number',
+        'number',
+        'date',
     ];
 
     public function user()
