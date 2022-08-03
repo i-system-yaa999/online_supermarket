@@ -16,11 +16,13 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct(string $name, string $subject)
+    public function __construct(string $name, string $subject, string $view, int $number)
     {
         //
         $this->name = $name;
         $this->subject = $subject;
+        $this->view = $view;
+        $this->number = $number;
     }
 
     /**
@@ -31,9 +33,9 @@ class SendMail extends Mailable
     public function build()
     {
         return $this
-            // ->to('takaya@ics-mail.info')  // 送信先アドレス
             ->subject($this->subject)  // 件名
-            ->view('mail.contactmail')  // 本文
-            ->with(['name' => $this->name]);  // 本文に送る値
+            ->view($this->view)  // 本文
+            ->with(['name' => $this->name])  // 本文に送る値
+            ->with(['number' => $this->number]);
     }
 }
