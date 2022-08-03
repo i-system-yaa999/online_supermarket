@@ -61,36 +61,29 @@
       <div class="total_price">合計： {{\app\Models\Cart::total()}}円</div>
     </div>
 
-
-    <div class="delivery">
-      @if(isset($delivery))
-      <p>配達予約済み：第{{$delivery->delivery_number}}便</p>
-      @else
-      <p>配達希望時間を選択してください。</p>
-      @endif
-      <div class="delivery_time">
-        <form action="/delivery" method="POST">
-          @csrf
-          <ul class="">
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="0" @if(($delivery_number ?? 0) == 0) checked @endif>店舗で受け取る</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="1" @if(($delivery_number ?? 0) == 1) checked @endif>第1便：10:00 ～ 12:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="2" @if(($delivery_number ?? 0) == 2) checked @endif>第2便：12:00 ～ 14:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="3" @if(($delivery_number ?? 0) == 3) checked @endif>第3便：14:00 ～ 16:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="4" @if(($delivery_number ?? 0) == 4) checked @endif>第4便：16:00 ～ 18:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="5" @if(($delivery_number ?? 0) == 5) checked @endif>第5便：18:00 ～ 20:00</li>
-          </ul>
-          <button type="submit" class="btn btn_delivery">@if(isset($delivery)) 配達便を変更する @else 配達便を決定する @endif</button>
-        </form>
-      </div>
-    </div>
-
     <div class="charge">
       <form action="{{asset('/charge')}}" method="POST">
         @csrf
         <input type="hidden" name="total" value="{{\app\Models\Cart::total()}}">
         {{-- <input type="hidden" name="carts" value="{{$carts}}"> --}}
-        <input type="hidden" name="delivery_id" value="{{$delivery_id ?? ''}}">
-        {{-- @if(isset($delivery_id)) --}}
+        <input type="hidden" name="delivery_id" value="{{$delivery->id ?? ''}}">
+        @if(isset($delivery->id))
+          
+          <p>配達日：{{$delivery->date}}</p>
+          <p>　</p>
+          <p>配達便：{{$delivery->number}}便</p>
+          <p>　</p>
+          <p>配達時間：
+            @if($delivery->number == 0) 店舗での受け取り 
+            @elseif($delivery->number == 1) 10:00～12:00
+            @elseif($delivery->number == 2) 12:00～14:00
+            @elseif($delivery->number == 3) 14:00～16:00
+            @elseif($delivery->number == 4) 16:00～18:00
+            @elseif($delivery->number == 5) 18:00～20:00
+            @endif
+          </p>
+          <p>　</p>
+
         <script src="https://checkout.stripe.com/checkout.js"
           class="stripe-button"
           data-key="{{env('STRIPE_KEY')}}"
@@ -102,7 +95,9 @@
           data-locale="auto"
           data-currency="JPY">
         </script>
-        {{-- @endif --}}
+        @else
+        <h4>お支払いの前に配達日時を予約してください。</h4>
+        @endif
       </form>
     </div>
 

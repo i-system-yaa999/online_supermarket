@@ -27,6 +27,7 @@ class MypageController extends Controller
             // カートリスト
             case 0:
                 $carts = Cart::all();
+                $delivery = Delivery::where('user_id', Auth::id())->first();
                 break;
             case 1:
                 $carts = Cart::all();
@@ -42,7 +43,8 @@ class MypageController extends Controller
                     'レッドスーパー 購入確認用ＱＲコード' . "\r\n" .
                     '購入日時：' . $history-> created_at . "\r\n" .
                     '購入者名：' . Auth::user()->name . "\r\n" .
-                    '配達便番号：' . $delivery->delivery_number . "\r\n" .
+                    '配達日：' . $delivery->date . "\r\n" .
+                    '配達便番号：' . $delivery->number . "\r\n" .
                     '合計金額：' . History::total().'円' . "\r\n" .
                 $type = 'QRCODE';
                 $width = 3;
@@ -69,7 +71,8 @@ class MypageController extends Controller
             'carts' => $carts,
             'tab_item' => $request->tab_item,
             'delivery' => $delivery,
-            'delivery_number' => $delivery->delivery_number ?? '9999',
+            'delivery_date' => $delivery->date ?? '9999',
+            'delivery_number' => $delivery->number ?? '9999',
             'histories' => $histories,
             'likes' => $likes,
             'qrcode' => $qrcode,
@@ -82,12 +85,14 @@ class MypageController extends Controller
             // 新規予約
             Delivery::create([
                 'user_id' => Auth::id(),
-                'delivery_number' => $request->delivery_number,
+                'date' => $request->delivery_date,
+                'number' => $request->delivery_number,
             ]);
         }else{
             // 予約変更
             Delivery::where('user_id', Auth::id())->update([
-                'delivery_number' => $request->delivery_number,
+                'date' => $request->delivery_date,
+                'number' => $request->delivery_number,
             ]);
         }
 
@@ -97,7 +102,8 @@ class MypageController extends Controller
             'carts' => $carts,
             'tab_item' => $request->tab_item,
             'delivery' => $delivery,
-            'delivery_number' => $delivery->delivery_number,
+            'delivery_date' => $delivery->date,
+            'delivery_number' => $delivery->number,
         ]);
     }
 }
