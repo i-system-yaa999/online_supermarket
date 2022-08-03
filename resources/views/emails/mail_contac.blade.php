@@ -10,6 +10,7 @@
 
 <body>
   <h1>{{ $name }}様</h1>
+  <p>{{\Carbon\Carbon::now()}}</p>
   <p>ご登録が完了しました。ありがとうございます。</p>
 </body>
 

@@ -14,8 +14,9 @@ class SendMailController extends Controller
         $name='testtest';
         $to = 'takaya@ics-mail.info';
         $subject = '登録完了しました。';
+        $view = 'emails.mail_contact';
 
-        Mail::to($to)->send(new SendMail($name, $subject));
+        Mail::to($to)->send(new SendMail($name, $subject, $view,0));
         // return view('maildone', ['name' => $name]);
         return 'メール送信完了';
     }
