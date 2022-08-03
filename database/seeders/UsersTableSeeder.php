@@ -70,7 +70,7 @@ class UsersTableSeeder extends Seeder
         // 通常ユーザー評価コメント 1件
         $comment = new Comment([
             'user_id' => 3,
-            'product_id' => 18,
+            'product_id' => 5,
             'evaluation' => 4,
             'comment' => '新鮮でおいしかったです。',
         ]);
