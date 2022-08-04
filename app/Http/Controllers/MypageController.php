@@ -7,8 +7,10 @@ use App\Models\Cart;
 use App\Models\Delivery;
 use App\Models\History;
 use App\Models\Like;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Milon\Barcode\Facades\DNS2DFacade;
+use Illuminate\Support\Carbon;
 
 class MypageController extends Controller
 {
@@ -19,10 +21,12 @@ class MypageController extends Controller
         $pageName = 'productspage';
 
         $carts = null;
+        $order = null;
         $delivery = null;
         $histories = null;
         $likes = null;
         $qrcode = null;
+        $delivery_done= false;
         switch ($request->tab_item) {
             // カートリスト
             case 0:
@@ -34,24 +38,34 @@ class MypageController extends Controller
                 $delivery = Delivery::where('user_id', Auth::id())->first();
                 break;
             case 2:
-                $histories = History::where('user_id', Auth::id())->get();
+                $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
+                // if (isset($$order->id)) {
+                    $histories = History::where('order_id', $order->id)->get();
 
-                // QRデータ
-                $history = History::where('user_id', Auth::id())->first();
-                $delivery = Delivery::where('user_id', Auth::id())->first();
-                $value =
-                    'レッドスーパー 購入確認用ＱＲコード' . "\r\n" .
-                    '購入日時：' . $history-> created_at . "\r\n" .
-                    '購入者名：' . Auth::user()->name . "\r\n" .
-                    '配達日：' . $delivery->date . "\r\n" .
-                    '配達便番号：' . $delivery->number . "\r\n" .
-                    '合計金額：' . History::total().'円' . "\r\n" .
-                $type = 'QRCODE';
-                $width = 3;
-                $height = 3;
-                $color = 'black';
-                $qrcode = DNS2DFacade::getBarcodeHTML($value, $type, $width, $height, $color);
-                // $qrcode
+                    // QRデータ
+                    $history = History::where('order_id', $order->id)->first();
+                    if (isset($history)) {
+                        $value =
+                            'レッドスーパー 購入確認用ＱＲコード' . "\r\n" .
+                            '購入日時：' . $history->created_at . "\r\n" .
+                            '購入者名：' . Auth::user()->name . "\r\n" .
+                            '配達日：' . $order->delivery->date . "\r\n" .
+                            '配達便番号：' . $order->delivery->number . "\r\n" .
+                            '合計金額：' . Order::total() . '円' . "\r\n";
+                        $type = 'QRCODE';
+                        $width = 3;
+                        $height = 3;
+                        $color = 'black';
+                        $qrcode = DNS2DFacade::getBarcodeHTML($value, $type, $width, $height, $color);
+                    // }
+                }
+
+                $delivery_day =  new Carbon($order->delivery->day);
+                if(Carbon::now()->gt($delivery_day)){
+                    // 配達日を過ぎていたらＱＲを消す
+                    // $delivery_day < Carbon::now() のとき
+                    $delivery_done = true;
+                }
                 break;
             case 3:
                 $likes = Like::where('user_id', Auth::id())->get();
@@ -76,15 +90,17 @@ class MypageController extends Controller
             'histories' => $histories,
             'likes' => $likes,
             'qrcode' => $qrcode,
+            'delivery_done' => $delivery_done,
         ]);
         
     }
     // 配達予約
     public function delivery(Request $request){
-        if(empty(Delivery::where('user_id',Auth::id())->first())){
+        if(empty(Delivery::where('user_id', Auth::id())->first())){
             // 新規予約
             Delivery::create([
                 'user_id' => Auth::id(),
+                'order_id' => null,
                 'date' => $request->delivery_date,
                 'number' => $request->delivery_number,
             ]);

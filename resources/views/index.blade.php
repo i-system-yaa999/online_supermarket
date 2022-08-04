@@ -69,12 +69,6 @@
       {{-- tab contents --}}
       @include('layouts.contents.index.tab_content')
 
-<form action="/mail" method="post">
-  @csrf
-  <input type="text" name="name">
-  <button>メール送信</button>
-</form>
-
   </section>
 
 {{-- 閉じるボタン --}}
