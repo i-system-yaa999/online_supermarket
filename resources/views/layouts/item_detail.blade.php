@@ -29,20 +29,9 @@
       <input type="hidden" name="" id="genre_id">
       <label id="genre_name" class="detail_genre">#{{$product->genre->name ?? '---'}}</label>
     </p>
-    {{-- 個数 & 価格 --}}
-    <div>
-      {{-- 個数 --}}
-      <select name="" id="quantity" class="item_quantity">
-        <option value="1">個数：1</option>
-        @for($i = 1; $i <= 50; $i++)
-        <option value="{{$i}}">
-          {{$i}}
-        </option>
-        @endfor
-      </select>
-      {{-- 価格 --}}
-      <span id="price" class="detail_price">{{$product->price}}</span><span>円（税込）</span>
-    </div>
+    {{-- 価格 --}}
+    <span id="price" class="detail_price">{{$product->price}}</span><span>円（税込）</span>
+    
     {{-- アクション --}}
     <div class="detail_action">
       {{-- カートへ --}}
@@ -52,7 +41,15 @@
         <input type="hidden" name="product_name" value="{{$product->name}}">
         <input type="hidden" name="product_price" value="{{$product->price}}">
         <input type="hidden" name="product_image" value="{{$product->image->url}}">
-        <input type="hidden" name="quantity" value="1">
+        {{-- 個数 --}}
+        <select name="quantity" id="quantity" class="item_quantity selectbox">
+          <option value="1">個数：1</option>
+          @for($i = 1; $i <= 50; $i++) 
+          <option value="{{$i}}">
+            {{$i}}
+          </option>
+          @endfor
+        </select>
         <button type="submit" class="btn item_submit">カートへ</button>
       </form>
 

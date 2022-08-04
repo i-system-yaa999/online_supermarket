@@ -11,35 +11,30 @@ class History extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'order_id',
         'product_id',
         'quantity',
         'subtotal',
-        'delivery_id',
     ];
 
-    public function delivery()
+    public function order()
     {
-        return $this->belongsTo(Delivery::class);
+        return $this->belongsTo(Order::class);
     }
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
 
-    public static function total()
-    {
-        $total = 0;
-        foreach (History::where('user_id', Auth::id())->get() as $history) {
-            $total += $history->subtotal;
-        }
-        return $total;
-    }
+    // public static function total()
+    // {
+    //     $total = 0;
+    //     foreach (History::where('user_id', Auth::id())->get() as $history) {
+    //         $total += $history->subtotal;
+    //     }
+    //     return $total;
+    // }
     public static function price($id)
     {
         $price = 0;

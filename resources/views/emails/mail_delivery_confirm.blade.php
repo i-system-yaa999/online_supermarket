@@ -24,6 +24,6 @@
     @endif
   </p>
   @endif
-  <a href="http://127.0.0.1:8000/mypage?tab_item=2">購入品の確認</a>
+  <p><a href="http://127.0.0.1:8000/mypage?tab_item=2">購入品の確認</a></p>
 </body>
 </html>
