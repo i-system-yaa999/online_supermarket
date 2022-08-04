@@ -9,7 +9,11 @@ use Stripe\Charge;
 use App\Models\Cart;
 use App\Models\Delivery;
 use App\Models\History;
+use App\Models\Order;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class ChargeController extends Controller
 {
@@ -31,30 +35,48 @@ class ChargeController extends Controller
                 'currency' => 'jpy'
             ));
 
-            // 購入履歴書き込み
-            $delivery = Delivery::where('user_id', Auth::id())->first();
             // 前回分は消去
-            History::where('user_id',Auth::id())->delete();
+            // History::where('user_id',Auth::id())->delete();
+
             // 今回購入分
+            $order = Order::create([
+                'user_id' => Auth::id(),
+                'number' => intval(Carbon::now()->format('siHdmy')),
+            ]);
+            $delivery = Delivery::find($request->delivery_id);
+            $delivery->update([
+                'order_id' => $order->id,
+            ]);
+            $delivery->save;
             $carts = Cart::where('user_id', Auth::id())->get();
             foreach($carts as $cart){
                 History::create([
                     'product_id' => $cart->product_id,
-                    'user_id' => Auth::id(),
+                    'order_id' => $order->id,
                     'quantity' => $cart->quantity,
                     'subtotal' => $cart->subtotal(),
+                    'delivery_date' => $delivery->date,
+                    'delivery_number' => $delivery->number,
                 ]);
             }
 
             // カート内データ削除
             Cart::where('user_id', Auth::id())->delete();
 
-            // 配達予約データ削除
-            Delivery::where('user_id', Auth::id())->delete();
-            
-            // 購入内容の控えをメール送信する処理をここに入れる
+            // 購入内容の控えをメール送信
+            $name = $order->user->name;
+            $to = $order->user->email;
+            $to = 'ufkq56586@mineo.jp';
+            $subject = 'ご購入完了のお知らせ';
+            $view = 'emails.mail_thanks';
+            Mail::to($to)->send(new SendMail($name, $subject, $view, $delivery->number));
 
-            return view('thanks');
+            return view('emails.mail_thanks')->with([
+                'name' => Auth::user()->name,
+                'number' => $delivery->number,
+                'histories' => History::where('order_id', $order->id)->get(),
+            ]);
+
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }

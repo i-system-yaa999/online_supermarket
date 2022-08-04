@@ -16,7 +16,7 @@
   </div>
   {{-- コンテンツ --}}
   <div class="content_data">
-    @if(isset($likes))
+    @if(count($likes) > 0)
     {{-- {{dd(count($products))}} --}}
     @foreach($likes as $like)
     

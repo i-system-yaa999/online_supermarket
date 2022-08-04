@@ -97,6 +97,7 @@
         </script>
         @else
         <h4>お支払いの前に配達日時を予約してください。</h4>
+        <button type="button" class="btn btn_delivery"><a href="/mypage?tab_item=1">予約する</a></button>
         @endif
       </form>
     </div>

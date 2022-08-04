@@ -19,7 +19,7 @@
         
             {{-- ユーザ名 --}}
             <div class="msg_window_name">
-              <input type="text" class="disp_input" name="name" value="{{Auth::user()->name}}" placeholder="ユーザー名">
+              <input type="text" class="disp_input" name="name" value="{{Auth::user()->name}}" placeholder="ユーザー名" disabled="disabled">
               <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('name')}}" disabled="disabled">
             </div>
         
