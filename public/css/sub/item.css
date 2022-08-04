@@ -99,6 +99,13 @@
   padding: 10px;
   overflow-y: scroll;
 }
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  .detail_data {
+    width: 80vw;
+    margin: 0 auto;
+  }
+}
 .detail_image {
   width: 100%;
   height: 60%;

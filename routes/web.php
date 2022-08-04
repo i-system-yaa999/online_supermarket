@@ -31,7 +31,6 @@ Route::controller(AuthController::class)->group(function () {
   Route::get('/email/verification-notification', 'email_send')->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 });
 
-
 // カート処理
 Route::controller(CartController::class)->group(function () {
   Route::middleware('auth', 'verified')->group(function () {
@@ -73,11 +72,7 @@ Route::controller(AdminController::class)->group(function () {
   });
 });
 
-// メール処理
-route::post('/mail', [SendMailController::class, 'sendMail']);
-
-
-// 売り場処理
+// 売り場データ処理
 Route::controller(GenreController::class)->group(function () {
   Route::middleware('auth', 'can:manager-higher')->group(function () {
     Route::get('genre', 'index');
@@ -87,7 +82,7 @@ Route::controller(GenreController::class)->group(function () {
   });
 });
 
-// 産地処理
+// 産地データ処理
 Route::controller(AreaController::class)->group(function () {
   Route::middleware('auth', 'can:manager-higher')->group(function () {
     Route::get('area', 'index');
@@ -97,7 +92,7 @@ Route::controller(AreaController::class)->group(function () {
   });
 });
 
-// 画像処理
+// 画像データ処理
 Route::controller(ImageController::class)->group(function () {
   Route::middleware('auth', 'can:manager-higher')->group(function () {
     Route::get('img', 'index');
@@ -115,8 +110,7 @@ Route::controller(LikeController::class)->group(function () {
   });
 });
 
-route::get('/thanks', function () {
-  return view('thanks')->with([
-    'delivery' => null,
-  ]);
-});
+
+
+// メール処理
+route::post('/mail', [SendMailController::class, 'sendMail']);

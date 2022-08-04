@@ -38,7 +38,7 @@
             </td>
             {{-- 予約者名 --}}
             <td class="list_user_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
-              <input type="text" name="delivery_user_name" class="inputbox" value="{{$delivery->user->name}}" disabled>
+              <input type="text" name="delivery_user_name" class="inputbox" value="{{$delivery->order->user->name}}" disabled>
             </td>
             {{-- 配送日 --}}
             <td class="list_delivery_day">

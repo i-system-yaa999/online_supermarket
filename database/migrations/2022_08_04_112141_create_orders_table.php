@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deliveries', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->unsignedInteger('user_id')->comment('ユーザーID');
-            $table->unsignedInteger('order_id')->nullable()->comment('注文ID');
-            $table->date('date')->comment('配達日');
-            $table->unsignedInteger('number')->comment('配達便');
+            $table->bigInteger('number')->comment('注文番号');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->nullable()->comment('更新日時');
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deliveries');
+        Schema::dropIfExists('orders');
     }
 };
