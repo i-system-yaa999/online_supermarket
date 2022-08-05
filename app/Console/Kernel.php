@@ -32,16 +32,17 @@ class Kernel extends ConsoleKernel
             {
                 $name = $history->order->user->name;
                 $to = $history->order->user->email;
-                $date = new Carbon($history->delivery_date);
+                // $to = 'ufkq56586@mineo.jp';
+                $date = new Carbon($history->order->delivery->date);
                 
                 if($date->isSameDay(Carbon::now())) {
-                    Mail::to($to)->send(new SendMail($name, $subject, $view, $history->delivery_number));
+                    Mail::to($to)->send(new SendMail($name, $subject, $view, $history->order->delivery->number));
                 }
                 
             }
             
-        })->everyMinute();
-        // })->dailyAt('9:00');
+        // })->everyMinute();
+        })->dailyAt('8:00');
     }
 
     /**

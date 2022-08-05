@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Area;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -15,6 +17,7 @@ class ProductController extends Controller
         $perPage = 8;
         $columns = ['*'];
         $pageName = 'productspage';
+
         switch($request->tab_item){
             case 0:
                 $products = Product::where('name', '!=', '')->orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
@@ -42,7 +45,6 @@ class ProductController extends Controller
             //     $products = Product::where('genre_id', '4')->orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
             //     break;
         }
-        
         return view('index')->with([
             'tab_item' => $request->tab_item,
             'products' => $products,

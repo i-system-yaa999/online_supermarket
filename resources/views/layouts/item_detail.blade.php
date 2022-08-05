@@ -31,7 +31,6 @@
     </p>
     {{-- 価格 --}}
     <span id="price" class="detail_price">{{$product->price}}</span><span>円（税込）</span>
-    
     {{-- アクション --}}
     <div class="detail_action">
       {{-- カートへ --}}
@@ -42,7 +41,7 @@
         <input type="hidden" name="product_price" value="{{$product->price}}">
         <input type="hidden" name="product_image" value="{{$product->image->url}}">
         {{-- 個数 --}}
-        <select name="quantity" id="quantity" class="item_quantity selectbox">
+        <select name="quantity" id="quantity" class="detail_quantity selectbox">
           <option value="1">個数：1</option>
           @for($i = 1; $i <= 50; $i++) 
           <option value="{{$i}}">
@@ -59,41 +58,57 @@
   {{-- 評価 --}}
   <section class="auxiliary">
 
-    @if(isset($after_reservation))
+    @if($product->purchased())
     <div class="my_evaluation">
-      <h3>前回、{{--$reserved_at--}}に購入しました。</h3>
-      @if(empty($iscomment))
-      <input type="hidden" id="my_star" name="evaluation" form="comment" value="0">
-      <button id="my_star1" class="my_star" onclick="star_change(1,{{$shop->id}})"></button>
-      <button id="my_star2" class="my_star" onclick="star_change(2,{{$shop->id}})"></button>
-      <button id="my_star3}" class="my_star" onclick="star_change(3,{{$shop->id}})"></button>
-      <button id="my_star4" class="my_star" onclick="star_change(4,{{$shop->id}})"></button>
-      <button id="my_star5" class="my_star" onclick="star_change(5,{{$shop->id}})"></button>
-      <textarea name="comment" id="" class="my_comment" cols="100" rows="10" form="comment"></textarea>
-      <button type="submit" class="my_evaluation_send" form="comment" formaction="/comment/{{$shop->id}}">評価を投稿する</button>
+      @if(empty($product->iscomment()))
+      <h3>購入したことのある商品です。評価を投稿してください。</h3>
+      <button id="my_star1{{$product->id}}" class="my_star" onclick="star_change(1,{{$product->id}})"></button>
+      <button id="my_star2{{$product->id}}" class="my_star" onclick="star_change(2,{{$product->id}})"></button>
+      <button id="my_star3{{$product->id}}" class="my_star" onclick="star_change(3,{{$product->id}})"></button>
+      <button id="my_star4{{$product->id}}" class="my_star" onclick="star_change(4,{{$product->id}})"></button>
+      <button id="my_star5{{$product->id}}" class="my_star" onclick="star_change(5,{{$product->id}})"></button>
+      <form action="/comment" method="post">
+        @csrf
+        <input type="hidden" name="tab_item" value="{{$tab_item}}">
+        <input type="hidden" name="product_id" value="{{$product->id}}">
+        <input type="hidden" id="my_star{{$product->id}}" name="evaluation" value="{{old('evaluation',0)}}">
+        <textarea name="comment" id="" class="my_comment">{{old('comment')}}</textarea>
+        @if(($product->id == old('product_id')) && ($errors->has('comment')))
+        <div class="error_disp">{{$errors->first('comment')}}</div>
+        @endif
+        <button type="submit" class="btn btn_evaluation_send">評価を投稿する</button>
+      </form>
       @else
-      <p>評価コメント投稿済みです。</p>
+      <h3>評価コメント投稿済みです。</h3>
+      <p>　</p>
       @endif
     </div>
+    @else
+    <h3>この商品は購入したことがありません。</h3>
+    <p>　</p>
     @endif
 
+    
+    
     <div class="evaluation">
 
-      {{-- @if(count($comments)==0)
+      @if(count($product->comments) == 0)
       <p>評価はまだありません。</p>
       @else
-      <h3>評価（{{count($comments)}}件）</h3>
+      <h3>評価（{{count($product->comments)}}件）</h3>
       <div class="evaluation_contents">
-        @foreach($comments as $comment)
+        <hr>
+        @foreach($product->comments as $comment)
         <div class="evaluation_name">{{$comment->user->name}}</div>
         <div class="evaluation_inner">
           <img src="{{asset('images/star'.$comment->evaluation.'.jpg')}}" alt="" class="star">
           <div class="evaluation_date">投稿日：{{$comment->created_at}}</div>
         </div>
         <div class="evaluation_comment">{{$comment->comment}}</div>
+        <hr>
         @endforeach
       </div>
-      @endif --}}
+      @endif
 
     </div>
   </section>
