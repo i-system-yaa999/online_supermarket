@@ -251,8 +251,18 @@ input[name="tab_item"] {
   background-color: dodgerblue;
   color: white;
 }
-
-
+.btn_evaluation_send{
+  width: 150px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin: 10px 20px 30px auto;
+  display: block;
+}
+.btn_evaluation_send:hover{
+  background-color: dodgerblue;
+  color: white;
+}
 
 
 /* bodyにjsでclassをあてる */
@@ -322,4 +332,9 @@ input[name="tab_item"] {
 .file_label:hover{
   background-color: white;
   color: black;
+}
+
+
+.no_wap {
+  white-space: nowrap;
 }
