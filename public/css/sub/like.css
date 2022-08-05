@@ -42,3 +42,7 @@
 .star_on {
   background-image: url(/images/star_on.jpg);
 }
+
+.my_evaluation{
+  white-space: nowrap;
+}

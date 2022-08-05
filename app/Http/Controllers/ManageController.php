@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Genre;
 use App\Models\Area;
 use App\Models\Image;
+use App\Models\Comment;
 use App\Http\Requests\AreaRequest;
 use App\Http\Requests\GenreRequest;
 use App\Http\Requests\ImageRequest;
@@ -25,9 +26,11 @@ class ManageController extends Controller
         $genres = null;
         $areas = null;
         $images = null;
+        $comments = null;
         switch ($request->tab_item) {
             case 0:
-                $products = Product::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);                break;
+                $products = Product::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
+                break;
             case 1:
                 $genres = Genre::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
@@ -38,6 +41,8 @@ class ManageController extends Controller
                 $images = Image::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
             case 4:
+                $products = Product::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
+                $comments = Comment::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
             case 5:
                 break;
@@ -51,9 +56,10 @@ class ManageController extends Controller
             'genres' => $genres,
             'areas' => $areas,
             'images' => $images,
-            'allgenres' =>  Genre::all(),
-            'allareas' =>  Area::all(),
-            'allimages' =>  Image::all(),
+            'allgenres' => Genre::all(),
+            'allareas' => Area::all(),
+            'allimages' => Image::all(),
+            'comments' => $comments,
         ]);
     }
 
