@@ -30,6 +30,23 @@ class Product extends Model
         $likes = Like::where('product_id', $this->id)->get();
         return count($likes);
     }
+
+    public function iscomment()
+    {
+        $iscomment = Comment::where('user_id', Auth::user()->id)->where('product_id', $this->id)->first();
+        return $iscomment;
+    }
+    // 商品の購入　有/無　判定
+    public function purchased()
+    {
+        $purchased = null;
+        $history = History::where('product_id', $this->id)->first();
+        if($history){
+            $purchased = $history->order->where('user_id', Auth::id())->first();
+        }
+        return $purchased;
+    }
+
     public function genre()
     {
         return $this->belongsTo(Genre::class);
@@ -51,6 +68,10 @@ class Product extends Model
     public function comment()
     {
         return $this->hasOne(Comment::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
     public function history()
     {

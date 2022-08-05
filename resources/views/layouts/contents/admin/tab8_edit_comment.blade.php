@@ -48,16 +48,18 @@
             </td>
             {{-- 商品名 --}}
             <td class="list_name">
-              <input type="text" name="comment_product_name" class="inputbox" value="{{$comment->product->name}}">
+              <input type="text" name="comment_product_name" class="inputbox" value="{{$comment->product->name ?? ''}}">
             </td>
             {{-- 評価数 --}}
             <td class="item-center list-evaluation">
-              <input type="hidden" name="comment_evaluation" id="my_star" value="{{$comment->evaluation}}" oninput="unregisteredComment()">
-              <button id="my_star1" class="my_star @if($comment->evaluation >= 1) star_on @endif" onclick="star_change(1,{{$comment->id}})"></button>
-              <button id="my_star2" class="my_star @if($comment->evaluation >= 2) star_on @endif" onclick="star_change(2,{{$comment->id}})"></button>
-              <button id="my_star3" class="my_star @if($comment->evaluation >= 3) star_on @endif" onclick="star_change(3,{{$comment->id}})"></button>
-              <button id="my_star4" class="my_star @if($comment->evaluation >= 4) star_on @endif" onclick="star_change(4,{{$comment->id}})"></button>
-              <button id="my_star5" class="my_star @if($comment->evaluation == 5) star_on @endif" onclick="star_change(5,{{$comment->id}})"></button>              
+              <p class="my_evaluation">
+                <input type="hidden" name="comment_evaluation" id="my_star" value="{{$comment->evaluation}}" oninput="unregisteredComment()">
+                <button id="my_star1{{$comment->id}}" class="my_star @if($comment->evaluation >= 1) star_on @endif" onclick="star_change(1,{{$comment->id}})"></button>
+                <button id="my_star2{{$comment->id}}" class="my_star @if($comment->evaluation >= 2) star_on @endif" onclick="star_change(2,{{$comment->id}})"></button>
+                <button id="my_star3{{$comment->id}}" class="my_star @if($comment->evaluation >= 3) star_on @endif" onclick="star_change(3,{{$comment->id}})"></button>
+                <button id="my_star4{{$comment->id}}" class="my_star @if($comment->evaluation >= 4) star_on @endif" onclick="star_change(4,{{$comment->id}})"></button>
+                <button id="my_star5{{$comment->id}}" class="my_star @if($comment->evaluation == 5) star_on @endif" onclick="star_change(5,{{$comment->id}})"></button>
+              </p>           
             </td>
             {{-- コメント --}}
             <td>

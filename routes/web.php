@@ -14,6 +14,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -110,6 +111,15 @@ Route::controller(LikeController::class)->group(function () {
   });
 });
 
+//評価データ処理
+Route::controller(CommentController::class)->group(function () {
+  Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/comment', 'index');
+    Route::post('/comment', 'create');
+    Route::put('/comment', 'update');
+    Route::delete('/comment', 'delete');
+  });
+});
 
 
 // メール処理
