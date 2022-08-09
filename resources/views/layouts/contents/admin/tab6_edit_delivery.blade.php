@@ -8,7 +8,7 @@
     @include('layouts.pagenation',['items' => $deliveries])
     @endif
     {{-- 新規作成ボタン --}}
-    <button type="button" class="btn btn_add_item" onclick="">新規作成</button>
+    {{-- <button type="button" class="btn btn_add_item" onclick="">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -18,6 +18,7 @@
         <tr>
           <th class="list_center list_id">ID</th>
           <th class="fixed_head">予約者名</th>
+          <th>予約番号</th>
           <th>配送日</th>
           <th>配送時間</th>
           <th>作成日<br>------<br>更新日</th>
@@ -28,29 +29,35 @@
       <tbody>
         @foreach($deliveries as $delivery)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/admin" method="POST">
+          <form action="/delivery" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="delivery_id" class="list_center list_id" value="{{$delivery->id}}" disabled>
+              <input type="text" name="delivery_id" class="list_center list_id" value="{{$delivery->id}}" readonly>
             </td>
             {{-- 予約者名 --}}
             <td class="list_user_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
-              <input type="text" name="delivery_user_name" class="inputbox" value="{{$delivery->order->user->name}}" disabled>
+              <input type="hidden" name="delivery_user_id" class="inputbox" value="{{$delivery->order->user->id}}">
+              <input type="text" name="delivery_user_name" class="inputbox" value="{{$delivery->order->user->name}}" readonly>
+            </td>
+            {{-- 予約番号 --}}
+            <td class="list_order_munber">
+              <input type="hidden" name="delivery_order_id" class="inputbox" value="{{$delivery->order->id}}">
+              <input type="text" name="delivery_order_number" class="inputbox" value="{{$delivery->order->number}}" readonly>
             </td>
             {{-- 配送日 --}}
             <td class="list_delivery_day">
-              <input type="date" name="list_delivery_day" class="inputbox" value="{{$delivery->day}}">
-              @if(($delivery->id==old('delivery_id')) && ($errors->has('delivery_day')))
-              <div class="error_disp">{{$errors->first('delivery_day')}}</div>
+              <input type="date" name="delivery_date" class="inputbox" value="{{$delivery->date}}">
+              @if(($delivery->id==old('delivery_id')) && ($errors->has('delivery_date')))
+              <div class="error_disp">{{$errors->first('delivery_date')}}</div>
               @endif
             </td>
             {{-- 配送時間 --}}
             <td class="list_delivery_number">
               {{-- <input type="number" name="list_delivery_number" class="inputbox" value="{{$delivery->number}}"> --}}
-              <select name="list_delivery_number" id="" class="selectbox">
+              <select name="delivery_number" id="" class="selectbox">
                 <option value="0" @if($delivery->number==0) selected @endif>店舗で受け取る</option>
                 <option value="1" @if($delivery->number==1) selected @endif>第1便：10:00 ～ 12:00</option>
                 <option value="2" @if($delivery->number==2) selected @endif>第2便：12:00 ～ 14:00</option>
@@ -69,7 +76,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/manage" method="POST">
+            <form action="/delivery" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">
