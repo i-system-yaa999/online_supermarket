@@ -5,7 +5,7 @@
     <hr>
     <h5>送信内容を記入してください</h5>
   </div>
-  <form class="new_email_form" method="POST" action="/email">
+  <form action="/email" method="POST" class="new_email_form">
     @csrf
 
     {{-- ユーザ名 --}}

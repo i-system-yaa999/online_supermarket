@@ -39,7 +39,7 @@ class MypageController extends Controller
                 break;
             case 2:
                 $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
-                // if (isset($$order->id)) {
+                if(isset($order->id)) {
                     $histories = History::where('order_id', $order->id)->get();
 
                     // QRデータ
@@ -57,15 +57,15 @@ class MypageController extends Controller
                         $height = 3;
                         $color = 'black';
                         $qrcode = DNS2DFacade::getBarcodeHTML($value, $type, $width, $height, $color);
-                    // }
+                    }
+                    $delivery_date =  new Carbon($order->delivery->date);
+                    if (Carbon::now()->gt($delivery_date)) {
+                        // 配達日を過ぎていたらＱＲを消す
+                        // $delivery_day < Carbon::now() のとき
+                        $delivery_done = true;
+                    }
                 }
 
-                $delivery_day =  new Carbon($order->delivery->day);
-                if(Carbon::now()->gt($delivery_day)){
-                    // 配達日を過ぎていたらＱＲを消す
-                    // $delivery_day < Carbon::now() のとき
-                    $delivery_done = true;
-                }
                 break;
             case 3:
                 $likes = Like::where('user_id', Auth::id())->get();
@@ -85,8 +85,8 @@ class MypageController extends Controller
             'carts' => $carts,
             'tab_item' => $request->tab_item,
             'delivery' => $delivery,
-            'delivery_date' => $delivery->date ?? '9999',
-            'delivery_number' => $delivery->number ?? '9999',
+            'delivery_date' => $delivery->date ?? '',
+            'delivery_number' => $delivery->number ?? '0',
             'histories' => $histories,
             'likes' => $likes,
             'qrcode' => $qrcode,
@@ -94,32 +94,32 @@ class MypageController extends Controller
         ]);
         
     }
-    // 配達予約
-    public function delivery(Request $request){
-        if(empty(Delivery::where('user_id', Auth::id())->first())){
-            // 新規予約
-            Delivery::create([
-                'user_id' => Auth::id(),
-                'order_id' => null,
-                'date' => $request->delivery_date,
-                'number' => $request->delivery_number,
-            ]);
-        }else{
-            // 予約変更
-            Delivery::where('user_id', Auth::id())->update([
-                'date' => $request->delivery_date,
-                'number' => $request->delivery_number,
-            ]);
-        }
+    // // 配達予約
+    // public function delivery(Request $request){
+    //     if(empty(Delivery::where('user_id', Auth::id())->first())){
+    //         // 新規予約
+    //         Delivery::create([
+    //             'user_id' => Auth::id(),
+    //             'order_id' => null,
+    //             'date' => $request->delivery_date,
+    //             'number' => $request->delivery_number,
+    //         ]);
+    //     }else{
+    //         // 予約変更
+    //         Delivery::where('user_id', Auth::id())->update([
+    //             'date' => $request->delivery_date,
+    //             'number' => $request->delivery_number,
+    //         ]);
+    //     }
 
-        $carts = Cart::all();
-        $delivery = Delivery::where('user_id', Auth::id())->first();
-        return view('mypage')->with([
-            'carts' => $carts,
-            'tab_item' => $request->tab_item,
-            'delivery' => $delivery,
-            'delivery_date' => $delivery->date,
-            'delivery_number' => $delivery->number,
-        ]);
-    }
+    //     $carts = Cart::all();
+    //     $delivery = Delivery::where('user_id', Auth::id())->first();
+    //     return view('mypage')->with([
+    //         'carts' => $carts,
+    //         'tab_item' => $request->tab_item,
+    //         'delivery' => $delivery,
+    //         'delivery_date' => $delivery->date,
+    //         'delivery_number' => $delivery->number,
+    //     ]);
+    // }
 }

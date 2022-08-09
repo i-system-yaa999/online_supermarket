@@ -40,7 +40,7 @@ class Product extends Model
     public function purchased()
     {
         $purchased = null;
-        $history = History::where('product_id', $this->id)->first();
+        $history = History::where('name', $this->name)->first();
         if($history){
             $purchased = $history->order->where('user_id', Auth::id())->first();
         }
@@ -73,8 +73,8 @@ class Product extends Model
     {
         return $this->hasMany(Comment::class);
     }
-    public function history()
-    {
-        return $this->hasOne(History::class);
-    }
+    // public function history()
+    // {
+    //     return $this->hasOne(History::class);
+    // }
 }

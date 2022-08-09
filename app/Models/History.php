@@ -12,7 +12,8 @@ class History extends Model
 
     protected $fillable = [
         'order_id',
-        'product_id',
+        'name',
+        'image_url',
         'quantity',
         'subtotal',
     ];
@@ -21,10 +22,10 @@ class History extends Model
     {
         return $this->belongsTo(Order::class);
     }
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
+    // public function product()
+    // {
+    //     return $this->belongsTo(Product::class);
+    // }
 
 
     // public static function total()

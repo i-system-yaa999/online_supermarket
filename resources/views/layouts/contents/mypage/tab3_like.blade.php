@@ -19,9 +19,9 @@
     @if(count($likes) > 0)
     {{-- {{dd(count($products))}} --}}
     @foreach($likes as $like)
-    
-    @include('layouts.item_data',['product'=>$like->product])
-    
+      @if(isset($like->product))
+      @include('layouts.item_data',['product'=>$like->product])
+      @endif
     @endforeach
     @else
     <p>お気に入り登録された商品はありません。</p>
@@ -33,11 +33,13 @@
   {{-- {{dd(count($products))}} --}}
   @foreach($likes as $like)
   
-  <div id="window_backframe{{$like->product->id}}" class="window_backframe is-hidden">
-    <div class="window_background" onclick="hideDetail({{$like->product->id}})">
+  <div id="window_backframe{{$like->product->id ?? ''}}" class="window_backframe is-hidden">
+    <div class="window_background" onclick="hideDetail({{$like->product->id ?? ''}})">
     </div>
     <div class="window">
+      @if(isset($like->product))
       @include('layouts.item_detail',['product'=>$like->product])
+      @endif
     </div>
   </div>
   

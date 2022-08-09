@@ -19,26 +19,26 @@
         
             {{-- ユーザ名 --}}
             <div class="msg_window_name">
-              <input type="text" class="disp_input" name="name" value="{{Auth::user()->name}}" placeholder="ユーザー名" disabled="disabled">
-              <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('name')}}" disabled="disabled">
+              <input type="text" class="disp_input" name="name" value="{{Auth::user()->name}}" placeholder="ユーザー名" readonly>
+              <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('name')}}" disabled>
             </div>
         
             {{-- メールアドレス --}}
             <div class="msg_window_mail">
               <input type="email" class="disp_input" name="email" value="{{old('email', Auth::user()->email)}}" placeholder="メールアドレス">
-              <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('email')}}" disabled="disabled">
+              <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('email')}}" disabled>
             </div>
         
             {{-- パスワード --}}
             <div class="msg_window_password">
               <input type="password" class="disp_input" name="password" placeholder="password" value="{{old('password')}}">
-              <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('password')}}" disabled="disabled">
+              <input type="text" class="disp_error" name="disp_error" value="{{$errors->first('password')}}" disabled>
             </div>
         
             {{-- パスワード確認 --}}
             <div class="msg_window_password">
               <input type="password" class="disp_input" name="password_confirmation" placeholder="password確認">
-              <input type="heidden" class="disp_error" name="disp_error" value="{{$errors->first('password')}}" disabled="disabled">
+              <input type="heidden" class="disp_error" name="disp_error" value="{{$errors->first('password')}}" disabled>
             </div>
         
             {{-- 送信ボタン --}}

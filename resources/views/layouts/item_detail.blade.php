@@ -4,7 +4,7 @@
 {{-- コンテンツ内容 --}}
 <div class="detail_data">
   {{-- イメージ --}}
-  <img id="image" class="detail_image" src="{{$product->image->url}}" alt="">
+  <img id="image" class="detail_image" src="{{$product->image->url ?? ''}}" alt="">
   <div class="detail_inner_frame">
 
     {{-- タグ --}}
@@ -16,13 +16,13 @@
 
     <div class="detail_name_frame">
       {{-- 名称 --}}
-      <h3 id="name" class="detail_name">{{$product->name}}</h3>
+      <h3 id="name" class="detail_name">{{$product->name ?? '未登録'}}</h3>
       {{-- お気に入り --}}
       @include('layouts.like')
     </div>
 
     {{-- 詳細 --}}
-    <p id="description" class="detail_discription">{{$product->discriptione}}</p>
+    <p id="description" class="detail_discription">{{$product->discriptione ?? ''}}</p>
     {{-- タグ --}}
     <p class="detail_hashtag">
       {{-- 売り場 --}}
@@ -30,16 +30,16 @@
       <label id="genre_name" class="detail_genre">#{{$product->genre->name ?? '---'}}</label>
     </p>
     {{-- 価格 --}}
-    <span id="price" class="detail_price">{{$product->price}}</span><span>円（税込）</span>
+    <span id="price" class="detail_price">{{$product->price ?? '0'}}</span><span>円（税込）</span>
     {{-- アクション --}}
     <div class="detail_action">
       {{-- カートへ --}}
       <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="product_id" id="id" value="{{$product->id}}">
-        <input type="hidden" name="product_name" value="{{$product->name}}">
-        <input type="hidden" name="product_price" value="{{$product->price}}">
-        <input type="hidden" name="product_image" value="{{$product->image->url}}">
+        <input type="hidden" name="product_id" id="id" value="{{$product->id ?? ''}}">
+        <input type="hidden" name="product_name" value="{{$product->name ?? ''}}">
+        <input type="hidden" name="product_price" value="{{$product->price ?? ''}}">
+        <input type="hidden" name="product_image" value="{{$product->image->url ?? ''}}">
         {{-- 個数 --}}
         <select name="quantity" id="quantity" class="detail_quantity selectbox">
           <option value="1">個数：1</option>
@@ -58,7 +58,7 @@
   {{-- 評価 --}}
   <section class="auxiliary">
 
-    @if($product->purchased())
+    @if(null != ($product->purchased()))
     <div class="my_evaluation">
       @if(empty($product->iscomment()))
       <h3>購入したことのある商品です。評価を投稿してください。</h3>

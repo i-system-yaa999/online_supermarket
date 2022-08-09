@@ -5,7 +5,7 @@
     <hr>
     <h5>産地の名称を入力してください</h5>
   </div>
-  <form class="new_area_form" method="POST" action="/area">
+  <form action="/area" method="POST" class="new_area_form">
     @csrf
     {{-- 名称 --}}
     <input type="text" name="area_name" class="new_area_name" placeholder="産地名" vale="{{old('area_name')}}">

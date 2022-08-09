@@ -26,13 +26,13 @@
       <tbody>
         @foreach($areas as $area)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/manage" method="POST">
+          <form action="/area" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="area_id" class="list_center list_id" value="{{$area->id}}" disabled>
+              <input type="text" name="area_id" class="list_center list_id" value="{{$area->id}}" readonly>
             </td>
             {{-- 産地名 --}}
             <td class="list_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
@@ -50,7 +50,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/manage" method="POST">
+            <form action="/area" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">
