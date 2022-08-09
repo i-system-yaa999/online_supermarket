@@ -29,39 +29,37 @@
       <tbody>
         @foreach($managers as $manager)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/admin" method="POST">
+          <form action="/manager" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="user_id" class="list_center list_id" value="{{$manager->user->id}}" disabled>
+              <input type="text" name="manager_id" class="list_center list_id" value="{{$manager->id}}" readonly>
             </td>
             {{-- 権限 --}}
             <td class="list_user_role">
-              <input type="text" name="user_role" class="list_center list_id" value="{{$manager->user->role}}" disabled>
-              @if(($manager->user->id==old('user_id')) && ($errors->has('user_role')))
-              <div class="error_disp">{{$errors->first('user_role')}}</div>
-              @endif
+              <input type="text" name="user_role" class="list_center list_id" value="{{$manager->user->role}}" readonly>
             </td>
             {{-- ユーザー名 --}}
             <td class="list_user_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
+              {{-- <input type="text" name="user_name" class="inputbox" value="{{$manager->user->name}}" readonly> --}}
               <select name="user_id" class="selectbox">
                 @foreach($allusers as $user)
-                <option value="{{$user->id}}" @if(($manager->user->id ?? '9999') == $user->id) selected @endif>
+                <option value="{{$user->id}}" @if($user->id == ($manager->user->id ?? '9999')) selected @endif>
                   {{$user->id.'：'.$user->name}}
                 </option>
                 @endforeach
               </select>
-              @if(($manager->user->id==old('user_id')) && ($errors->has('user_name')))
-              <div class="error_disp">{{$errors->first('user_name')}}</div>
+              @if(($manager->user->id==old('user_id')) && ($errors->has('user_id')))
+              <div class="error_disp">{{$errors->first('user_id')}}</div>
               @endif
             </td>
             {{-- 担当売り場名 --}}
             <td class="list_genre_name">
               <select name="genre_id" class="selectbox">
                 @foreach($allgenres as $genre)
-                <option value="{{$genre->id}}" @if(($manager->genre->id ?? '9999') == $genre->id) selected @endif>
+                <option value="{{$genre->id}}" @if($genre->id == ($manager->genre->id ?? '9999')) selected @endif>
                   {{$genre->id.'：'.$genre->name}}
                 </option>
                 @endforeach
@@ -82,7 +80,8 @@
             <form action="/admin" method="POST">
               @method('DELETE')
               @csrf
-              <input type="hidden" name="tab_item" value="{{$tab_item}}">
+              {{-- <input type="hidden" name="tab_item" value="{{$tab_item}}"> --}}
+              <input type="hidden" name="manager_id" value="{{$manager->id}}">
               <input type="hidden" name="user_id" value="{{$manager->user->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
             </form>

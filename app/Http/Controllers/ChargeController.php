@@ -51,12 +51,13 @@ class ChargeController extends Controller
             $carts = Cart::where('user_id', Auth::id())->get();
             foreach($carts as $cart){
                 History::create([
-                    'product_id' => $cart->product_id,
+                    'name' => $cart->product->name,
+                    'image_url' => $cart->product->image->url,
                     'order_id' => $order->id,
                     'quantity' => $cart->quantity,
                     'subtotal' => $cart->subtotal(),
-                    'delivery_date' => $delivery->date,
-                    'delivery_number' => $delivery->number,
+                    // 'delivery_date' => $delivery->date,
+                    // 'delivery_number' => $delivery->number,
                 ]);
             }
 

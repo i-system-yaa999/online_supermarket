@@ -5,7 +5,7 @@
     <hr>
     <h5>画像を選択してください</h5>
   </div>
-  <form class="new_image_form" method="POST" action="/img" enctype='multipart/form-data'>
+  <form action="/img" method="POST" enctype='multipart/form-data' class="new_image_form">
     @csrf
     {{-- URL --}}
     <input type="text" name="image_url_path" id="image_url_path" class="" vale="{{old('image_url')}}">

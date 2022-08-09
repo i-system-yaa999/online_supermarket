@@ -43,7 +43,7 @@
     <tbody>
       @foreach($histories as $history)
       <tr>
-        <td>{{$history->product->name}}</td>
+        <td>{{$history->name}}</td>
         <td>{{$history->quantity}}個</td>
         <td>{{$history->subtotal}}円</td>
       </tr>

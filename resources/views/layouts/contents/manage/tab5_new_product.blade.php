@@ -8,7 +8,7 @@
     {{-- @foreach ($errors->all() as $error)
     <li>{{$error}}</li>
     @endforeach --}}
-    <form action="/manage" method="POST">
+    <form action="/product" method="POST">
     @csrf
       <table class="new_data_table">
         {{-- 商品名 --}}
@@ -123,9 +123,6 @@
       <div class="new_create">
         <button type="submit" class="btn btn_create">新規登録</button>
       </div>
-    </form>
-    <form id="new_image_form" class="new_image_form" method="POST" action="/image">
-      @csrf
     </form>
   </div>
 

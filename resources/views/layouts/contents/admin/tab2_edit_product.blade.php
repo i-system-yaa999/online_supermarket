@@ -31,13 +31,13 @@
       <tbody>
         @foreach($products as $product)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif" id="tbl_item{{$product->id}}">
-          <form action="/manage" method="POST">
+          <form action="/product" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="product_id" class="list_center list_id" value="{{$product->id}}" disabled>
+              <input type="text" name="product_id" class="list_center list_id" value="{{$product->id}}" readonly>
             </td>
             {{-- 商品名 --}}
             <td class="list_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
@@ -117,7 +117,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/manage" method="POST">
+            <form action="/product" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">

@@ -24,7 +24,7 @@
       </thead>
       <tbody>
         @foreach ($histories as $history)
-          @if($loop->first)
+          {{-- @if($loop->first)
           <p>購入日時：{{$history->order->created_at}}</p>
           <p>　</p>
           <p>配達日：{{$history->order->delivery->date}}</p>
@@ -40,10 +40,10 @@
             @elseif($history->order->delivery->number == 5) 18:00～20:00
             @endif
           </p>
-          @endif
+          @endif --}}
         <tr>
-          <td class="product_image"><img src="{{$history->product->image->url}}" alt="Thumbnail"></td>
-          <td class="product_name">{{$history->product->name}}</td>
+          <td class="product_image"><img src="{{$history->image_url ?? ''}}" alt="Thumbnail"></td>
+          <td class="product_name">{{$history->name ?? ''}}</td>
           <td class="history_qty">{{$history->quantity}}</td>
           {{-- 購入後に価格が変わる可能性があるので演算でpriceを求める --}}
           <td class="history_price">{{\app\Models\History::price($history->id)}}円</td>
@@ -57,14 +57,34 @@
       <div class="total_price">お支払い合計： {{\app\Models\Order::total()}}円</div>
       <p>クレジットカードにて支払い済み</p>
     </div>
-
-      @if($delivery_done)
-      <div class="qr_frame">
-        <p>店舗でお受け取り頂くことも可能です。</p>
-        <p>店舗でのお受け取りの場合は、こちらのＱＲコードを提示してください。</p>
-        <div class="qr">{!!$qrcode!!}</div>
-      </div>
+    <div class="qr_frame">
+      {{-- @if(empty($delivery_done)) --}}
+      <p>店舗でお受け取り頂くことも可能です。</p>
+      <p>店舗でのお受け取りの場合は、こちらのＱＲコードを提示してください。</p>
+      <div class="qr">{!!$qrcode!!}</div>
+      {{-- @endif --}}
+    </div>
+    <div class="history_delivery">
+      @foreach ($histories as $history)
+      @if($loop->first)
+      <p>購入日時：{{$history->order->created_at}}</p>
+      <p>　</p>
+      <p>配達日：{{$history->order->delivery->date}}</p>
+      <p>　</p>
+      <p>配達便：{{$history->order->delivery->number}}便</p>
+      <p>　</p>
+      <p>配達時間：
+        @if($history->order->delivery->number == 0) 店舗での受け取り
+        @elseif($history->order->delivery->number == 1) 10:00～12:00
+        @elseif($history->order->delivery->number == 2) 12:00～14:00
+        @elseif($history->order->delivery->number == 3) 14:00～16:00
+        @elseif($history->order->delivery->number == 4) 16:00～18:00
+        @elseif($history->order->delivery->number == 5) 18:00～20:00
+        @endif
+      </p>
       @endif
+      @endforeach
+    </div>
     @else
     <p>購入履歴はありません。</p>
     @endif

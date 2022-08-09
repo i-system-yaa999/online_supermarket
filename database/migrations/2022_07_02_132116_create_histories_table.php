@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->unsignedInteger('order_id')->comment('注文ID');
-            $table->unsignedInteger('product_id')->comment('商品ID');
+            $table->string('name', 191)->comment('名前');
+            $table->string('image_url', 191)->comment('画像URL');
             $table->unsignedInteger('quantity')->comment('個数');
             $table->unsignedInteger('subtotal')->comment('小計');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');

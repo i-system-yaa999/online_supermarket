@@ -36,11 +36,11 @@
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="user_id" class="list_center list_id" value="{{$user->id}}" disabled>
+              <input type="text" name="user_id" class="list_center list_id" value="{{$user->id}}" readonly>
             </td>
             {{-- 権限 --}}
             <td class="list_user_role">
-              <input type="text" name="user_role" class="list_center list_id" value="{{$user->role}}" disabled>
+              <input type="text" name="user_role" class="list_center list_id" value="{{$user->role}}" readonly>
               @if(($user->id==old('user_id')) && ($errors->has('user_role')))
               <div class="error_disp">{{$errors->first('user_role')}}</div>
               @endif
