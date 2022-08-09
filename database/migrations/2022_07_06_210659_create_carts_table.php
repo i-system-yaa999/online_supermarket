@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->unsignedInteger('user_id')->comment('ユーザーID');
+            $table->unsignedInteger('order_id')->comment('オーダーID');
             $table->unsignedInteger('product_id')->comment('商品ID');
             $table->unsignedInteger('quantity')->comment('個数');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');

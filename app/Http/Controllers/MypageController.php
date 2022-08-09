@@ -30,12 +30,17 @@ class MypageController extends Controller
         switch ($request->tab_item) {
             // カートリスト
             case 0:
-                $carts = Cart::all();
-                $delivery = Delivery::where('user_id', Auth::id())->first();
+                $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
+                $carts = $order->carts ?? null;
+                $delivery = $order->delivery ?? null;
+                // $delivery = Delivery::where('user_id', Auth::id())->first();
                 break;
             case 1:
-                $carts = Cart::all();
-                $delivery = Delivery::where('user_id', Auth::id())->first();
+                $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
+                $carts = $order->carts ?? null;
+                $delivery = $order->delivery ?? null;
+                // $carts = Cart::all();
+                // $delivery = Delivery::where('user_id', Auth::id())->first();
                 break;
             case 2:
                 $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
@@ -82,6 +87,7 @@ class MypageController extends Controller
         // $delivery = Delivery::where('user_id', Auth::id())->first();
         // $histories = History::where('user_id', Auth::id())->get();
         return view('mypage')->with([
+            'order' => $order,
             'carts' => $carts,
             'tab_item' => $request->tab_item,
             'delivery' => $delivery,
