@@ -35,20 +35,14 @@ class ChargeController extends Controller
                 'currency' => 'jpy'
             ));
 
-            // 前回分は消去
-            // History::where('user_id',Auth::id())->delete();
+            // 支払い完了日
+            $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
+            $order->update([
+                'paid_at' => Carbon::now(),
+            ]);
+            $order->save();
 
-            // 今回購入分
-            $order = Order::create([
-                'user_id' => Auth::id(),
-                'number' => intval(Carbon::now()->format('siHdmy')),
-            ]);
-            $delivery = Delivery::find($request->delivery_id);
-            $delivery->update([
-                'order_id' => $order->id,
-            ]);
-            $delivery->save;
-            $carts = Cart::where('user_id', Auth::id())->get();
+            $carts = Cart::where('order_id', $order->id)->get();
             foreach($carts as $cart){
                 History::create([
                     'name' => $cart->product->name,
@@ -62,13 +56,14 @@ class ChargeController extends Controller
             }
 
             // カート内データ削除
-            Cart::where('user_id', Auth::id())->delete();
+            Cart::where('order_id', $order->id)->delete();
 
             // 購入内容の控えをメール送信
+            $delivery = Delivery::where('order_id', $order->id)->first();
             $name = $order->user->name;
             $to = $order->user->email;
             $to = 'ufkq56586@mineo.jp';
-            $subject = 'ご購入完了のお知らせ';
+            $subject = "ご注文番号：{{$order->number}}　ご購入完了のお知らせ";
             $view = 'emails.mail_thanks';
             Mail::to($to)->send(new SendMail($name, $subject, $view, $delivery->number));
 

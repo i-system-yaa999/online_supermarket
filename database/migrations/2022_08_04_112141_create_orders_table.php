@@ -17,6 +17,8 @@ return new class extends Migration
             $table->increments('id')->comment('ID');
             $table->unsignedInteger('user_id')->comment('ユーザーID');
             $table->bigInteger('number')->comment('注文番号');
+            $table->timestamp('paid_at')->nullable()->comment('支払い完了日時');
+            $table->timestamp('completed_at')->nullable()->comment('引き渡し完了日時');
             $table->timestamp('created_at')->useCurrent()->nullable()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->nullable()->comment('更新日時');
         });

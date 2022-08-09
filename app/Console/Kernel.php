@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use App\Models\History;
 use Carbon\Carbon;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class Kernel extends ConsoleKernel
 {

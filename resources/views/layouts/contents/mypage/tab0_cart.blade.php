@@ -10,7 +10,7 @@
   </div>
   {{-- コンテンツ --}}
   <div class="my_content_data">
-    @if(count($carts) > 0)
+    @if(isset($carts))
     <table class="cart_list">
       <thead>
         <tr>
@@ -44,7 +44,8 @@
           <td class="product_delete">
             <form action="{{route('cart.remove')}}" method="POST">
               @csrf
-              <input type="hidden" value="{{$cart->id}}" name="id">
+              <input type="hidden" name="id" value="{{$cart->id}}">
+              <input type="hidden" name="order_id" value="{{$order->id ?? ''}}">
               <button type="submit" class="btn btn_item_delete">削除</button>
             </form>
           </td>
@@ -56,9 +57,11 @@
     <div class="total">
       <form action="{{ route('cart.clear') }}" method="POST">
         @csrf
+        <input type="hidden" name="order_id" value="{{$order->id ?? ''}}">
         <button type="submit" class="btn btn_all_clear">カートを空にする</button>
       </form>
       <div class="total_price">合計： {{\app\Models\Cart::total()}}円</div>
+      <div>オーダー番号：{{$order->number ?? ''}}</div>
     </div>
 
     <div class="charge">
