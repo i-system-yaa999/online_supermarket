@@ -43,17 +43,17 @@ class DeliveryController extends Controller
 
     public function delivery(Request $request)
     {
-        if (empty(Delivery::where('user_id', Auth::id())->first())) {
+        if (empty(Delivery::where('order_id', $request->order_id)->first())) {
             // 新規予約
             $delivery = Delivery::create([
-                'user_id' => Auth::id(),
-                'order_id' => null,
+                // 'user_id' => Auth::id(),
+                'order_id' => $request->order_id,
                 'date' => $request->delivery_date,
                 'number' => $request->delivery_number,
             ]);
         } else {
             // 予約変更
-            $delivery = Delivery::where('user_id', Auth::id())->update([
+            $delivery = Delivery::where('order_id', $request->order_id)->update([
                 'date' => $request->delivery_date,
                 'number' => $request->delivery_number,
             ]);

@@ -13,6 +13,8 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'number',
+        'paid_at',
+        'completed_at',
     ];
 
     public function user()
@@ -22,6 +24,10 @@ class Order extends Model
     public function histories()
     {
         return $this->hasMany(History::class);
+    }
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
     // public function deliveries()
     // {

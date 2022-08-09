@@ -50,7 +50,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
   // カート処理
   Route::controller(CartController::class)->group(function () {
-    Route::get('cart', 'cartList')->name('cart.list');
+    // Route::get('cart', 'cartList')->name('cart.list');
     Route::post('cart', 'addToCart')->name('cart.store');
     Route::post('update-cart', 'updateCart')->name('cart.update');
     Route::post('remove', 'removeCart')->name('cart.remove');

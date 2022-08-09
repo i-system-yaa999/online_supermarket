@@ -7,7 +7,7 @@
   </div>
   {{-- コンテンツ --}}
   <div class="my_content_data">
-    @if(count($carts) > 0)
+    @if(isset($carts))
 
     <div class="delivery">
       @if(isset($delivery))
@@ -26,6 +26,7 @@
         <form action="/delivery" method="POST">
           @csrf
           <input type="hidden" name="tab_item" value="{{$tab_item}}">
+          <input type="hidden" name="order_id" value="{{$order->id ?? ''}}">
           {{-- 配達日 --}}
           <select name="delivery_date" id="" class="selectbox">
             <option value="{{\Carbon\Carbon::tomorrow()}}" @if(\Carbon\Carbon::tomorrow()->format('Y年m月d日') == old('delivery_date')) selected @endif>
