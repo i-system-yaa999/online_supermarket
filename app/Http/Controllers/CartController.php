@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Delivery;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -24,8 +26,8 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         if(Cart::where('product_id',$request->product_id)->first()){
-            Cart::where('product_id', $request->product_id)->increment('quantity');
-        }else{
+            Cart::where('product_id', $request->product_id)->increment('quantity', $request->quantity);
+        }else {
             Cart::create([
                 'user_id' => Auth::id(),
                 'product_id' => $request->product_id,

@@ -5,7 +5,7 @@
     <hr>
     <h5>売り場の名称を入力してください</h5>
   </div>
-  <form class="new_genre_form" method="POST" action="/genre">
+  <form action="/genre" method="POST" class="new_genre_form">
     @csrf
     {{-- 名称 --}}
     <input type="text" name="genre_name" class="new_genre_name" placeholder="売り場名" vale="{{old('genre_name')}}">

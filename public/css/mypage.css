@@ -97,7 +97,10 @@ body {
   text-align: center;
   vertical-align: middle;
 }
-
+.history_delivery{
+  width: 55%;
+  margin: 20px auto;
+}
 
 .total{
   padding-top: 10px;

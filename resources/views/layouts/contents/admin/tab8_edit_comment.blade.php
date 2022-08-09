@@ -8,7 +8,7 @@
     @include('layouts.pagenation',['items' => $comments])
     @endif
     {{-- 新規作成ボタン --}}
-    <button type="button" class="btn btn_add_item" onclick="">新規作成</button>
+    {{-- <button type="button" class="btn btn_add_item" onclick="">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -30,17 +30,17 @@
       <tbody>
         @foreach($comments as $comment)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/admin" method="POST">
+          <form action="/comment" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="comment_id" class="list_center list_id" value="{{$comment->id}}" disabled>
+              <input type="text" name="comment_id" class="list_center list_id" value="{{$comment->id}}" readonly>
             </td>
             {{-- ユーザー名 --}}
             <td class="list_user_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
-              <input type="text" name="comment_user_name" class="inputbox" value="{{$comment->user->name}}" disabled>
+              <input type="text" name="comment_user_name" class="inputbox" value="{{$comment->user->name}}" readonly>
             </td>
             {{-- イメージ --}}
             <td class="list_image">
@@ -48,7 +48,7 @@
             </td>
             {{-- 商品名 --}}
             <td class="list_name">
-              <input type="text" name="comment_product_name" class="inputbox" value="{{$comment->product->name ?? ''}}">
+              <input type="text" name="comment_product_name" class="inputbox" value="{{$comment->product->name ?? '登録がありません'}}">
             </td>
             {{-- 評価数 --}}
             <td class="item-center list-evaluation">
@@ -77,7 +77,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/admin" method="POST">
+            <form action="/comment" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">

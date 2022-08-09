@@ -2,9 +2,10 @@
 {{-- layouts\item_detail.blade.php にてinclude--}}
 
 {{-- お気に入り --}}
+@if($product->id ?? '')
 <div class="disp_like">
   @auth
-  @if(!($product->getLike()==null))
+  @if(!empty($product->getLike()))
   {{-- お気に入り削除 --}}
   <form id="like_del" action="/like" method="POST">
     @method('DELETE')
@@ -31,3 +32,4 @@
     @endif
   </div>
 </div>
+@endif

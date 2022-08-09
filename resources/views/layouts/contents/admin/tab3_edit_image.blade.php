@@ -19,7 +19,7 @@
           <th class="list_center list_id">ID</th>
           <th class="fixed_head">画像</th>
           <th>画像URL<br>images/products/</th>
-          <th></th>
+          {{-- <th></th> --}}
           <th>作成日<br>------<br>更新日</th>
           <th></th>
           <th></th>
@@ -28,13 +28,13 @@
       <tbody>
         @foreach($images as $image)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/manage" method="POST">
+          <form action="/img" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="image_id" class="list_center list_id" value="{{$image->id}}" disabled>
+              <input type="text" name="image_id" class="list_center list_id" value="{{$image->id}}" readonly>
             </td>
             {{-- イメージurl --}}
             <td class="list_image @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
@@ -48,9 +48,9 @@
               @endif
             </td>
             {{-- 変更ボタン --}}
-            <td class="list_center list_upload">
+            {{-- <td class="list_center list_upload">
               <button class="btn btn-upload">画像変更</button>
-            </td>
+            </td> --}}
             {{-- 作成日/更新日 --}}
             <td class="list_created">{{$image->created_at}}<span class="hr"></span>{{$image->updated_at}}</td>
             {{-- 登録ボタン --}}
@@ -60,7 +60,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/manage" method="POST">
+            <form action="/img" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">

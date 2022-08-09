@@ -8,7 +8,7 @@
     @include('layouts.pagenation',['items' => $likes])
     @endif
     {{-- 新規作成ボタン --}}
-    <button type="button" class="btn btn_add_item" onclick="">新規作成</button>
+    {{-- <button type="button" class="btn btn_add_item" onclick="">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -28,13 +28,13 @@
       <tbody>
         @foreach($likes as $like)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/admin" method="POST">
+          <form action="/like" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
             {{-- id --}}
             <td class="list_id">
-              <input type="text" name="like_id" class="list_center list_id" value="{{$like->id}}" disabled>
+              <input type="text" name="like_id" class="list_center list_id" value="{{$like->id}}" readonly>
             </td>
             {{-- ユーザー名 --}}
             <td class="list_user_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
@@ -52,8 +52,8 @@
             </td>
             {{-- 商品名 --}}
             <td class="list_product_name">
-              {{-- <input type="text" name="product_name" class="inputbox" value="{{$product->name}}"> --}}
-              <select name="product_name" id="" class="selectbox">
+              <select name="product_id" id="" class="selectbox">
+                <option value="" @if($like->product->id ?? 'selected') @endif>登録がありません</option>
                 @foreach($allproducts as $product)
                 <option value="{{$product->id}}" @if(($like->product->id ?? '9999') == $product->id) selected @endif>
                   {{$product->id.'：'.$product->name}}
@@ -71,7 +71,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/manage" method="POST">
+            <form action="/like" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">

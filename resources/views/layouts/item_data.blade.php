@@ -4,7 +4,7 @@
 {{-- コンテンツ内容 --}}
 <div class="item_data">
   {{-- イメージ & 詳細ページリンク --}}
-  <form id="product{{$product->id}}">
+  <form id="product{{$product->id ?? ''}}">
     <input type="hidden" name="product_id" value="{{$product->id ?? ''}}">
     <input type="hidden" name="product_name" value="{{$product->name ?? ''}}">
     <input type="hidden" name="product_genre_id" value="{{$product->genre_id ?? ''}}">
@@ -14,7 +14,7 @@
     <input type="hidden" name="product_price" value="{{$product->price ?? ''}}">
     <input type="hidden" name="product_description" value="{{$product->description ?? ''}}">
     <input type="hidden" name="product_image" value="{{$product->image->url ?? ''}}">
-    <img class="item_image" src="{{asset($product->image->url)}}" alt="{{$product->name}}" onclick="showDetail({{$product->id}})" title="詳しく見る">
+    <img class="item_image" src="{{asset($product->image->url ?? '')}}" alt="{{$product->name ?? ''}}" onclick="showDetail({{$product->id ?? ''}})" title="詳しく見る">
   </form>
 
   {{-- タグ --}}
@@ -26,7 +26,7 @@
 
   <div class="item_name_frame">
     {{-- 名称 --}}
-    <h3 class="item_name">{{$product->name}}</h3>
+    <h3 class="item_name">{{$product->name ?? '未登録'}}</h3>
     {{-- お気に入り --}}
     @include('layouts.like')
   </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="item_group">
       {{-- 価格 --}}
-      <p><span class="item_price">{{$product->price}}</span><span>円（税込）</span></p>
+      <p><span class="item_price">{{$product->price ?? '0'}}</span><span>円（税込）</span></p>
       @auth
       <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
