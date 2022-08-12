@@ -13,7 +13,7 @@ class Image extends Model
         'url',
     ];
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }

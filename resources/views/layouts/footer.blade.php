@@ -4,15 +4,15 @@
 <footer class="footer">
   <nav class="endnav">
     <ul>
-      <li><a href="/about">会社概要</a></li>
+      <li>会社概要</li>
       <span>｜</span>
-      <li><a href="/agreement">利用規約</a></li>
+      <li>利用規約</li>
       <span>｜</span>
-      <li><a href="/policy">プライバシー規約</a></li>
+      <li>プライバシー規約</li>
       <span>｜</span>
-      <li><a href="/contact">お問い合わせ</a></li>
+      <li>お問い合わせ</li>
       <span>｜</span>
-      <li><a href="/sitemap">サイトマップ</a></li>
+      <li>サイトマップ</li>
     </ul>
   </nav>
   <small class="copyright">&copy 2022 Red SuperMarket</small>

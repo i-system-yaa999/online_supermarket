@@ -8,10 +8,8 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
-use App\Models\History;
-use Carbon\Carbon;
 use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,24 +24,27 @@ class Kernel extends ConsoleKernel
         // 配達予定時間のお知らせ
         $schedule->call(function () {
             
-            $histories = History::all();
+            $orders = Order::all();
             $subject = '配達予定時間のお知らせ';
             $view = 'emails.mail_delivery_confirm';
 
-            foreach($histories as $history)
+            foreach($orders as $order)
             {
-                $name = $history->order->user->name;
-                $to = $history->order->user->email;
-                // $to = 'ufkq56586@mineo.jp';
-                $date = new Carbon($history->order->delivery->date);
-                
-                if($date->isSameDay(Carbon::now())) {
-                    Mail::to($to)->send(new SendMail($name, $subject, $view, $history->order->delivery->number));
+                if(isset($order->paid_at)){
+                    $name = $order->user->name;
+                    $to = $order->user->email;
+                    $text = $order->delivery->number;
+                    $text = "$text";
+
+                    $date = new Carbon($order->delivery->date);
+                    if ($date->isSameDay(Carbon::now())) {
+                        Mail::to($to)->send(new SendMail($name, $subject, $view, $text));
+                    }
                 }
                 
             }
             
-        // })->everyMinute();
+        // })->everyMinute();// 確認時はこちらを有効にする
         })->dailyAt('8:00');
     }
 

@@ -3,14 +3,13 @@
 {{-- カート --}}
 <div class="tab_content" id="tab0_content">
   
-  
   <div class="my_content_nav">
     <h3>カート内商品</h3>
     <p>価格はすべて税込みです</p>
   </div>
   {{-- コンテンツ --}}
   <div class="my_content_data">
-    @if(isset($carts))
+    @if(isset($carts) && count($carts) > 0)
     <table class="cart_list">
       <thead>
         <tr>
@@ -30,7 +29,6 @@
             <form class="product_form" action="{{ route('cart.update') }}" method="POST">
               @csrf
               <input type="hidden" name="id" value="{{$cart->id}}">
-              {{-- <input type="number" name="quantity" value="{{$cart->quantity}}"> --}}
               <select name="quantity" id="quantity">
                 <option value="{{$cart->quantity}}">個数：{{$cart->quantity}}</option>
                 @for($i = 1; $i <= 50; $i++)
@@ -40,7 +38,7 @@
               <button type="submit" class="btn btn_qty_change">更新</button>
             </form>
           </td>
-          <td class="product_price"><p>{{$cart->product->price}}円</p></td>
+          <td class="product_price no_wap"><p>{{$cart->product->price}}円</p></td>
           <td class="product_delete">
             <form action="{{route('cart.remove')}}" method="POST">
               @csrf
@@ -68,9 +66,8 @@
       <form action="{{asset('/charge')}}" method="POST">
         @csrf
         <input type="hidden" name="total" value="{{\app\Models\Cart::total()}}">
-        {{-- <input type="hidden" name="carts" value="{{$carts}}"> --}}
         <input type="hidden" name="delivery_id" value="{{$delivery->id ?? ''}}">
-        @if(isset($delivery->id))
+        @if(isset($order->delivery) && empty($order->paid_at))
           
           <p>配達日：{{$delivery->date}}</p>
           <p>　</p>
@@ -99,7 +96,7 @@
           data-currency="JPY">
         </script>
         @else
-        <h4>お支払いの前に配達日時を予約してください。</h4>
+        <h4 class="no_wap">お支払いの前に配達日時を予約してください。</h4>
         <button type="button" class="btn btn_delivery"><a href="/mypage?tab_item=1">予約する</a></button>
         @endif
       </form>

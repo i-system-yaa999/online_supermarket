@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            // $table->unsignedInteger('user_id')->comment('ユーザーID');
             $table->unsignedInteger('order_id')->nullable()->comment('注文ID');
             $table->date('date')->comment('配達日');
             $table->unsignedInteger('number')->comment('配達便');

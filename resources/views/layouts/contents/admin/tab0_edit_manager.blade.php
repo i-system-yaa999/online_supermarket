@@ -9,7 +9,6 @@
     @endif
     {{-- 新規作成ボタン --}}
     <button type="button" class="btn btn_add_item" onclick="showManagerWindow()">新規作成</button>
-    <button type="button" class="btn btn_add_item" onclick="showEmailWindow()">メール送信</button>
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -43,7 +42,6 @@
             </td>
             {{-- ユーザー名 --}}
             <td class="list_user_name @if($loop->iteration % 2) fixed_odd @else fixed_even @endif">
-              {{-- <input type="text" name="user_name" class="inputbox" value="{{$manager->user->name}}" readonly> --}}
               <select name="user_id" class="selectbox">
                 @foreach($allusers as $user)
                 <option value="{{$user->id}}" @if($user->id == ($manager->user->id ?? '9999')) selected @endif>
@@ -80,7 +78,6 @@
             <form action="/admin" method="POST">
               @method('DELETE')
               @csrf
-              {{-- <input type="hidden" name="tab_item" value="{{$tab_item}}"> --}}
               <input type="hidden" name="manager_id" value="{{$manager->id}}">
               <input type="hidden" name="user_id" value="{{$manager->user->id}}">
               <button class="btn btn-delete" type="submit">削除</button>
@@ -95,16 +92,12 @@
   
   
   {{-- 新規作成用ウィンドウ --}}
-  <div id="window_backframe"
-    class="window_backframe @if(empty(old('new_manager_open')) && empty(old('new_email_open'))) is-hidden @endif">
+  <div id="window_backframe" class="window_backframe @if(empty(old('new_manager_open'))) is-hidden @endif">
     <div class="window_background" onclick="hideWindow()"></div>
     <div class="window">
   
       {{-- ユーザー --}}
       @include('layouts.contents.new_manager')
-  
-      {{-- メール送信 --}}
-      @include('layouts.contents.new_email')
   
     </div>
   </div>

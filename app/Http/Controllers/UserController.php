@@ -30,19 +30,19 @@ class UserController extends Controller
             User::where('id', $request->user_id)->update([
                 'name' => $request->user_name,
                 'email' => $request->user_email,
+                'email_verified_at' => null,
             ]);
         } else {
             User::where('id', $request->user_id)->update([
                 'name' => $request->user_name,
                 'email' => $request->user_email,
-                'password' => Hash::make($request->user_password),
+                'email_verified_at' => null,
             ]);
         }
         return back();
     }
     public function delete(Request $request)
     {
-        // $user = User::find($request->user_id)->delete();
         $user = User::where('id', $request->user_id)->delete();
         return back();
     }
