@@ -15,10 +15,9 @@ class LikesTableSeeder extends Seeder
     public function run()
     {
         // 通常ユーザーお気に入り 1件
-        $like = new Like([
+        Like::create([
             'user_id' => 3,
             'product_id' => 2,
         ]);
-        $like->save();
     }
 }
