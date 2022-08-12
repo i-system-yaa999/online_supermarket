@@ -15,12 +15,11 @@ class CommentsTableSeeder extends Seeder
     public function run()
     {
         // 通常ユーザー評価コメント 1件
-        $comment = new Comment([
+        Comment::create([
             'user_id' => 3,
             'product_id' => 1,
             'evaluation' => 4,
             'comment' => '新鮮でおいしかったです。',
         ]);
-        $comment->save();
     }
 }
