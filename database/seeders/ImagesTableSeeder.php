@@ -30,6 +30,9 @@ class ImagesTableSeeder extends Seeder
             'url' => 'images/products/さくらんぼ.jpg'
         ]);
         Image::create([
+            'url' => 'images/products/サングラス.jpg'
+        ]);
+        Image::create([
             'url' => 'images/products/しょうゆ.jpg'
         ]);
         Image::create([
@@ -54,7 +57,13 @@ class ImagesTableSeeder extends Seeder
             'url' => 'images/products/プラム.jpg'
         ]);
         Image::create([
+            'url' => 'images/products/ペットフード.jpg'
+        ]);
+        Image::create([
             'url' => 'images/products/ほうれん草.jpg'
+        ]);
+        Image::create([
+            'url' => 'images/products/レタス.jpg'
         ]);
         Image::create([
             'url' => 'images/products/牛肩ロース.jpg'

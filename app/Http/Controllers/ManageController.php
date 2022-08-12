@@ -36,7 +36,7 @@ class ManageController extends Controller
                 $images = Image::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
             case 4:
-                $products = Product::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
+                $products = Product::all();
                 $comments = Comment::orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
             case 5:
