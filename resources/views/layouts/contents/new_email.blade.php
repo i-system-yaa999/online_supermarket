@@ -11,9 +11,10 @@
     {{-- ユーザ名 --}}
     <div class="user_name">
       <p>送信先ユーザー名</p>
-      <select name="user_id" class="selectbox">
+      <div class="error_disp">{{$errors->first('user_name')}}</div>
+      <select name="user_name" class="selectbox new_email_to">
         @foreach($allusers as $user)
-        <option value="{{$user->id}}" @if(($manager->user->id ?? '9999') == $user->id) selected @endif>
+        <option value="{{$user->name}}" @if(old('user_name') == $user->name) selected @endif>
           {{$user->id.'：'.$user->name}}
         </option>
         @endforeach
@@ -23,28 +24,27 @@
     {{-- メールアドレス --}}
     <div class="mail_address">
       <p>送信先メールアドレス</p>
-      <input type="text" id="user_email" name="user_email" value="{{old('user_email')}}">
+      <div class="error_disp">{{$errors->first('user_email')}}</div>
+      <input type="text" id="user_email" name="user_email"  class="inputbox new_email_address" value="{{old('user_email')}}">
     </div>
 
     {{-- メールタイトル --}}
     <div class="mail_title">
       <p>メールタイトル</p>
-      <input type="text" name="" class="" value="{{old('')}}">
+      <div class="error_disp">{{$errors->first('mail_title')}}</div>
+      <input type="text" name="mail_title" class="inputbox new_email_title" value="{{old('mail_title')}}">
     </div>
 
     {{-- メール本文 --}}
     <div class="message">
       <p>メール本文</p>
-      <textarea name="" class="">{{old('')}}</textarea>
-      @if($errors->has(''))
-      <div class="error_disp">{{$errors->first('')}}</div>
-      @endif
+      <div class="error_disp">{{$errors->first('mail_message')}}</div>
+      <textarea name="mail_message" class="new_email_message">{{old('mail_message')}}</textarea>
     </div>
 
     {{-- ウィンドウフラグ --}}
     <input type="hidden" name="new_email_open" value="true">
-    {{-- <input type="hidden" name="new_user_open" value="false"> --}}
     {{-- 送信ボタン --}}
-    <button type="submit" class="btn btn_">送信</button>
+    <button type="submit" class="btn btn_new_email">送信</button>
   </form>
 </div>

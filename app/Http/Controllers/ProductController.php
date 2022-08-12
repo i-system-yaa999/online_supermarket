@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Area;
+use App\Models\Genre;
 use App\Models\Comment;
 use App\Models\Cart;
 use App\Models\Like;
-use Illuminate\Support\Facades\Auth;
-
 
 class ProductController extends Controller
 {
@@ -38,22 +37,13 @@ class ProductController extends Controller
             default:
                 $products = Product::where('genre_id', ($request->tab_item - 2))->orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
                 break;
-            // case 4:
-            //     $products = Product::where('genre_id', '2')->orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
-            //     break;
-            // case 5:
-            //     $products = Product::where('genre_id', '3')->orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
-            //     break;
-            // case 6:
-            //     $products = Product::where('genre_id', '4')->orderBy('id', 'desc')->Paginate($perPage, $columns, $pageName);
-            //     break;
         }
         return view('index')->with([
             'tab_item' => $request->tab_item,
             'products' => $products,
             'areas' =>  Area::all(),
+            'allgenres' =>  Genre::all(),
             'selected_area' => $request->input('selected_area'),
-            // 'selected_genre' => $request->input('selected_genre'),
             'search_name' => $request->input('search_name'),
         ]);
     }
@@ -85,7 +75,6 @@ class ProductController extends Controller
             'description' => $request->product_description,
             'image_id' => $request->product_image_id,
         ]);
-        // return redirect(route('manage.index'));
         return back();
     }
     public function delete(Request $request)

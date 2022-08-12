@@ -7,7 +7,7 @@
   </div>
   {{-- コンテンツ --}}
   <div class="my_content_data">
-    @if(isset($carts))
+    @if(isset($carts) && count($carts) > 0)
 
     <div class="delivery">
       @if(isset($delivery))
@@ -38,12 +38,12 @@
           </select>
           {{-- 配達便 --}}
           <ul class="">
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="0" @if(($delivery_number ?? 0) == 0) checked @endif>店舗で受け取る</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="1" @if(($delivery_number ?? 0) == 1) checked @endif>第1便：10:00 ～ 12:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="2" @if(($delivery_number ?? 0) == 2) checked @endif>第2便：12:00 ～ 14:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="3" @if(($delivery_number ?? 0) == 3) checked @endif>第3便：14:00 ～ 16:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="4" @if(($delivery_number ?? 0) == 4) checked @endif>第4便：16:00 ～ 18:00</li>
-            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="5" @if(($delivery_number ?? 0) == 5) checked @endif>第5便：18:00 ～ 20:00</li>
+            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="0" @if(($delivery->number ?? 0) == 0) checked @endif>店舗で受け取る</li>
+            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="1" @if(($delivery->number ?? 0) == 1) checked @endif>第1便：10:00 ～ 12:00</li>
+            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="2" @if(($delivery->number ?? 0) == 2) checked @endif>第2便：12:00 ～ 14:00</li>
+            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="3" @if(($delivery->number ?? 0) == 3) checked @endif>第3便：14:00 ～ 16:00</li>
+            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="4" @if(($delivery->number ?? 0) == 4) checked @endif>第4便：16:00 ～ 18:00</li>
+            <li class="delivery_item"><input type="radio" name="delivery_number" id="" value="5" @if(($delivery->number ?? 0) == 5) checked @endif>第5便：18:00 ～ 20:00</li>
           </ul>
           <button type="submit" class="btn btn_delivery">@if(isset($delivery)) 配達便を変更する @else 配達便を決定する @endif</button>
         </form>

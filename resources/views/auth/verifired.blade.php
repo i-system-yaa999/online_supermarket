@@ -1,5 +1,5 @@
 @push('stylesheet')
-{{-- <link rel="stylesheet" href="{{asset('css/.css')}}"> --}}
+<link rel="stylesheet" href="{{asset('css/auth.css')}}">
 @endpush
 <x-layouts.auth title="メール確認完了">
   <section class="msg_content">
@@ -19,5 +19,4 @@
       </div>
     </div>
   </section>
-  {{-- @endsection --}}
 </x-layouts.auth>

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Like;
 
 class LikesTableSeeder extends Seeder
 {
@@ -14,6 +14,11 @@ class LikesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // 通常ユーザーお気に入り 1件
+        $like = new Like([
+            'user_id' => 3,
+            'product_id' => 2,
+        ]);
+        $like->save();
     }
 }

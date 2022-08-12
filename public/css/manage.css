@@ -2,20 +2,13 @@ body {
   background: linear-gradient(white, beige);
 }
 
-/* -------------------------------------------------- */
 .data_nav{
-  /* min-width: 1500px;
-  max-width: 1500px;
-  margin: 0 auto; */
 }
 .data_list{
   overflow-x: auto;
 }
 .tbl_item_list{
-  /* min-width: 1500px;
-  max-width: 1500px; */
   margin: 0 auto;
-  /* -webkit-overflow-scrolling: touch; */
   border-collapse: separate;
   border-spacing: 1px;
 }
@@ -68,8 +61,6 @@ table th,td {
 .list_center{
   text-align: center;
 }
-/* .list_checkbox{
-} */
 .list_id{
   width: 30px;
   background: none;
@@ -96,7 +87,6 @@ table th,td {
 }
 .list_image img{
   width: 90%;
-  /* margin-left: 10px; */
 }
 .list_image-url{
   width: 172px;
@@ -130,9 +120,6 @@ table th,td {
 .list_delete{
   width: 80px;
 }
-/* .list_terminal{
-  width: 80px;
-} */
 
 
 
@@ -189,9 +176,6 @@ table th,td {
 }
 .new_data_table th,
 .new_data_table td{
-  /* border: 1px solid black; */
-  /* display: block;
-  width: 100%; */
 }
 .new_name_head{
 }

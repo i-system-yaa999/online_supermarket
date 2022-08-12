@@ -7,8 +7,6 @@
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $deliveries])
     @endif
-    {{-- 新規作成ボタン --}}
-    {{-- <button type="button" class="btn btn_add_item" onclick="">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -56,7 +54,6 @@
             </td>
             {{-- 配送時間 --}}
             <td class="list_delivery_number">
-              {{-- <input type="number" name="list_delivery_number" class="inputbox" value="{{$delivery->number}}"> --}}
               <select name="delivery_number" id="" class="selectbox">
                 <option value="0" @if($delivery->number==0) selected @endif>店舗で受け取る</option>
                 <option value="1" @if($delivery->number==1) selected @endif>第1便：10:00 ～ 12:00</option>
@@ -90,17 +87,5 @@
     </table>
 
   </div>
-
-  {{-- 新規作成用ウィンドウ --}}
-  <div id="window_backframe"
-    class="window_backframe @if(empty(old('new_delivery_open'))) is-hidden @endif">
-    <div class="window_background" onclick="hideWindow()"></div>
-    <div class="window">
-
-      @include('layouts.contents.new_area')
-
-    </div>
-  </div>
-
-
+  
 </div>

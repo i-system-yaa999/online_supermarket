@@ -1,4 +1,4 @@
-{{-- xxx --}}
+{{-- 売り場 --}}
 <div class="tab_content" id="tab1_content">
   <div class="content_nav">
     @if(isset($genres))
@@ -65,8 +65,7 @@
   </div>
 
   {{-- 新規作成用ウィンドウ --}}
-  <div id="window_backframe"
-    class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
+  <div id="window_backframe" class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
     <div class="window_background" onclick="hideWindow()"></div>
     <div class="window">
       
@@ -76,13 +75,3 @@
   </div>
 
 </div>
-<script>
-  // function showGenreWindow(){
-  //   document.getElementById('window_backframe').classList.remove('is-hidden');
-  //   document.getElementById('new_genre').classList.remove('genre_hide');
-  // }
-  // function hideWindow(){
-  //   document.getElementById('window_backframe').classList.add('is-hidden');
-  //   document.getElementById('new_genre').classList.add('genre_hide');
-  // }
-</script>

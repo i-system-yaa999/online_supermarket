@@ -7,8 +7,7 @@
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $users])
     @endif
-    {{-- 新規作成ボタン --}}
-    <button type="button" class="btn btn_add_item" onclick="showUserWindow()">新規作成</button>
+    {{-- メール送信ボタン --}}
     <button type="button" class="btn btn_add_item" onclick="showEmailWindow()">メール送信</button>
   </div>
   {{-- コンテンツ --}}
@@ -30,7 +29,7 @@
       <tbody>
         @foreach($users as $user)
         <tr class="@if($loop->iteration % 2) tbl_odd @else tbl_even @endif">
-          <form action="/admin" method="POST">
+          <form action="/user" method="POST">
             @method('PUT')
             @csrf
             <input type="hidden" name="tab_item" value="{{$tab_item}}">
@@ -61,7 +60,7 @@
             </td>
             {{-- パスワード --}}
             <td class="list_user_password">
-              <input type="text" name="user_password" class="inputbox" value="{{$user->password}}">
+              <input type="text" name="user_password" class="inputbox" value="{{$user->password}}" readonly>
               @if(($user->id==old('user_id')) && ($errors->has('user_password')))
               <div class="error_disp">{{$errors->first('user_password')}}</div>
               @endif
@@ -75,7 +74,7 @@
           </form>
           {{-- 削除ボタン --}}
           <td class="list_center list_delete">
-            <form action="/admin" method="POST">
+            <form action="/user" method="POST">
               @method('DELETE')
               @csrf
               <input type="hidden" name="tab_item" value="{{$tab_item}}">
@@ -92,13 +91,10 @@
 
 
   {{-- 新規作成用ウィンドウ --}}
-  <div id="window_backframe" class="window_backframe @if(empty(old('new_user_open')) && empty(old('new_email_open'))) is-hidden @endif">
+  <div id="window_backframe" class="window_backframe @if(empty(old('new_email_open'))) is-hidden @endif">
     <div class="window_background" onclick="hideWindow()"></div>
     <div class="window">
   
-      {{-- ユーザー --}}
-      @include('layouts.contents.new_user')
-
       {{-- メール送信 --}}
       @include('layouts.contents.new_email')
   

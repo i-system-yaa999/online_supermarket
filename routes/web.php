@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AreaController;
@@ -18,8 +17,6 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Auth;
 
 // トップページ
 Route::get('/', [ProductController::class, 'productList'])->name('products.list');
@@ -27,8 +24,6 @@ Route::get('/home', [ProductController::class, 'productList'])->middleware('veri
 
 // ユーザー処理
 Route::controller(AuthController::class)->group(function () {
-  // Route::get('/register', 'register');
-  // Route::get('/login', 'login');
   Route::get('/logout', 'logout')->middleware('auth');
   Route::get('/email/verify', 'email_notice')->middleware('auth')->name('verification.notice');
   Route::get('/email/verify/{id}/{hash}', 'email_verify')->middleware(['auth', 'signed'])->name('verification.verify');
@@ -45,12 +40,10 @@ Route::middleware('auth', 'verified')->group(function () {
   // マイページ処理
   Route::controller(MypageController::class)->group(function () {
     Route::get('mypage', 'index')->name('mypage.index');
-    // Route::post('delivery', 'delivery');
   });
 
   // カート処理
   Route::controller(CartController::class)->group(function () {
-    // Route::get('cart', 'cartList')->name('cart.list');
     Route::post('cart', 'addToCart')->name('cart.store');
     Route::post('update-cart', 'updateCart')->name('cart.update');
     Route::post('remove', 'removeCart')->name('cart.remove');
@@ -79,7 +72,6 @@ Route::middleware('auth', 'verified')->group(function () {
   // 配達予約処理
   Route::controller(DeliveryController::class)->group(function () {
     Route::get('delivery', 'index');
-    // Route::post('delivery', 'create');
     Route::post('delivery', 'delivery');
     Route::put('delivery', 'update');
     Route::delete('delivery', 'delete');
@@ -95,9 +87,6 @@ Route::middleware('auth', 'can:manager-higher')->group(function () {
   // 商品管理ページ処理
   Route::controller(ManageController::class)->group(function () {
     Route::get('manage', 'index')->name('manage.index');
-    // Route::post('manage', 'create');
-    // Route::put('manage', 'update');
-    // Route::delete('manage', 'delete');
   });
 
   // 商品データ処理
@@ -141,9 +130,6 @@ Route::middleware('auth', 'can:admin-onry')->group(function () {
   // 管理者ページ処理
   Route::controller(AdminController::class)->group(function () {
     Route::get('admin', 'index')->name('admin.index');
-    // Route::post('admin', 'create');
-    // Route::put('admin', 'update');
-    // Route::delete('admin', 'delete');
   });
 
   // 売り場担当者データ処理

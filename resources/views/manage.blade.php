@@ -14,7 +14,6 @@
         <option value="3" @if($tab_item==='3' ) selected @endif>商品画像の編集</option>
         <option value="4" @if($tab_item==='4' ) selected @endif>商品の評価一覧</option>
         <option value="5" @if($tab_item==='5' ) selected @endif>商品の追加登録</option>
-        {{-- <option value="6" @if($tab_item==='6' ) selected @endif>その他</option> --}}
       </select>
     </form>
     

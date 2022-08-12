@@ -50,8 +50,6 @@ class ChargeController extends Controller
                     'order_id' => $order->id,
                     'quantity' => $cart->quantity,
                     'subtotal' => $cart->subtotal(),
-                    // 'delivery_date' => $delivery->date,
-                    // 'delivery_number' => $delivery->number,
                 ]);
             }
 
@@ -60,17 +58,17 @@ class ChargeController extends Controller
 
             // 購入内容の控えをメール送信
             $delivery = Delivery::where('order_id', $order->id)->first();
+
             $name = $order->user->name;
             $to = $order->user->email;
-            $to = 'ufkq56586@mineo.jp';
             $subject = "ご注文番号：{{$order->number}}　ご購入完了のお知らせ";
+            $text = "$delivery->number";
             $view = 'emails.mail_thanks';
-            Mail::to($to)->send(new SendMail($name, $subject, $view, $delivery->number));
+            Mail::to($to)->send(new SendMail($name, $subject, $view, $text));
 
             return view('emails.mail_thanks')->with([
                 'name' => Auth::user()->name,
-                'number' => $delivery->number,
-                'histories' => History::where('order_id', $order->id)->get(),
+                'text' => $delivery->number,
             ]);
 
         } catch (\Exception $ex) {

@@ -1,15 +1,11 @@
-{{-- xxx --}}
+{{-- 評価 --}}
 <div class="tab_content" id="tab4_content">
   <div class="content_nav">
     @if(isset($comments))
     <p>{{$comments->total()}}件の評価が見つかりました。</p>
-
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $comments])
-
     @endif
-
-
   </div>
   {{-- コンテンツ --}}
   
@@ -26,8 +22,6 @@
           <th>評価数</th>
           <th class="no_wap">評価コメント</th>
           <th>作成日<br>------<br>更新日</th>
-          {{-- <th></th>
-          <th></th> --}}
         </tr>
       </thead>
       <tbody>
@@ -58,12 +52,11 @@
             {{-- 評価数 --}}
             <td class="list_evaluation">
               <p class="my_evaluation">
-                {{-- <label for="">{{$comment->evaluation ?? 0}}</label> --}}
                 <button type="button" class="my_star @if(($comment->evaluation ?? '0') >= 1) star_on @endif"></button>
                 <button type="button" class="my_star @if(($comment->evaluation ?? '0') >= 2) star_on @endif"></button>
                 <button type="button" class="my_star @if(($comment->evaluation ?? '0') >= 3) star_on @endif"></button>
                 <button type="button" class="my_star @if(($comment->evaluation ?? '0') >= 4) star_on @endif"></button>
-                <button type="button" class="my_star @if(($comment->evaluation  ?? '0')  == 5) star_on @endif"></button>
+                <button type="button" class="my_star @if(($comment->evaluation ?? '0') == 5) star_on @endif"></button>
               </p>
             </td>
             {{-- 評価コメント --}}

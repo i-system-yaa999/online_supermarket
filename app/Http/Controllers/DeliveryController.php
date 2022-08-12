@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\DeliveryRequest;
 use App\Models\Cart;
 use App\Models\Delivery;
-use Illuminate\Support\Facades\Auth;
 
 class DeliveryController extends Controller
 {
@@ -46,7 +45,6 @@ class DeliveryController extends Controller
         if (empty(Delivery::where('order_id', $request->order_id)->first())) {
             // 新規予約
             $delivery = Delivery::create([
-                // 'user_id' => Auth::id(),
                 'order_id' => $request->order_id,
                 'date' => $request->delivery_date,
                 'number' => $request->delivery_number,
@@ -60,15 +58,6 @@ class DeliveryController extends Controller
         }
 
         $carts = Cart::all();
-        // return back();
         return redirect(route('mypage.index'));
-        // return back()->withinput()->with([
-        //     'carts' => $carts,
-        //     // 'tab_item' => $request->tab_item,
-        //     'tab_item' => 0,
-        //     'delivery' => $delivery,
-        //     // 'delivery_date' => $delivery->date,
-        //     // 'delivery_number' => $delivery->number,
-        // ]);
     }
 }

@@ -1,3 +1,14 @@
+// 詳細ウィンドウ
+function toggleDetail(id) {
+  document.getElementById('window_backframe' + id).classList.toggle('is-hidden');
+}
+function showDetail(id){
+  document.getElementById('window_backframe' + id).classList.remove('is-hidden');
+}
+function hideDetail(id){
+  document.getElementById('window_backframe' + id).classList.add('is-hidden');
+}
+  
 // ウィンドウ消去
 function hideWindow(){
   document.getElementById('window_backframe').classList.add('is-hidden');

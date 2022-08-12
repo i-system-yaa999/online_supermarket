@@ -1,4 +1,4 @@
-{{-- 商品の追加 --}}
+{{-- 商品の編集 --}}
 <div class="tab_content" id="tab0_content">
   <div class="content_nav">
     @if(isset($products))
@@ -6,8 +6,6 @@
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $products])
     @endif
-    {{-- 新規作成ボタン --}}
-    {{-- <button class="btn btn_list_newitem">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">

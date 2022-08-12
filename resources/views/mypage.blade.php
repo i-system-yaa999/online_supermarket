@@ -12,7 +12,7 @@
         <option value="1" @if($tab_item==='1' ) selected @endif>配達予約</option>
         <option value="2" @if($tab_item==='2' ) selected @endif>購入履歴</option>
         <option value="3" @if($tab_item==='3' ) selected @endif>お気に入り商品</option>
-        <option value="4" @if($tab_item==='4' ) selected @endif>お客様情報の変更</option>
+        <option value="4" @if($tab_item==='4' ) selected @endif>登録メールアドレスの変更</option>
         <option value="5" @if($tab_item==='5' ) selected @endif>退会</option>
       </select>
     </form>
@@ -36,9 +36,9 @@
         <input type="radio" name="tab_item" id="like" value="3" @if($tab_item==3) checked @endif onChange="this.form.submit()">
         <label class="tab_item" for="like">お気に入り商品</label>
 
-        <!-- tab menu お客様情報の変更 -->
+        <!-- tab menu 登録メールアドレスの変更 -->
         <input type="radio" name="tab_item" id="register" value="4" @if($tab_item==4) checked @endif onChange="this.form.submit()">
-        <label class="tab_item" for="register">お客様情報の変更</label>
+        <label class="tab_item" for="register">登録メールアドレスの変更</label>
 
         <!-- tab menu 退会 -->
         <input type="radio" name="tab_item" id="quit_member" value="5" @if($tab_item==5) checked @endif onChange="this.form.submit()">
@@ -67,7 +67,7 @@
     @include('layouts.contents.mypage.tab3_like')
     @endif
 
-    {{-- tab contents お客様情報の変更 --}}
+    {{-- tab contents 登録メールアドレスの変更 --}}
     @if($tab_item === '4')
     @include('layouts.contents.mypage.tab4_register')
     @endif

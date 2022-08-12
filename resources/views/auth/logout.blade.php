@@ -1,5 +1,5 @@
 @push('stylesheet')
-{{-- <link rel="stylesheet" href="{{asset('css/.css')}}"> --}}
+<link rel="stylesheet" href="{{asset('css/auth.css')}}">
 @endpush
 <x-layouts.auth title="ログアウト">
   <section class="msg_content">
@@ -20,5 +20,4 @@
       </div>
     </div>
   </section>
-{{-- @endsection --}}
 </x-layouts.auth>

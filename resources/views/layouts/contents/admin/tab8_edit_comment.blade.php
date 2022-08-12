@@ -7,8 +7,6 @@
     {{-- ページネーション --}}
     @include('layouts.pagenation',['items' => $comments])
     @endif
-    {{-- 新規作成ボタン --}}
-    {{-- <button type="button" class="btn btn_add_item" onclick="">新規作成</button> --}}
   </div>
   {{-- コンテンツ --}}
   <div class="data_list">
@@ -91,17 +89,5 @@
     </table>
 
   </div>
-
-  {{-- 新規作成用ウィンドウ --}}
-  <div id="window_backframe"
-    class="window_backframe @if(empty(old('new_comment_open'))) is-hidden @endif">
-    <div class="window_background" onclick="hideWindow()"></div>
-    <div class="window">
-
-      {{-- @include('layouts.contents.new_area') --}}
-
-    </div>
-  </div>
-
 
 </div>

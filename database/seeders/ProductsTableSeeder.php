@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 
@@ -22,8 +21,6 @@ class ProductsTableSeeder extends Seeder
             'area_id' => 2,
             'description' => 'あまーい',
             'image_id' => 8
-            // 'description' => 'Good watch',
-            // 'image' => 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=989&q=80'
 
         ]);
         Product::create([
@@ -33,18 +30,14 @@ class ProductsTableSeeder extends Seeder
             'area_id' => 1,
             'description' => 'しぶーい',
             'image_id' => 12
-            // 'description' => 'Good Bag',
-            // 'image' => 'https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=669&q=80'
         ]);
         Product::create([
             'name' => '牛肉',
-            'price' => 100,
+            'price' => 1000,
             'genre_id' => 1,
             'area_id' => 3,
             'description' => 'かたーい',
             'image_id' => 17
-            // 'description' => 'Good perfume',
-            // 'image' => 'https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80'
         ]);
     }
 }
