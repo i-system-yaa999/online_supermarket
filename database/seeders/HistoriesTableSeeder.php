@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class HistorysTableSeeder extends Seeder
+class HistoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

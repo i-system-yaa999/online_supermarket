@@ -17,7 +17,6 @@
 
 body {
   width: 100vw;min-height: 100vh;
-  /* height: 100vh; */
 }
 a {
   text-decoration: none;
@@ -28,6 +27,10 @@ a {
 }
 .tabs {
   display: flex;
+  overflow-x: auto;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 @media(max-width:769px) {
   .select_menu {
@@ -52,6 +55,7 @@ a {
 /*タブのスタイル*/
 .tab_item {
   width: 100%;
+  min-width: 120px;
   height: 50px;
   line-height: 60px;
   background-color: #ececec;
@@ -69,7 +73,6 @@ a {
 }
 
 
-
 /*ラジオボタンを全て消す*/
 input[name="tab_item"] {
   display: none;
@@ -80,7 +83,6 @@ input[name="tab_item"] {
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  /* width: 100%; */
   padding-right: 10px;
 }
 .input_mini {
@@ -97,7 +99,6 @@ input[name="tab_item"] {
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  /* width: 100%; */
 }
 .error_disp {
   font-size: 0.8rem;
@@ -193,17 +194,6 @@ input[name="tab_item"] {
 .btn-delete:hover {
   background-color: red;
 }
-/* 商品管理ページ新規作成ボタン */
-/* .btn_list_newitem{
-  width: 85px;
-  height: 34px;
-  background-color: white;
-  color: black;
-}
-.btn_list_newitem:hover {
-  background-color: dodgerblue;
-  color: white;
-} */
 /* 商品管理ページ画像変更ボタン */
 .btn-upload{
   width: 85px;
@@ -251,6 +241,7 @@ input[name="tab_item"] {
   background-color: dodgerblue;
   color: white;
 }
+/* 評価 */
 .btn_evaluation_send{
   width: 150px;
   height: 2rem;
@@ -263,32 +254,27 @@ input[name="tab_item"] {
   background-color: dodgerblue;
   color: white;
 }
-
-
-/* bodyにjsでclassをあてる */
-/* .bk_popup{
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.7);
+/* 管理ページemail送信 */
+.btn_new_email{
+  width: 100px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
 }
-.bk_popup::-webkit-scrollbar {
-  display: none;
-} */
+.btn_new_email:hover {
+  background-color: dodgerblue;
+  color: white;
+}
 
 
-
-
-
-/* -------------------------------------------------- */
 .content_nav {
   margin: 2vh 10px;
 }
 .content_nav p {
   margin-bottom: 5px;
 }
-/* -------------------------------------------------- */
+
 .content_data {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

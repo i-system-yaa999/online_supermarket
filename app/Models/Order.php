@@ -29,24 +29,16 @@ class Order extends Model
     {
         return $this->hasMany(Cart::class);
     }
-    // public function deliveries()
-    // {
-    //     return $this->hasMany(Delivery::class);
-    // }
-    // public function history()
-    // {
-    //     return $this->hasOne(History::class);
-    // }
     public function delivery()
     {
         return $this->hasOne(Delivery::class);
     }
 
 
-    public static function total()
+    public static function total($index)
     {
         $total = 0;
-        $order = Order::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
+        $order = Order::where('user_id', Auth::id())->skip($index)->orderBy('created_at', 'desc')->first();
         foreach ($order->histories as $history) {
             $total += $history->subtotal;
         }

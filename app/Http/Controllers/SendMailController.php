@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\EmailRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 
 class SendMailController extends Controller
 {
-    public function sendMail(Request $request)
+    public function sendMail(EmailRequest $request)
     {
-        // $name = $request->name;
-        $name='testtest';
-        $to = 'takaya@ics-mail.info';
-        $subject = '登録完了しました。';
+        $to = $request->user_email;
+        $name = $request->user_name;
+        $subject = $request->mail_title;
+        $text = $request->mail_message;
         $view = 'emails.mail_contact';
-
-        Mail::to($to)->send(new SendMail($name, $subject, $view,0));
-        // return view('maildone', ['name' => $name]);
-        return 'メール送信完了';
+        
+        Mail::to($to)->send(new SendMail($name, $subject, $view, $text));
+        return back();
     }
 }

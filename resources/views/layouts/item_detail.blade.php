@@ -61,7 +61,7 @@
     @if(null != ($product->purchased()))
     <div class="my_evaluation">
       @if(empty($product->iscomment()))
-      <h3>購入したことのある商品です。評価を投稿してください。</h3>
+      <h3>購入したことのある商品です。<br>評価を投稿してください。</h3>
       <button id="my_star1{{$product->id}}" class="my_star" onclick="star_change(1,{{$product->id}})"></button>
       <button id="my_star2{{$product->id}}" class="my_star" onclick="star_change(2,{{$product->id}})"></button>
       <button id="my_star3{{$product->id}}" class="my_star" onclick="star_change(3,{{$product->id}})"></button>
