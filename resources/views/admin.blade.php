@@ -108,5 +108,4 @@
     @endif
 
   </section>
-  {{-- @endsection --}}
 </x-layouts.toppage>

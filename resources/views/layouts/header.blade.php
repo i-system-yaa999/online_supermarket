@@ -22,19 +22,17 @@
         @can('admin-onry')
         <li><a href="/admin">システム管理</a></li>
         <li><a href="/manage">商品管理</a></li>
-        <li><a href="/mypage">マイページ</a></li>
+        <li><a href="/mypage">マイページ<br>（カート）</a></li>
         {{-- 売り場担当者以上に表示される --}}
         @elsecan('manager-higher')
         <li><a href="/manage">商品管理</a></li>
-        <li><a href="/mypage">マイページ</a></li>
+        <li><a href="/mypage">マイページ<br>（カート）</a></li>
         {{-- 一般権限以上に表示される --}}
         @elsecan('user-higher')
-        <li><a href="/mypage">マイページ</a></li>
+        <li><a href="/mypage">マイページ<br>（カート）</a></li>
         @endcan
         <li><a href="/logout">ログアウト</a></li>
         @else
-        {{-- <li><a href="{{route('register')}}">新規登録</a></li>
-        <li><a href="{{route('login')}}">ログイン</a></li> --}}
         <li><a href="/register">新規登録</a></li>
         <li><a href="/login">ログイン</a></li>
         @endif

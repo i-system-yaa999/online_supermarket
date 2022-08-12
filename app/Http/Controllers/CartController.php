@@ -11,17 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    // カートリスト
-    // public function cartList()
-    // {
-    //     $carts = Cart::all();
-    //     $tab_item= 0;
-    //     return view('mypage')->with([
-    //         'carts' => $carts,
-    //         'tab_item' => $tab_item,
-    //     ]);
-    // }
-
     // カートに追加
     public function addToCart(Request $request)
     {

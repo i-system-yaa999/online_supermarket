@@ -11,8 +11,6 @@
     <input type="text" name="image_url_path" id="image_url_path" class="" vale="{{old('image_url')}}">
     <label for="file" class="file_label">ファイルを選択</label>
     <input type="file" accept="image/*" name="image_url" id="file" class="file_input" onchange="addImage()">
-    {{-- <input type="text" name="image_url" class="new_image_url" placeholder="画像URLを選んでください"
-      vale="{{old('image_url')}}"> --}}
     @if($errors->has('image_url'))
     <div class="error_disp">{{$errors->first('image_url')}}</div>
     @endif
@@ -24,6 +22,6 @@
 </div>
 <script>
   function addImage(){
-            document.getElementById('image_url_path').value = document.getElementById('file').value
-          }
+    document.getElementById('image_url_path').value = document.getElementById('file').value
+  }
 </script>

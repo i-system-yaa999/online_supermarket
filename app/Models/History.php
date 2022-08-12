@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class History extends Model
 {
@@ -22,20 +21,7 @@ class History extends Model
     {
         return $this->belongsTo(Order::class);
     }
-    // public function product()
-    // {
-    //     return $this->belongsTo(Product::class);
-    // }
-
-
-    // public static function total()
-    // {
-    //     $total = 0;
-    //     foreach (History::where('user_id', Auth::id())->get() as $history) {
-    //         $total += $history->subtotal;
-    //     }
-    //     return $total;
-    // }
+    
     public static function price($id)
     {
         $price = 0;

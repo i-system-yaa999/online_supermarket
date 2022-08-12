@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-use App\Models\Manager;
 
 class ManagerRequest extends FormRequest
 {
@@ -28,12 +26,6 @@ class ManagerRequest extends FormRequest
         return [
             'user_id' => 'required|unique:managers,user_id',
             'genre_id' => 'required|unique:managers,genre_id',
-            // uniqueを使用する場合は下記に置き換える
-            // input()が取得できない
-            // 'user_id' => 'required|unique:managers,user_id,' . $this->manager_id . ',id',
-            // 'user_id' => ['required', Rule::unique(Manager::class)->ignore($this->manager_id)],
-            // 'user_id' => ['required', Rule::unique('managers')->ignore($this->manager_id)],
-            // 'genre_id' => 'required|unique:managers,genre_id,' . $this->input('manager_id') . ',id',
         ];
     }
 

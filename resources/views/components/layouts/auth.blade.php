@@ -25,10 +25,6 @@
   @include('layouts.header')
   <main class="content">
     {{$slot}}
-    {{-- @yield('content') --}}
-    {{-- login.blade.php --}}
-    {{-- logout.blade.php --}}
-    {{-- register.blade.php --}}
   </main>
   @include('layouts.footer')
 </body>

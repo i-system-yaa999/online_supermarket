@@ -19,7 +19,6 @@
           <th class="list_center list_id">ID</th>
           <th class="fixed_head">画像</th>
           <th>画像URL<br>images/products/</th>
-          {{-- <th></th> --}}
           <th>作成日<br>------<br>更新日</th>
           <th></th>
           <th></th>
@@ -47,10 +46,6 @@
               <div class="error_disp">{{$errors->first('image_url')}}</div>
               @endif
             </td>
-            {{-- 変更ボタン --}}
-            {{-- <td class="list_center list_upload">
-              <button class="btn btn-upload">画像変更</button>
-            </td> --}}
             {{-- 作成日/更新日 --}}
             <td class="list_created">{{$image->created_at}}<span class="hr"></span>{{$image->updated_at}}</td>
             {{-- 登録ボタン --}}
@@ -76,8 +71,7 @@
   </div>
   
   {{-- 新規作成用ウィンドウ --}}
-  <div id="window_backframe"
-    class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
+  <div id="window_backframe" class="window_backframe @if(empty(old('new_image_open')) && empty(old('new_genre_open')) && empty(old('new_area_open'))) is-hidden @endif">
     <div class="window_background" onclick="hideWindow()"></div>
     <div class="window">
   

@@ -34,7 +34,6 @@
     
     {{-- ウィンドウフラグ --}}
     <input type="hidden" name="new_user_open" value="true">
-    {{-- <input type="hidden" name="new_email_open" value="false"> --}}
     {{-- 送信ボタン --}}
     <button type="submit" class="btn btn_resist">登録</button>
   </form>
