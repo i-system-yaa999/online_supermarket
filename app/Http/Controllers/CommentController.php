@@ -22,10 +22,7 @@ class CommentController extends Controller
             'evaluation' => $request->evaluation,
             'comment' => $request->comment,
         ]);
-        return back()->withinput([
-            'product_comment_id' => $comment->id,
-            'iscomment' => true,
-        ]);
+        return back();
     }
     public function update(CommentRequest $request)
     {

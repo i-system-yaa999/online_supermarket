@@ -18,9 +18,7 @@ class AreaController extends Controller
         $area = Area::create([
             'name' => $request->area_name,
         ]);
-        return back()->withinput([
-            'product_area_id' => $area->id,
-        ]);
+        return back();
     }
     public function update(AreaRequest $request)
     {
