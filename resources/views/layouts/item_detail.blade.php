@@ -22,15 +22,15 @@
     </div>
 
     {{-- 詳細 --}}
-    <p id="description" class="detail_discription">{{$product->discriptione ?? ''}}</p>
+    <h4 id="description" class="detail_description">{{$product->description ?? ''}}</h4>
+    {{-- 価格 --}}
+    <span id="price" class="detail_price">{{$product->price ?? '0'}}</span><span>円（税込）</span>
     {{-- タグ --}}
     <p class="detail_hashtag">
       {{-- 売り場 --}}
       <input type="hidden" name="" id="genre_id">
       <label id="genre_name" class="detail_genre">#{{$product->genre->name ?? '---'}}</label>
     </p>
-    {{-- 価格 --}}
-    <span id="price" class="detail_price">{{$product->price ?? '0'}}</span><span>円（税込）</span>
     {{-- アクション --}}
     <div class="detail_action">
       {{-- カートへ --}}

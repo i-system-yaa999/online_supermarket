@@ -19,7 +19,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 390,
             'genre_id' => 1,
             'area_id' => 1,
-            'description' => 'あまーい',
+            'description' => 'パリパリウィンナー',
             'image_id' => 1
         ]);
         Product::create([
@@ -27,7 +27,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 200,
             'genre_id' => 2,
             'area_id' => 2,
-            'description' => 'しぶーい',
+            'description' => '大量入荷しました！',
             'image_id' => 2
         ]);
         Product::create([
@@ -35,7 +35,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 150,
             'genre_id' => 2,
             'area_id' => 4,
-            'description' => 'かたーい',
+            'description' => 'あまくて実詰まりしっかりしてます',
             'image_id' => 3
         ]);
         Product::create([
@@ -43,7 +43,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 60,
             'genre_id' => 2,
             'area_id' => 5,
-            'description' => 'かたーい',
+            'description' => 'サラダにどうぞ',
             'image_id' => 4
         ]);
         Product::create([
@@ -51,7 +51,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 800,
             'genre_id' => 2,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '甘酸っぱいおいしさ',
             'image_id' => 5
         ]);
         Product::create([
@@ -59,7 +59,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 2000,
             'genre_id' => 5,
             'area_id' => 3,
-            'description' => 'かたーい',
+            'description' => 'オーバーグラスで眼鏡の上から使えます',
             'image_id' => 6
         ]);
         Product::create([
@@ -67,7 +67,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 300,
             'genre_id' => 4,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '',
             'image_id' => 7
         ]);
         Product::create([
@@ -75,7 +75,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 100,
             'genre_id' => 2,
             'area_id' => 6,
-            'description' => 'かたーい',
+            'description' => '３本１パック',
             'image_id' => 8
         ]);
         Product::create([
@@ -83,7 +83,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 100,
             'genre_id' => 2,
             'area_id' => 3,
-            'description' => 'かたーい',
+            'description' => 'あまーい',
             'image_id' => 9
         ]);
         Product::create([
@@ -91,7 +91,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 150,
             'genre_id' => 2,
             'area_id' => 6,
-            'description' => 'かたーい',
+            'description' => '４つ１パック',
             'image_id' => 10
         ]);
         Product::create([
@@ -99,7 +99,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 350,
             'genre_id' => 5,
             'area_id' => 2,
-            'description' => 'かたーい',
+            'description' => '350ml 1本',
             'image_id' => 11
         ]);
         Product::create([
@@ -107,7 +107,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 400,
             'genre_id' => 2,
             'area_id' => 4,
-            'description' => 'かたーい',
+            'description' => '皮も薄くて甘ーいです',
             'image_id' => 12
         ]);
         Product::create([
@@ -115,7 +115,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 500,
             'genre_id' => 2,
             'area_id' => 5,
-            'description' => 'かたーい',
+            'description' => 'デラウェア２房',
             'image_id' => 13
         ]);
         Product::create([
@@ -123,7 +123,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 400,
             'genre_id' => 2,
             'area_id' => 6,
-            'description' => 'かたーい',
+            'description' => '甘酸っぱい',
             'image_id' => 14
         ]);
         Product::create([
@@ -131,7 +131,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 2500,
             'genre_id' => 5,
             'area_id' => 2,
-            'description' => 'かたーい',
+            'description' => '犬用',
             'image_id' => 15
         ]);
         Product::create([
@@ -139,7 +139,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 98,
             'genre_id' => 2,
             'area_id' => 4,
-            'description' => 'かたーい',
+            'description' => 'おひたしにどうぞ',
             'image_id' => 16
         ]);
         Product::create([
@@ -147,7 +147,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 98,
             'genre_id' => 2,
             'area_id' => 5,
-            'description' => 'かたーい',
+            'description' => 'サラダにどうぞ',
             'image_id' => 17
         ]);
         Product::create([
@@ -155,7 +155,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 1000,
             'genre_id' => 1,
             'area_id' => 3,
-            'description' => 'かたーい',
+            'description' => '焼き肉用２５０ｇ',
             'image_id' => 18
         ]);
         Product::create([
@@ -163,7 +163,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 400,
             'genre_id' => 1,
             'area_id' => 3,
-            'description' => 'かたーい',
+            'description' => 'ハンバーグにどうぞ',
             'image_id' => 19
         ]);
         Product::create([
@@ -171,7 +171,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 1000,
             'genre_id' => 1,
             'area_id' => 3,
-            'description' => 'かたーい',
+            'description' => '焼き肉用２５０ｇ',
             'image_id' => 20
         ]);
         Product::create([
@@ -179,7 +179,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 250,
             'genre_id' => 5,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '',
             'image_id' => 21
         ]);
         Product::create([
@@ -187,7 +187,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 200,
             'genre_id' => 4,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '上白糖1kg',
             'image_id' => 22
         ]);
         Product::create([
@@ -195,7 +195,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 300,
             'genre_id' => 1,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '唐揚げにどうぞ',
             'image_id' => 23
         ]);
         Product::create([
@@ -203,7 +203,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 400,
             'genre_id' => 4,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '',
             'image_id' => 24
         ]);
         Product::create([
@@ -211,7 +211,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 100,
             'genre_id' => 2,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '10枚入り',
             'image_id' => 25
         ]);
         Product::create([
@@ -219,7 +219,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 140,
             'genre_id' => 2,
             'area_id' => 5,
-            'description' => 'かたーい',
+            'description' => '',
             'image_id' => 26
         ]);
         Product::create([
@@ -227,7 +227,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 250,
             'genre_id' => 1,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '３００ｇ',
             'image_id' => 27
         ]);
         Product::create([
@@ -235,7 +235,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 300,
             'genre_id' => 1,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '３５０ｇ',
             'image_id' => 28
         ]);
         Product::create([
@@ -243,7 +243,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 300,
             'genre_id' => 4,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '５００ｇ',
             'image_id' => 29
         ]);
         Product::create([
@@ -251,7 +251,7 @@ class ProductsTableSeeder extends Seeder
             'price' => 400,
             'genre_id' => 4,
             'area_id' => 1,
-            'description' => 'かたーい',
+            'description' => '１０００ｇ',
             'image_id' => 30
         ]);
     }
