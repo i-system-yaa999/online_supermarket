@@ -18,7 +18,7 @@
         <tr class="tbl_head">
           <th class="list_center list_id">ID</th>
           <th class="fixed_head">画像</th>
-          <th>画像URL<br>images/products/</th>
+          <th>画像URL</th>
           <th>作成日<br>------<br>更新日</th>
           <th></th>
           <th></th>
@@ -40,8 +40,7 @@
               <img src="{{asset($image->url)}}" alt="">
             </td>
             <td class="list_imageURL">
-              <input type="text" name="image_url" class="inputbox"
-                value="{{str_replace('images/products/', '', $image->url)}}">
+              <input type="text" name="image_url" class="inputbox" value="{{$image->url}}">
               @if(($image->id==old('image_id')) && ($errors->has('image_url')))
               <div class="error_disp">{{$errors->first('image_url')}}</div>
               @endif

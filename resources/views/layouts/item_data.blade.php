@@ -18,7 +18,7 @@
   </form>
 
   {{-- タグ --}}
-  <div class="item_hashtag">
+  <div class="item_group">
     {{-- 産地 --}}
     <input type="hidden" name="" id="area_id" value="{{$product->area_id ?? ''}}">
     <p><label class="item_area">#{{$product->area->name ?? '---'}}</label></p>
@@ -31,38 +31,33 @@
     @include('layouts.like')
   </div>
 
-  <div class="item_inner_frame">
-    <div class="item_group">
-      {{-- タグ --}}
-      <div class="item_hashtag">
-        {{-- 売り場 --}}
-        <input type="hidden" name="" id="genre_id" value="{{$product->genre_id ?? ''}}">
-        <p><label class="item_genre">#{{$product->genre->name ?? '---'}}</label></p>
-      </div>
+  <div class="item_group">
+    {{-- 価格 --}}
+    <p><span class="item_price">{{$product->price ?? '0'}}</span><span>円（税込）</span></p>
+    {{-- タグ --}}
+    <div class="item_hashtag">
+      {{-- 売り場 --}}
+      <input type="hidden" name="" id="genre_id" value="{{$product->genre_id ?? ''}}">
+      <p><label class="item_genre">#{{$product->genre->name ?? '---'}}</label></p>
     </div>
-    <div class="item_group">
-      {{-- 価格 --}}
-      <p><span class="item_price">{{$product->price ?? '0'}}</span><span>円（税込）</span></p>
-      @auth
-      <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="product_id" value="{{ $product->id ?? ''}}">
-        <input type="hidden" name="product_name" value="{{ $product->name ?? ''}}">
-        <input type="hidden" name="product_price" value="{{ $product->price ?? ''}}">
-        <input type="hidden" name="product_image" value="{{ $product->image->url ?? ''}}">
-        {{-- 個数 --}}
-        <select name="quantity" id="quantity" class="item_quantity selectbox">
-          <option value="1">個数：1</option>
-          @for($i = 1; $i <= 50; $i++) 
-          <option value="{{$i}}">
-            {{$i}}
-          </option>
-          @endfor
-        </select>
-        <button type="submit" class="btn item_submit">カートへ</button>
-      </form>
-      @endauth
-    </div>
+    {{-- カートへ --}}
+    <form action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
+      @csrf
+      <input type="hidden" name="product_id" value="{{ $product->id ?? ''}}">
+      <input type="hidden" name="product_name" value="{{ $product->name ?? ''}}">
+      <input type="hidden" name="product_price" value="{{ $product->price ?? ''}}">
+      <input type="hidden" name="product_image" value="{{ $product->image->url ?? ''}}">
+      {{-- 個数 --}}
+      <select name="quantity" id="quantity" class="item_quantity selectbox">
+        <option value="1">個数：1</option>
+        @for($i = 1; $i <= 50; $i++) 
+        <option value="{{$i}}">
+          {{$i}}
+        </option>
+        @endfor
+      </select>
+      <button type="submit" class="btn item_submit">カートへ</button>
+    </form>
   </div>
 
 </div>
