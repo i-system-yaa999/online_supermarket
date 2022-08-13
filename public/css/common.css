@@ -1,0 +1,331 @@
+:root {
+  font-size: 100%;
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  :root {
+    font-size: 90%;
+  }
+}
+/* 426pxまで（425px以下）の場合 */
+@media(max-width:426px) {
+  :root {
+    font-size: 85%;
+  }
+}
+
+
+body {
+  width: 100vw;min-height: 100vh;
+}
+a {
+  text-decoration: none;
+}
+
+.select_menu {
+  display: none;
+}
+.tabs {
+  display: flex;
+  overflow-x: auto;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+@media(max-width:769px) {
+  .select_menu {
+    display: block;
+    width: 95vw;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 5px;
+    margin: 0 auto;
+  }
+  .tabs {
+    display: none;
+  }
+}
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked+.tab_item {
+  border-bottom: 3px solid red;
+  opacity: 0.75;
+  color: black;
+  font-weight: bold;
+}
+/*タブのスタイル*/
+.tab_item {
+  width: 100%;
+  min-width: 120px;
+  height: 50px;
+  line-height: 60px;
+  background-color: #ececec;
+  border-bottom: 3px solid #d9d9d9;
+  font-size: 1rem;
+  text-align: center;
+  color: #565656;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.tab_item:hover {
+  border-bottom: 3px solid red;
+  opacity: 0.75;
+  font-weight: bold;
+}
+
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+.inputbox {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  padding-right: 10px;
+}
+.input_mini {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 30px;
+  padding-right: 10px;
+  text-align: center;
+}
+.selectbox {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.error_disp {
+  font-size: 0.8rem;
+  color: red;
+}
+
+/* ボタン全般 */
+.btn {
+  text-align: center;
+  background-color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  outline: none;
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  .btn {
+    padding: 0px 0px;
+  }
+}
+
+/* カート数量更新ボタン */
+.btn_qty_change {
+  width: 50px;
+  height: 30px;
+  padding: 0;
+}
+.btn_qty_change:hover {
+  background-color: #03f003;
+}
+
+/* カート商品削除ボタン */
+.btn_item_delete {
+  width: 50px;
+  height: 30px;
+  background-color: #fcaaaa;
+  color: white;
+  margin-right: 10px;
+  padding: 0;
+}
+.btn_item_delete:hover {
+  background-color: red;
+}
+
+/* カートを空にするボタン */
+.btn_all_clear {
+  width: 150px;
+  height: 30px;
+  padding: 0;
+  background-color: #fcaaaa;
+  color: white;
+  margin-right: 10px;
+}
+.btn_all_clear:hover {
+  background-color: red;
+}
+
+/* 配達便を変更するボタン */
+.btn_delivery {
+  width: 150px;
+  height: 30px;
+  padding: 0;
+}
+.btn_delivery:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* 商品管理ページ登録ボタン */
+.btn-modify{
+  width: 50px;
+  height: 30px;
+  background-color: #ffcf77;
+  color: black;
+  margin-right: 10px;
+  padding: 0;
+}
+.btn-modify:hover{
+  background-color: orange;
+}
+
+/* 商品管理ページ削除ボタン */
+.btn-delete {
+  width: 50px;
+  height: 30px;
+  background-color: #fcaaaa;
+  color: white;
+  margin-right: 10px;
+  padding: 0;
+}
+.btn-delete:hover {
+  background-color: red;
+}
+/* 商品管理ページ画像変更ボタン */
+.btn-upload{
+  width: 85px;
+  height: 34px;
+  background-color: white;
+  color: black;
+}
+.btn-upload:hover{
+  background-color: dodgerblue;
+  color: white;
+}
+/* 商品管理ページ新規登録ボタン */
+.btn_create{
+  width: 160px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
+}
+.btn_create:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+/* 商品管理ページ売り場新規作成ボタン */
+.btn_add_item{
+  width: 120px;
+  height: 32px;
+  background-color: #fb6d6d;
+  color: white;
+  font-size: 0.8rem;
+}
+.btn_add_item:hover {
+  background-color: white;
+  color: black;
+}
+/* 商品管理ページ新規登録ボタン */
+.btn_resist{
+  width: 100px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
+}
+.btn_resist:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+/* 評価 */
+.btn_evaluation_send{
+  width: 150px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin: 10px 20px 30px auto;
+  display: block;
+}
+.btn_evaluation_send:hover{
+  background-color: dodgerblue;
+  color: white;
+}
+/* 管理ページemail送信 */
+.btn_new_email{
+  width: 100px;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
+}
+.btn_new_email:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+
+.content_nav {
+  margin: 2vh 10px;
+}
+.content_nav p {
+  margin-bottom: 5px;
+}
+
+.content_data {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+/* 769pxまで（768px以下）の場合 */
+@media(max-width:769px) {
+  .content_data {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 769px;
+  }
+}
+/* 426pxまで（425px以下）の場合 */
+@media(max-width:426px) {
+  .content_data {
+    grid-template-columns: 1fr;
+    max-width: 425px;
+  }
+}
+
+
+
+/* 商品管理ページ画像追加ボタン */
+.file_input{
+  display: none;
+}
+.file_label{
+  background-color: #fb6d6d;
+  border: 2px solid black;
+  border-radius: 5px;
+  line-height: 2rem;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+
+  font-size: 0.8rem;
+  display: inline-block;
+  width: 116px;
+  height: 28px;
+  text-align: center;
+}
+.file_label:hover{
+  background-color: white;
+  color: black;
+}
+
+
+.no_wap {
+  white-space: nowrap;
+}
+
+.modal_window_open{
+  height: 100vh;
+  overflow-y: hidden;
+}

@@ -1,0 +1,49 @@
+/* -------------------------------------------------- */
+/* お気に入り用 */
+/* -------------------------------------------------- */
+.disp_like {
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  margin-right: 5px;
+}
+.like_count {
+  text-align: center;
+}
+.like_on {
+  background-image: url(/images/bookmark_on.svg);
+  border: 0px;
+  width: 24px;
+  height: 24px;
+}
+.like_off {
+  background-image: url(/images/bookmark_off.svg);
+  border: 0px;
+  width: 24px;
+  height: 24px;
+}
+
+/* -------------------------------------------------- */
+/* 評価用 */
+/* -------------------------------------------------- */
+.my_star {
+  border: 0px;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0 -4px;
+  background-image: url(/images/star_off.jpg);
+  background-size: contain;
+  background-color: white;
+}
+.star {
+  height: 2rem;
+  width: auto;
+}
+.star_on {
+  background-image: url(/images/star_on.jpg);
+}
+
+.my_evaluation{
+  white-space: nowrap;
+}

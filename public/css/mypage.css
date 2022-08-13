@@ -1,0 +1,163 @@
+body {
+  background: linear-gradient(white, #fcaaaa);
+}
+
+.my_content_nav{
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.my_content_data{
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: white;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+}
+
+.cart_list{
+  margin: 0 auto;
+}
+
+.cart_list th{
+  height: 50px;
+  line-height: 50px;
+  background-color: red;
+  color: white;
+}
+.cart_list tbody tr{
+  height: 60px;
+}
+.product_image{
+  width: 100px;
+  max-height: 100px;
+  vertical-align: middle;
+  text-align: center;
+}
+.product_image img {
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+}
+.product_name{
+  width: 100px;
+  max-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+.product_quantity{
+  width: 140px;
+  max-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+.product_quantity select{
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  margin-right: 5px;
+}
+.product_form{
+  display: flex;
+  margin: 0 auto;
+}
+.product_price{
+  width: 80px;
+  max-height: 100px;
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 10px;
+}
+.product_delete{
+  max-width: 100px;
+  max-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+.history_price {
+  width: 80px;
+  max-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  padding-right: 10px;
+}
+.history_qty {
+  width:60px;
+  max-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+.history_subtotal {
+  width: 80px;
+  max-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+.history_delivery{
+  width: 55%;
+  margin: 20px auto;
+}
+
+.total{
+  padding-top: 10px;
+  margin-bottom: 20px;
+  text-align: right;
+  background-color: white;
+}
+.total_price{
+  font-size: 1.5rem;
+  text-align: right;
+  margin-top: 30px;
+  margin-right: 5px;
+  padding-bottom: 20px;
+}
+
+.delivery{
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.delivery ul{
+  list-style: none;
+  margin: 10px 0;
+}
+.delivery_item{
+  height: 30px;
+  text-align: left;
+  padding: 0px 0px 0px 55px;
+  vertical-align: text-top;
+}
+.delivery_item input{
+  margin: 0;
+  height: 30px;
+}
+
+.charge{
+  text-align: center;
+  margin: 20px;
+}
+.stripe-button-el{
+  width: 200px;
+}
+
+
+
+.history_list {
+  width: 100%;
+  margin: 0;
+}
+
+.history_list th {
+  height: 50px;
+  line-height: 50px;
+  background-color: red;
+  color: white;
+}
+
+.history_list tbody tr {
+  height: 20px;
+}
