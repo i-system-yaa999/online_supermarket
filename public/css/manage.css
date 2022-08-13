@@ -2,8 +2,6 @@ body {
   background: linear-gradient(white, beige);
 }
 
-.data_nav{
-}
 .data_list{
   overflow-x: auto;
 }
@@ -174,19 +172,10 @@ table th,td {
   border-collapse: separate;
   border-spacing: 1px;
 }
-.new_data_table th,
-.new_data_table td{
-}
-.new_name_head{
-}
-.new_name_data{
-}
 .new_name{
   height: 2rem;
   width: 98%;
   font-size: 1.1rem;
-}
-.new_price_head {
 }
 .new_price_data {
   white-space: nowrap;
@@ -197,8 +186,6 @@ table th,td {
   font-size: 1.1rem;
   text-align: right;
 }
-.new_image_head {
-}
 .new_image_data {
   white-space: nowrap;
   overflow-x: auto;
@@ -206,8 +193,6 @@ table th,td {
 .new_image {
   height: 2rem;
   width: 80%;
-}
-.new_genre_head {
 }
 .new_genre_data {
   white-space: nowrap;
@@ -217,8 +202,6 @@ table th,td {
   height: 2rem;
   width: 80%;
 }
-.new_area_head {
-}
 .new_area_data {
   white-space: nowrap;
   overflow-x: auto;
@@ -226,8 +209,6 @@ table th,td {
 .new_area {
   height: 2rem;
   width: 80%;
-}
-.new_description_head {
 }
 .new_description_data {
   height: 7rem;

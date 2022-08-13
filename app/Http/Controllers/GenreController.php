@@ -18,9 +18,7 @@ class GenreController extends Controller
         $genre = Genre::create([
             'name' => $request->genre_name,
         ]);
-        return back()->withinput([
-            'product_genre_id' => $genre->id,
-        ]);
+        return back();
     }
     public function update(GenreRequest $request)
     {
