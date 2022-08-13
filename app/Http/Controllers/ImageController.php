@@ -20,9 +20,7 @@ class ImageController extends Controller
         $image = Image::create([
             'url' => str_replace('public/','', $image_url),
         ]);
-        return back()->withinput([
-            'product_image_id' => $image->id,
-        ]);
+        return back();
     }
     public function update(ImageRequest $request)
     {
