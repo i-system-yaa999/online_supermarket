@@ -324,3 +324,8 @@ input[name="tab_item"] {
 .no_wap {
   white-space: nowrap;
 }
+
+.modal_window_open{
+  height: 100vh;
+  overflow-y: hidden;
+}

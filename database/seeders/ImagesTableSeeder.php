@@ -15,94 +15,94 @@ class ImagesTableSeeder extends Seeder
     public function run()
     {
         Image::create([
-            'url' => 'images/products/ウィンナー.jpg'
+            'url' => 'images/products_all/ウィンナー.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/キウイ.jpg'
+            'url' => 'images/products_all/キウイ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/キャベツ.jpg'
+            'url' => 'images/products_all/キャベツ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/きゅうり.jpg'
+            'url' => 'images/products_all/きゅうり.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/さくらんぼ.jpg'
+            'url' => 'images/products_all/さくらんぼ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/サングラス.jpg'
+            'url' => 'images/products_all/サングラス.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/しょうゆ.jpg'
+            'url' => 'images/products_all/しょうゆ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/にんじん.jpg'
+            'url' => 'images/products_all/にんじん.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/バナナ.jpg'
+            'url' => 'images/products_all/バナナ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/ピーマン.jpg'
+            'url' => 'images/products_all/ピーマン.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/ビール.jpg'
+            'url' => 'images/products_all/ビール.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/プチトマト.jpg'
+            'url' => 'images/products_all/プチトマト.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/ぶどう.jpg'
+            'url' => 'images/products_all/ぶどう.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/プラム.jpg'
+            'url' => 'images/products_all/プラム.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/ペットフード.jpg'
+            'url' => 'images/products_all/ペットフード.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/ほうれん草.jpg'
+            'url' => 'images/products_all/ほうれん草.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/レタス.jpg'
+            'url' => 'images/products_all/レタス.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/牛肩ロース.jpg'
+            'url' => 'images/products_all/牛肩ロース.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/牛豚挽肉.jpg'
+            'url' => 'images/products_all/牛豚挽肉.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/牛肉.jpg'
+            'url' => 'images/products_all/牛肉.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/牛乳.jpg'
+            'url' => 'images/products_all/牛乳.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/砂糖.jpg'
+            'url' => 'images/products_all/砂糖.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/若鶏もも肉.jpg'
+            'url' => 'images/products_all/若鶏もも肉.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/焼肉のたれ.jpg'
+            'url' => 'images/products_all/焼肉のたれ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/大葉.jpg'
+            'url' => 'images/products_all/大葉.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/長ネギ.jpg'
+            'url' => 'images/products_all/長ネギ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/豚バラ.jpg'
+            'url' => 'images/products_all/豚バラ.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/豚小間切.jpg'
+            'url' => 'images/products_all/豚小間切.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/伯方の塩.jpg'
+            'url' => 'images/products_all/伯方の塩.jpg'
         ]);
         Image::create([
-            'url' => 'images/products/油.jpg'
+            'url' => 'images/products_all/油.jpg'
         ]);
     }
 }

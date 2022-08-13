@@ -1,20 +1,25 @@
 // 詳細ウィンドウ
 function toggleDetail(id) {
   document.getElementById('window_backframe' + id).classList.toggle('is-hidden');
+  document.getElementsByTagName('body')[0].classList.toggle('modal_window_open');
 }
 function showDetail(id){
   document.getElementById('window_backframe' + id).classList.remove('is-hidden');
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
 }
 function hideDetail(id){
   document.getElementById('window_backframe' + id).classList.add('is-hidden');
+  document.getElementsByTagName('body')[0].classList.remove('modal_window_open');
 }
   
 // ウィンドウ消去
 function hideWindow(){
   document.getElementById('window_backframe').classList.add('is-hidden');
+  document.getElementsByTagName('body')[0].classList.remove('modal_window_open');
 }
 // 画像追加ウィンドウ
-function showImageWindow(){
+function showImageWindow() {
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_image').classList.remove('image_hide');
   try{
@@ -28,6 +33,7 @@ function showImageWindow(){
 }
 // 売り場追加ウィンドウ
 function showGenreWindow(){
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_genre').classList.remove('genre_hide');
   try{
@@ -41,6 +47,7 @@ function showGenreWindow(){
 }
 // 産地追加ウィンドウ
 function showAreaWindow(){
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_area').classList.remove('area_hide');
   try{
@@ -54,11 +61,13 @@ function showAreaWindow(){
 }
 // 商品追加ウィンドウ
 function showProductWindow(){
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_product').classList.remove('product_hide');
 }
 // 売り場担当者追加ウィンドウ
 function showManagerWindow(){
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_manager').classList.remove('manager_hide');
   try{
@@ -68,6 +77,7 @@ function showManagerWindow(){
 }
 // ユーザー追加ウィンドウ
 function showUserWindow(){
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_user').classList.remove('user_hide');
   try{
@@ -77,6 +87,7 @@ function showUserWindow(){
 }
 // Email追加ウィンドウ
 function showEmailWindow(){
+  document.getElementsByTagName('body')[0].classList.add('modal_window_open');
   document.getElementById('window_backframe').classList.remove('is-hidden');
   document.getElementById('new_email').classList.remove('email_hide');
   try {
